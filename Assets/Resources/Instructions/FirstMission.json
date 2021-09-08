@@ -1,0 +1,59 @@
+{
+  "Instructions": [
+    {
+      "text": "Welcome to your first day in the flotation section.",
+      "options": [
+        "Start"
+      ],
+      "correctOptionIndex": 1
+    }, {
+      "text": "Let's start by navigating through the stream windows. Go to the process window by pressing the left arrow on the top of this screen then pressing 'Process'. What are the options available in the Process menu?",
+      "options": [
+        "Concentrate, Tailings",
+        "Air, Froth, Feed",
+        "Feed, Cell, Concentrate, Tailings",
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "text": "Excellent. Go back to the process menu and click on the Tailings window. What is the actual Cu Grade on that stream?",
+      "options": [
+        "Less than 1 %",
+        "Around 3 %",
+        "Around 30 %"
+      ],
+      "correctOptionIndex": 1
+    },
+     {
+      "text": "In flotation we want the maximum amount of copper to go to the Concentrate stream. Go to the Flotation cell menu and increase the air flow. What happened to the Concentrate Cu recovery?",
+      "options": [
+        "It decreased",
+        "It increased"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "text": "What happened to the Cu grade - the amount of copper in the concentrate?",
+      "options": [
+        "It decreased",
+        "It increased"
+      ],
+      "correctOptionIndex": 1
+    },
+        {
+      "text": "That is because flotation is a compromise between quantity and quality. With more air you lost a bit on the amount copper (since other minerals are also floating) but you win on quantity." 
+   ,  "options": ["Right"],
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "The copper recovery is a good estimate on how good you are doing your job. In next exercises we will learn how to calculate it using the information from the Feed stream." 
+   ,   "options": ["Correct"],
+      "correctOptionIndex": 1
+    },       
+     {
+      "text": "You did well! That is all for today",
+      "options": ["Finish exercise"],
+      "correctOptionIndex": 1    
+      },
+    ]      
+}
