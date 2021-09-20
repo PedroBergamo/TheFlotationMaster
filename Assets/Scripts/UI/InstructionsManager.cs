@@ -46,7 +46,7 @@ public class InstructionsManager : MonoBehaviour {
     {
         DestroyDynamicGameObjects(CreatedButtons);
         TMPRO.text  = "Wrong Answer. Try again!";
-        yield return new WaitForSeconds(2);        
+        yield return new WaitForSeconds(2);
         CallInstruction();
     }
 
@@ -55,13 +55,13 @@ public class InstructionsManager : MonoBehaviour {
         if (GivenAnswer == SetOfInstructions[InstructionsIndex].CorrectOption)
         {
             AchievementAudio.Play();
-            NextText();            
+            NextText();
             GivenAnswer = 0;
         }
         else
-        {       
+        {
             lastRoutine = StartCoroutine(TryAgainText());
-        }        
+        }
     }
 
     public void NextText()
@@ -104,7 +104,7 @@ public class InstructionsManager : MonoBehaviour {
 
     private void GenerateButtons()
     {
-        if (SetOfInstructions[InstructionsIndex].Options[0] != "") { 
+        if (SetOfInstructions[InstructionsIndex].Options[0] != "") {
             InstructionsButton.SetActive(true);
             CreateButtons();
             InstructionsButton.SetActive(false);

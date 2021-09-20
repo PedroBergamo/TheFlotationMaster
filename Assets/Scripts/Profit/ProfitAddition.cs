@@ -9,9 +9,9 @@ public class ProfitAddition : MonoBehaviour
     float addedProfit;
     float secondsPast;
     public TextMeshProUGUI profitText;
+    public TextMeshProUGUI cumulativeProfitText;
     public Animator profitAnimator;
     public static float cumulativeProfit;
-    public AudioSource Coins;
 
     private void Start()
     {
@@ -38,9 +38,9 @@ public class ProfitAddition : MonoBehaviour
             profitAnimator.enabled = true;
             profitText.text = ProfitText();
             profitAnimator.Play(0);
-            playCoins();
             cumulativeProfit += addedProfit;
             cumulativeProfit = (float)Math.Round(cumulativeProfit, 1);
+            cumulativeProfitText.text = "" + cumulativeProfit;
             addedProfit = 0;
             secondsPast = 0;
         }
@@ -48,14 +48,8 @@ public class ProfitAddition : MonoBehaviour
 
     private string ProfitText() {
         if (addedProfit > 0) {
-            return "+€" + (float)Math.Round(addedProfit,1);
+            return "+" + (float)Math.Round(addedProfit,1);
         }
-        return "€" + addedProfit;
-    }
-
-    private void playCoins() {
-        float maximumProfit = 100;
-        Coins.volume = addedProfit / maximumProfit;
-        Coins.Play();
+        return "" + addedProfit;
     }
 }

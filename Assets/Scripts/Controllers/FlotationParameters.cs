@@ -38,11 +38,10 @@ namespace Assets.Scripts.Controllers
         }
 
         /// <summary>
-        /// Weights obtained by using Machine learning
-        /// More information available at https://confluence.myoutotec.com/display/MIN/Simulation
+        /// Weights obtained by using Machine learning based on HSC model
         /// </summary>
         private float[] CuRecoveryWeights() {
-            float Intercept = 25.41f;
+            float Intercept = 17f;
             float AirWeight = 1.02f;
             float ThicknessWeight = -0.31f;
             float[] Weights = { Intercept, AirWeight, ThicknessWeight };
@@ -64,12 +63,12 @@ namespace Assets.Scripts.Controllers
             float CuRecoveryWeight = 0.08f;
             float[] Weights = { Intercept, AsRecoveryWeight, CuRecoveryWeight };
             return Weights;
-        } 
+        }
 
         public float ConcentrateCuRecovery() {
-           float CuRec = CuRecoveryWeights()[0] + 
-                (CuRecoveryWeights()[1] * AirFlow) + 
-                (CuRecoveryWeights()[2] * FrothThickness);    
+           float CuRec = CuRecoveryWeights()[0] +
+                (CuRecoveryWeights()[1] * AirFlow) +
+                (CuRecoveryWeights()[2] * FrothThickness);
             float DecayFactor = 0.047f;
             CuRec = CuRec - (Mathf.Exp(DecayFactor * FeedCuGrade));
             CuRec += CuRec + (CuRec * (UnityEngine.Random.value / NoiseSizePercentage));
@@ -154,12 +153,18 @@ namespace Assets.Scripts.Controllers
             return (float)Math.Round(ProfitPerSecond, 1);
         }
 
+        //Figures derived from Winter, H. J.(1978);
+        //https://www.arizonageologicalsoc.org/resources/Documents/Publications/Digests/Digest_11/23_AGS_DIG11_Winters_Production_Costs-S.pdf
+
+        //Simplified calculation: https://www.quora.com/Whats-is-the-price-in-dollars-for-5-copper-ore?share=1
+
         private float MiningCostPerSecond()
         {
-            float MiningCost = 140f;
-            float CollectorPrice = 0.002012f;
-            float FrotherPrice = 0.002840f;
-            float MiningCostPerSecond = (FeedFlowRate * 0.3f * MiningCost * 1.3f / 3600) + FeedFlowRate * (CollectorPrice * CollectorDosage + FrotherPrice * CollectorDosage) / 3600;
+            float MiningCostPerTon = 10f;
+            //float AdministrativeCosts = MiningCostPerTon * (0.4f + (Unity.Random.value * 0.2));
+            //float CollectorPrice = 0.002012f;
+            //float FrotherPrice = 0.002840f;
+            float MiningCostPerSecond = (FeedFlowRate * (ConcentrateCuGrade()/100) * MiningCostPerTon / 3600);
             return MiningCostPerSecond;
         }
 

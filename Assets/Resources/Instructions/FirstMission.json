@@ -1,31 +1,31 @@
 {
   "Instructions": [
     {
-      "text": "Welcome to your first day in the flotation section.",
+      "text": "Welcome to the flotation section.",
       "options": [
         "Start"
       ],
       "correctOptionIndex": 1
     }, {
-      "text": "Let's start by navigating through the stream windows. Go to the process window by pressing the left arrow on the top of this screen then pressing 'Process'. What are the options available in the Process menu?",
+      "text": "Let's learn about the components of the process view. Go to the process window by pressing 'Back' on the top of this screen then check what are the components available.",
       "options": [
         "Concentrate, Tailings",
-        "Air, Froth, Feed",
-        "Feed, Cell, Concentrate, Tailings",
+        "Cell Parameters (Air, Froth), Feed",
+        "Feed, Cell Parameters (Air, Froth), Concentrate, Tailings",
       ],
       "correctOptionIndex": 3
     },
     {
-      "text": "Excellent. Go back to the process menu and click on the Tailings window. What is the actual Cu Grade on that stream?",
+      "text": "Excellent. Go back to the process and check out the Tailings's graphs. What is the actual Cu Grade on that stream?",
       "options": [
-        "Less than 1 %",
+        "Around 1 %",
         "Around 3 %",
         "Around 30 %"
       ],
       "correctOptionIndex": 1
     },
      {
-      "text": "In flotation we want the maximum amount of copper to go to the Concentrate stream. Go to the Flotation cell menu and increase the air flow. What happened to the Concentrate Cu recovery?",
+      "text": "I guess the Cu recovery of this process could be increased. Check the process menu and increase the air flow. What happened to the Concentrate Cu recovery?",
       "options": [
         "It decreased",
         "It increased"
@@ -41,18 +41,18 @@
       "correctOptionIndex": 1
     },
         {
-      "text": "That is because flotation is a compromise between quantity and quality. With more air you lost a bit on the amount copper (since other minerals are also floating) but you win on quantity." 
+      "text": "That is because recovery is a compromise between quantity and quality. With more air you lose a bit on the amount of copper (since other minerals are also floating) but you win on quantity (flow rate)."
    ,  "options": ["Right"],
       "correctOptionIndex": 1
     },
     {
-      "text": "The copper recovery is a good estimate on how good you are doing your job. In next exercises we will learn how to calculate it using the information from the Feed stream." 
+      "text": "The copper recovery (seen in the Concentrate section) is a good estimate on how good you are doing your job. In next exercises we will learn how to calculate it using data from the Feed stream."
    ,   "options": ["Correct"],
       "correctOptionIndex": 1
     },       
      {
-      "text": "You did well! That is all for today",
-      "options": ["Finish exercise"],
+      "text": "You did well! See you soon.",
+      "options": ["Finish task"],
       "correctOptionIndex": 1    
       },
     ]      
