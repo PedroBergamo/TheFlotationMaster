@@ -1,22 +1,23 @@
 {
   "Instructions": [
     {
-      "text": "Hi, welcome to your first day in a flotation plant. I am Pete, the chemist, and I am here to give you some tips to check how your flotation process is doing."
+      "text": "Take a look at the process view. The stream entering the tank is called FEED. It has a certain grade of valuable metal, in our case copper.",
+      "options": [ "Next" ]
     },
     {
-      "text": "Take a look at the process view. The stream entering the tank is called FEED. It has a certain grade of valuable metal, in our case copper."
+      "text": "As a flotation operator you want to make sure you are producing the right amount of concentrate according to your feed flow rate.",
+      "options": [ "Next" ]
     },
     {
-      "text": "As a flotation operator you want to make sure you are producing the right amount of concentrate according to your feed flow rate."
+      "text": "You can check that by finding the CONCENTRATION RATIO. It represents the amount of tons you need to feed the cell in order to produce one ton of concentrate.",
+      "options": [ "Next" ]
     },
     {
-      "text": "You can check that by finding the CONCENTRATION RATIO. It represents the amount of tons you need to feed the cell in order to produce one ton of concentrate."
+      "text": "For example, if your concentrate flow rate is 2 t/h with a feed flow rate of 10 t/h, your concentration ratio is 5. The cell is producing one ton of concentrate with 5 tons of feed.",
+      "options": [ "Next" ]
     },
     {
-      "text": "For example, if your concentrate flow rate is 2 t/h with a feed flow rate of 10 t/h, your concentration ratio is 5. The cell is producing one ton of concentrate with 5 tons of feed."
-    },
-    {
-      "text": "OK. So now let's put this knowledge into practice. Adjust the air flow rate in order to answer the questions and complete the next tasks.",
+      "text": "Let's put this knowledge into practice. Adjust the air flow rate in order to answer the questions and complete the next tasks.",
       "options": [ "Start" ]
     },
     {
@@ -24,7 +25,7 @@
       "options": [
         "5",
         "30",
-        "4",
+        "2",
         "25"
       ],
       "correctOptionIndex": 3
@@ -34,7 +35,18 @@
       "options": ["Next"]
     },
     {
-      "text": "What changes would you make in the process, if you knew that the optimal concentration ratio for this cell was 5?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate"
+      "text": "What Air flow rate would you use if you knew that the optimal concentration ratio for this cell was 5?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+      "options": [
+        "8",
+        "100",
+        "25",
+        "20"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "Congratulations! See you in next lessons",
+      "options": ["Finish"]
     }
   ]
 }

@@ -17,12 +17,9 @@ public class InstructionsManager : MonoBehaviour {
     public GameObject LevelClearedMenu;
     public AudioSource AchievementAudio;
     public AudioSource LevelClearedAudio;
+    public Canvas TaskMenu;
+    public Canvas TaskCanvas;
 
-    void Awake()
-    {
-        SetOfInstructions = GetInstructions();
-        StartExercise();
-    }
 
     private void StartExercise()
     {
@@ -75,6 +72,8 @@ public class InstructionsManager : MonoBehaviour {
         {
             LevelClearedMenu.SetActive(true);
             LevelClearedAudio.Play();
+            TaskMenu.enabled = true;
+            TaskCanvas.enabled = false;
         }
     }
 
@@ -88,6 +87,13 @@ public class InstructionsManager : MonoBehaviour {
         StopCoroutine(lastRoutine);
         TMPRO.text = SetOfInstructions[InstructionsIndex].Text;
        }
+
+    public void GiveMissionName(string missionName) {
+        InstructionsIndex = 0;
+        MissionName = missionName;
+        SetOfInstructions = GetInstructions();
+        StartExercise();
+    }
 
     private List<Instruction> GetInstructions()
     {
