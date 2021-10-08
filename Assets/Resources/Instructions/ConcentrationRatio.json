@@ -35,7 +35,7 @@
       "options": ["Next"]
     },
     {
-      "text": "What Air flow rate would you use if you knew that the optimal concentration ratio for this cell was 5?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+      "text": "With the froth at '-30', what Air flow rate would you use if you knew that the optimal concentration ratio for this cell was 5?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
       "options": [
         "8",
         "100",
@@ -45,8 +45,8 @@
       "correctOptionIndex": 1
     },
     {
-      "text": "Congratulations! See you in next lessons",
-      "options": ["Finish"]
+      "text": "Congratulations! Now you know how to calculate Concentration Ratio.",
+      "options": ["Finish task"]
     }
   ]
 }

@@ -16,7 +16,7 @@
       "correctOptionIndex": 3
     },
     {
-      "text": "Excellent. Go back to the process and check out the Tailings's graphs. What is the actual Cu Grade on that stream?",
+      "text": "Excellent. Check out the Tailings's graphs. What is the actual Cu Grade on that stream?",
       "options": [
         "Around 1 %",
         "Around 3 %",
@@ -32,28 +32,10 @@
       ],
       "correctOptionIndex": 2
     },
-    {
-      "text": "What happened to the Cu grade - the amount of copper in the concentrate?",
-      "options": [
-        "It decreased",
-        "It increased"
-      ],
-      "correctOptionIndex": 1
-    },
-        {
-      "text": "That is because recovery is a compromise between quantity and quality. With more air you lose a bit on the amount of copper (since other minerals are also floating) but you win on quantity (flow rate)."
-   ,  "options": ["Right"],
-      "correctOptionIndex": 1
-    },
-    {
-      "text": "The copper recovery (seen in the Concentrate section) is a good estimate on how good you are doing your job. In next exercises we will learn how to calculate it using data from the Feed stream."
-   ,   "options": ["Correct"],
-      "correctOptionIndex": 1
-    },       
      {
-      "text": "You did well! See you soon.",
+      "text": "You are now officially introduced to the Flotation views. Time for the real work!",
       "options": ["Finish task"],
-      "correctOptionIndex": 1    
+      "correctOptionIndex": 1
       },
-    ]      
+    ]
 }

@@ -20,6 +20,7 @@ namespace Assets.Scripts.Controllers
         public float[] CuGrades = new float[] { 1.5f, 11.2f, 13f };
         public float[] AsGrades = new float[] { 0.1f, 1.1f, 1.2f };
         public float NoiseSizePercentage = 50;
+
         public FlotationParameters()
         {
             SetInitialVariables();
@@ -83,8 +84,7 @@ namespace Assets.Scripts.Controllers
 
         public float ConcentrateCuGrade()
         {
-            float AirFlowCorrection = AirFlow / 50;
-            float CuInfGrade = (FeedCuGrade * ConcentrationRatio() * ConcentrateCuRecovery() / 100) - AirFlowCorrection;
+            float CuInfGrade = (FeedCuGrade * FeedFlowRate * ConcentrateCuRecovery()) / (ConcentrateMassFlowInTPH() * 100);
             double ConcCuGrade = CuInfGrade * (1 - (Math.Exp(-CuKinetics * Time.realtimeSinceStartup)));
             double NoisyConcCuGrade = ConcCuGrade + (ConcCuGrade * (UnityEngine.Random.value / NoiseSizePercentage));
             return (float)Math.Round(NoisyConcCuGrade, 1);
@@ -92,7 +92,7 @@ namespace Assets.Scripts.Controllers
 
         public float ConcentrateAsGrade()
         {
-            float AsInfGrade = FeedAsGrade * ConcentrationRatio() * AsRecovery() / 100;
+            float AsInfGrade = (FeedAsGrade * FeedFlowRate * AsRecovery()) / (100 * ConcentrateMassFlowInTPH());
             double ConcAsGrade = AsInfGrade * (1 - (Math.Exp(-AsKinetics * Time.realtimeSinceStartup)));
             double NoisyConcAsGrade = ConcAsGrade + (ConcAsGrade * (UnityEngine.Random.value / NoiseSizePercentage));
             return (float)Math.Round(NoisyConcAsGrade, 1);
@@ -100,7 +100,7 @@ namespace Assets.Scripts.Controllers
 
         public float TailingsCuGrade() {
             float MetalLoss = 100 - ConcentrateCuRecovery();
-            float TailingsCuGrade = MetalLoss * FeedCuGrade * ReverseConcentrationRatio() / 100;
+            float TailingsCuGrade = (MetalLoss * FeedCuGrade * FeedFlowRate) / (100 * TailingsFlowRate());
             float NoisyTailingsCuGrade = TailingsCuGrade + (TailingsCuGrade * (UnityEngine.Random.value / NoiseSizePercentage));
             return NoisyTailingsCuGrade;
         }
@@ -108,14 +108,9 @@ namespace Assets.Scripts.Controllers
         public float TailingsAsGrade()
         {
             float MetalLoss = 100 - AsRecovery();
-            float TailingsAsGrade = MetalLoss * FeedAsGrade * ReverseConcentrationRatio() / 100;
+            float TailingsAsGrade = (MetalLoss * FeedAsGrade * FeedFlowRate) / (100 * TailingsFlowRate());
             float NoisyTailingsAsGrade = TailingsAsGrade + (TailingsAsGrade * (UnityEngine.Random.value / NoiseSizePercentage));
             return NoisyTailingsAsGrade;
-        }
-
-        private float ReverseConcentrationRatio() {
-            float TailingsSolidsFlow = FeedSolidsFlow() - ConcentrateSolidsFlow();
-            return FeedSolidsFlow() / TailingsSolidsFlow;
         }
 
         public float TailingsFlowRate() {
@@ -125,7 +120,7 @@ namespace Assets.Scripts.Controllers
         }
 
         private float FeedSolidsFlow() {
-            float Result =FeedFlowRate * SolidsPercentage;
+            float Result = FeedFlowRate * SolidsPercentage;
             Result = Result + (Result * (UnityEngine.Random.value / NoiseSizePercentage));
             return Result;
         }

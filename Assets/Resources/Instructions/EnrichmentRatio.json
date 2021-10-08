@@ -1,0 +1,54 @@
+{
+  "Instructions": [
+    {
+      "text": "Enrichment Ratio is nothing but a quick dive into the quality of your concentrate. It gives you a ratio between the amount of precious metal going in and the amount of precious metal going out.",
+      "options": [ "Next" ]
+    },
+    {
+      "text": "It can be calculated by dividing a metal grade on the Concentrate stream by the grade of the same metal in the Feed stream.",
+      "options": [ "Next" ]
+    },
+    {
+      "text": "In a flotation process that the precious metal is nickel, and the Feed Ni % is 2 while the Concentrate Ni % is 6, what would be the Enrichment Ratio?\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
+      "options": [
+            "6",
+            "3",
+            "0.3",
+            "12"
+          ],
+          "correctOptionIndex": 2
+    },
+    {
+      "text": "Go to the process view by pressing back and check the Cu grade in the Feed and Concentrate streams. Now set the Air Flow Rate to '4' and the Froth Thickness to '-5'. What happened to the Enrichment Ratio?",
+      "options": [
+        "It increased",
+        "It decreased"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+          "text": "Correct. It means that the Cu grade, or quality of your concentrate, increased. That can't be a bad thing, right? But take a second look at the Concentrate stream. What happened to the flow rate, in other words, the amount being produced?",
+          "options": [
+            "It increased",
+            "It decreased"
+          ],
+          "correctOptionIndex": 2
+        },
+        {
+            "text": "I'm sure you would rather have ten bills of five dollars than two bills of 10 dollars. Enrichment Ratio, although a quick dive into the system grades, does not take quantity into consideration, unlike metal recovery.",
+            "options": [ "Next" ]
+          },
+          {
+                "text": "Check out the Cu recovery graph in the Concentrate stream, for example. What happened to it?",
+                "options": [
+                  "It increased",
+                  "It decreased"
+                ],
+                "correctOptionIndex": 2
+              },
+    {
+      "text": "Correct! Perhaps we should set the air and froth to their initial values (15 and -30). Well done!",
+      "options": ["Finish"]
+    }
+  ]
+}
