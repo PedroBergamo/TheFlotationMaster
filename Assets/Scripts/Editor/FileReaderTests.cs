@@ -43,14 +43,6 @@ public class FileReaderTests
     }
 
     [Test]
-    public void InstructionsReaderTextTest()
-    {
-        string Expected = "Hi, welcome to your first day in a flotation plant. I am Pete, the chemist, and I am here to give you some tips to check how your flotation process is doing.";
-        string Actual = InstructionsExample()[0].Text;
-        Assert.AreEqual(Expected, Actual);
-    }
-
-    [Test]
     public void InstructionsReaderOptionsTest()
     {
         string[] Actual = InstructionsExample()[0].Options;

@@ -8,18 +8,6 @@ public class PlayerPrefScoresManagerTests
     }
 
     [Test]
-    public void SaveInPrefs()
-    {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefsScoresManager playerPrefsScoresManager = new PlayerPrefsScoresManager("Test");
-        playerPrefsScoresManager.SaveNewPlayerInPrefs(ScoreExample());
-        string Expected = "Operator~100";
-        string Actual = PlayerPrefs.GetString("TestAirFlowScore0");
-        PlayerPrefs.DeleteKey("TestTheAirBenderScore0");
-        Assert.AreEqual(Expected, Actual);
-    }
-
-    [Test]
     public void DestructorTest()
     {
         PlayerPrefs.DeleteAll();
