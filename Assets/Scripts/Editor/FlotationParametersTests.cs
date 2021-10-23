@@ -7,9 +7,9 @@ public class FlotationParametersTests {
     private FlotationParameters FlotationExample() {
         FlotationParameters FC = new FlotationParameters
         {
-            AirFlow = 15,
-            FrothThickness = 30,
-            FeedCuGrade = 11
+            AirFlow = 2,
+            FrothThickness = 10,
+            FeedCuGrade = 15
         };
         return FC;
     }
@@ -20,6 +20,23 @@ public class FlotationParametersTests {
         float Expected = 32.76f;
         float Actual = FlotationExample().ConcentrateCuGrade();
         Assert.AreEqual(Expected, Actual, 0.1f);
+    }
+
+    [Test]
+    public void RecoveriesTest()
+    {
+        RecoveryCalculation RC = new RecoveryCalculation();
+        Feed Test = new Feed();
+        Test.ContactAngle = 60;
+        Test.Grade = 15;
+        double[] Expected = new double[] {50, 59, 47, 43, 35}; 
+        double[] Actual = RC.CalculateParticleRecoveries(Test);
+
+        foreach (double r in Actual)
+        {
+            Debug.Log(r);
+        }
+        Assert.AreEqual(Expected, Actual);
     }
 
     [Test]
