@@ -24,6 +24,7 @@ public partial class MainWindow
         Input:
         (higher floats smaller particles)
 
+         
     private double dblGrowthFactor; // ratio of bubble size in froth
     private double dblR_Water_max, dblR_Water_avg; // max. water rec. in froth (approximation)
     private int ri = 1; // counter for recovery plot marker color

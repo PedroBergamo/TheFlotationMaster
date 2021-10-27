@@ -13,10 +13,10 @@ public class RecoveryCalculation {
     private double dblParticleDiam, dblImpellerDiam;
     private double dblParticleDens, dblTotalDens, dblFeedGrade;
     private double dblCellDiam, dblCellHeight, dblRetTime;
-    private double dblSurfaceTension, dblContactAngle, dblFrothHeight;
+    private double surfaceTension, dblContactAngle, dblFrothHeight;
     private double dblParticleZ, dblBubbleZ, dblDielectric, dblPermitivity;
     private double dblVolCell, dblAirFraction, dblSlurryFraction;
-    private double dblEnergyBarrier, dblFrotherConc;
+    private double dblEnergyBarrier;
     private double dblRateConst, dblRecovery;
     private double dblDragBeta; // drag coefficient (Goren & O'Niell)
     private double dblH_c_Factor = 5d; // adjustable fitting parameter for dragbeta
@@ -46,13 +46,12 @@ public class RecoveryCalculation {
 
     public double[] CalculateParticleRecoveries(Feed feed)
     {
+        CalculateSurfaceTension();
         double[] arrRecovery = new double[101], arrPDiam = new double[101], arrRateK = new double[101];
         dblContactAngle = feed.ContactAngle;
         dblParticleDens = feed.Density * 1000d; // x1000 for kg/m^3
         double dblMassBP;
         double dblVolImpZone = 0.1d; // set impeller
-        double gammaMIBC, gammaPPG400, gammaOctanol, gammaPentanol;
-        double kMIBC, kPPG400, kOctanol, kPentanol;
         double dblParticleDiam = 0.000001; // (1 micron)*/
         var loopTo = 100;
         for (int i = 0; i <= loopTo; i++)
@@ -84,7 +83,7 @@ public class RecoveryCalculation {
             dblEiw = gravity / (4 * pi) * Math.Pow(Math.Pow(waterViscosity, 3) / dblEBulk, 0.25d);
             double dblMassBubble = 1;
             dblEka = Math.Pow(dblMassBubble * dblU2Bulk - 2 * Math.Pow(dblBubbleDiam / dblParticleDiam, 2) * dblMassParticle * dblU1Bulk, 2) / (100 * (dblMassBubble + 2 * Math.Pow(dblBubbleDiam / dblParticleDiam, 2) * dblMassParticle));
-            dblP_i = 13 * Math.Sqrt(9 * Math.Pow(waterViscosity, 2) / (dblBubbleDiam * dblSurfaceTension * dblTotalDens));
+            dblP_i = 13 * Math.Sqrt(9 * Math.Pow(waterViscosity, 2) / (dblBubbleDiam * surfaceTension * dblTotalDens));
             dblPr = Math.Exp(-dblEiw / dblEka);
             dblPFTransfer = dblP_i * (1 - dblPr);
             double dblFrothRecoveryFactor = FrothRecoveryFactor(dblParticleDiam, dblBubbleDiam);
@@ -116,6 +115,14 @@ public class RecoveryCalculation {
         return arrRecovery;
     }
 
+    private void CalculateSurfaceTension()
+    {
+        SurfaceTension SF = new SurfaceTension();
+        SF.FrotherConcentrate = 192; //following example in didactic/Kyle2011.pdf
+        SF.ChosenReagent = SF.Pentanol;
+        surfaceTension = SF.CalculateSurfaceTension();
+    }
+
     private static double CheckIfBiggerthanOne(double dblPCol)
     {
         if (dblPCol >= 1)
@@ -135,7 +142,9 @@ public class RecoveryCalculation {
         double dblCoarsenTime = 4 * waterViscosity * dblFrothHeight / (waterDensity * gravity * Math.Pow(dblFilmThick, 2d));
         double dblL = waterViscosity / (airDensity * 0.015d); // 1.5 cm/s froth velocity
         double dblA0 = Math.Pow(dblBubbleDiam, 2);
-        double dblAf = Math.Pow(Math.Sqrt(dblSGasRate * waterViscosity / (waterDensity * gravity)) * Math.Tan(Math.Sqrt(Math.Tan(airDensity * gravity * dblA0 / (dblSGasRate * waterViscosity))) - dblFrothHeight / 2 * Math.Sqrt(waterDensity * gravity * dblSGasRate) / dblSurfaceTension), 2);
+        double dblAf = Math.Pow(Math.Sqrt(dblSGasRate * waterViscosity / (waterDensity * gravity)) *
+            Math.Tan(Math.Sqrt(Math.Tan(airDensity * gravity * dblA0 / (dblSGasRate * waterViscosity))) -
+            dblFrothHeight / 2 * Math.Sqrt(waterDensity * gravity * dblSGasRate) / surfaceTension), 2);
         dblRmax = Math.Sqrt(Math.Exp(dblCoalesceFactor * Math.Sqrt(dblAf / dblA0) - dblCoalesceFactor));
         double dblR_Attachment = dblRmax * Math.Exp(-dblCoverageFactor * (6 * dblFrothHeight / dblBubbleDiam) * (1 - dblRmax) * (dblParticleDiam / dblBubbleDiam));
         dblR_Water_max = 0.33d * dblCoarsenTime * (6 * dblSGasRate) / (dblBubbleDiam / dblRmax) * Math.Exp(-dblFrothHeight / dblL);
@@ -160,7 +169,7 @@ public class RecoveryCalculation {
     private double BubbleDiameter() {
         if (BubbleSizeEnabled == false)
         {
-            return Math.Pow(2.11 * dblSurfaceTension / (waterDensity * Math.Pow(dblEImpeller, 0.66)), 0.6);
+            return Math.Pow(2.11 * surfaceTension / (waterDensity * Math.Pow(dblEImpeller, 0.66)), 0.6);
         } else
         {
             return dblParticleDiam / 1000;
@@ -174,7 +183,7 @@ public class RecoveryCalculation {
         dblNBubble = dblAirFraction / dblVolBubble;
         double dblNParticle = (1 - dblAirFraction) * dblSlurryFraction / dblVolParticle;
         double dblZBubbParticle = dblBeta * dblNBubble * dblNParticle;
-        return dblSurfaceTension * pi * Math.Pow(dblParticleDiam / 2, 2) *
+        return surfaceTension * pi * Math.Pow(dblParticleDiam / 2, 2) *
             (1 - Math.Pow(Math.Cos(dblContactAngle * (pi / 180)), 2));
     }
 
@@ -199,5 +208,4 @@ public class RecoveryCalculation {
     {
         return Math.Pow(0.4 * Math.Pow(dblEMean, 4 / 9) * Math.Pow(dblParticleDiam, 7 / 9) * Math.Pow(dblKinVisc, (double)-1 / 3) * Math.Pow(dblParticleDens / waterDensity - 1, 2 / 3), 2);
     }
-    
 }
