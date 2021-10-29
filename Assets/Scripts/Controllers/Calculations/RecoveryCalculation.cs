@@ -129,7 +129,6 @@ public class RecoveryCalculation {
         {
             dblPCol = 1;
         }
-
         return dblPCol;
     }
 
