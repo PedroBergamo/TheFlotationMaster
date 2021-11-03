@@ -2,6 +2,14 @@
 using UnityEngine;
 
 public class RecoveryCalculation {
+    /// <summary>
+    /// Air flow rate in cm/s
+    /// </summary>
+    public double AirFlowRate;
+    /// <summary>
+    /// Froth Height in cm
+    /// </summary>
+    public double FrothHeight;
 
     private const double pi = 3.141592d;
     private const double waterDensity = 1000d; // kg/m3
@@ -9,11 +17,10 @@ public class RecoveryCalculation {
     private const double waterViscosity = 0.001d; // Ns/m2
     private const double c = 2.988d * (10e8); // m/s... speed of light 11
     private const double gravity = 9.813f; //m/s2
-    private double dblSpPower, dblSGasRate;
     private double dblParticleDiam, dblImpellerDiam;
     private double dblParticleDens, dblTotalDens, dblFeedGrade;
     private double dblCellDiam, dblCellHeight, dblRetTime;
-    private double surfaceTension, dblContactAngle, dblFrothHeight;
+    private double surfaceTension, dblContactAngle;
     private double dblParticleZ, dblBubbleZ, dblDielectric, dblPermitivity;
     private double dblVolCell, dblAirFraction, dblSlurryFraction;
     private double dblEnergyBarrier;
@@ -40,8 +47,8 @@ public class RecoveryCalculation {
     private bool blnCheck; // are all inputs valid?
     //public double[] arrPa = new double[37], arrPc = new double[37], arrPd = new double[37], arrFR = new double[37];
     public double[] arrSizeGrade = new double[38];
-    private double dblEImpeller;
     public double dblKinVisc = 1; // kinematic
+    private double dblBubbleDiam;
 
 
     public double[] CalculateParticleRecoveries(Feed feed)
@@ -57,22 +64,21 @@ public class RecoveryCalculation {
         for (int i = 0; i <= loopTo; i++)
         {
             double dblAddRec, dblAddK, dblAddPa, dblAddPc, dblAddPd, dblAddFR, dblR_Water_avg;
-            CalculateEnergyDissipation();
             double dblVolParticle = 4 / 3 * pi * Math.Pow(dblParticleDiam / 2, 3);
             double dblVolBP = 1;
             double dblMassParticle = dblParticleDens * dblVolParticle;
             double dblMassTotal = dblVolCell * dblTotalDens;
-            double dblNumAttached = dblCoverage * 4 * (BubbleDiameter() / dblParticleDiam);
+            dblBubbleDiam = BubbleDiameter();
+            double dblNumAttached = dblCoverage * 4 * (dblBubbleDiam / dblParticleDiam);
             double dblBeta = Beta(dblParticleDiam);
             double dblNBubble;
             double dblWorkAdhesion = CalculateDensityOfBubbles(dblParticleDiam, dblBeta, dblVolParticle, out dblNBubble);
-            double dblEnergyBarrier = 0;
+            double dblEnergyBarrier = 1;
 
             // ===== Kinetic Energy of Attachment =====
             double dblKineticEAttach = 0.5d * dblMassParticle;
             double dblKineticEDetach = 0.5d * dblMassParticle;
             // ===== Probabilities =====
-            double dblBubbleDiam = BubbleDiameter();
             double dblPAtt = Math.Exp(-dblEnergyBarrier / dblKineticEAttach); // prob. of attachment
             double dblPDet = Math.Exp(-(dblWorkAdhesion + dblKineticEAttach) / dblKineticEDetach);
             double dblRe = Math.Sqrt(dblU2Bulk) * dblBubbleDiam / dblKinVisc; // bubble Reynold's number
@@ -138,15 +144,15 @@ public class RecoveryCalculation {
         int dblCoverageFactor = 2;
         double dblCoalesceFactor = 2d;
         double dblFilmThick = 3d / 4d * (0.33d / (1d - 0.33d)) * dblBubbleDiam;
-        double dblCoarsenTime = 4 * waterViscosity * dblFrothHeight / (waterDensity * gravity * Math.Pow(dblFilmThick, 2d));
+        double dblCoarsenTime = 4 * waterViscosity * FrothHeight / (waterDensity * gravity * Math.Pow(dblFilmThick, 2d));
         double dblL = waterViscosity / (airDensity * 0.015d); // 1.5 cm/s froth velocity
         double dblA0 = Math.Pow(dblBubbleDiam, 2);
-        double dblAf = Math.Pow(Math.Sqrt(dblSGasRate * waterViscosity / (waterDensity * gravity)) *
-            Math.Tan(Math.Sqrt(Math.Tan(airDensity * gravity * dblA0 / (dblSGasRate * waterViscosity))) -
-            dblFrothHeight / 2 * Math.Sqrt(waterDensity * gravity * dblSGasRate) / surfaceTension), 2);
+        double dblAf = Math.Pow(Math.Sqrt(AirFlowRate * waterViscosity / (waterDensity * gravity)) *
+            Math.Tan(Math.Sqrt(Math.Tan(airDensity * gravity * dblA0 / (AirFlowRate * waterViscosity))) -
+            FrothHeight / 2 * Math.Sqrt(waterDensity * gravity * AirFlowRate) / surfaceTension), 2);
         dblRmax = Math.Sqrt(Math.Exp(dblCoalesceFactor * Math.Sqrt(dblAf / dblA0) - dblCoalesceFactor));
-        double dblR_Attachment = dblRmax * Math.Exp(-dblCoverageFactor * (6 * dblFrothHeight / dblBubbleDiam) * (1 - dblRmax) * (dblParticleDiam / dblBubbleDiam));
-        dblR_Water_max = 0.33d * dblCoarsenTime * (6 * dblSGasRate) / (dblBubbleDiam / dblRmax) * Math.Exp(-dblFrothHeight / dblL);
+        double dblR_Attachment = dblRmax * Math.Exp(-dblCoverageFactor * (6 * FrothHeight / dblBubbleDiam) * (1 - dblRmax) * (dblParticleDiam / dblBubbleDiam));
+        dblR_Water_max = 0.33d * dblCoarsenTime * (6 * AirFlowRate) / (dblBubbleDiam / dblRmax) * Math.Exp(-FrothHeight / dblL);
         if (dblR_Water_max > 1)
         {
             dblR_Water_max = 1;
@@ -160,15 +166,16 @@ public class RecoveryCalculation {
     {
         double dblEBulk = 1;
         double dblU1Bulk = 0.4 * Math.Pow(dblEBulk, 4 / 9) * Math.Pow(dblParticleDiam, 7 / 9) * Math.Pow(dblKinVisc, (double)-1 / 3) * (dblParticleDens / 1);
-        double dblU2Bulk = 2 * Math.Pow(dblEBulk * BubbleDiameter(), 2 / 3);
-        double dblCollisionDiam = dblParticleDiam + BubbleDiameter();
+        double dblU2Bulk = 2 * Math.Pow(dblEBulk * dblBubbleDiam, 2 / 3);
+        double dblCollisionDiam = dblParticleDiam + dblBubbleDiam;
         return Math.Pow(2, 3 / 2) * Math.Pow(pi, 0.5) * Math.Pow(dblCollisionDiam, 2) * Math.Sqrt(dblU1Bulk + dblU2Bulk);
     }
 
     private double BubbleDiameter() {
         if (BubbleSizeEnabled == false)
         {
-            return Math.Pow(2.11 * surfaceTension / (waterDensity * Math.Pow(dblEImpeller, 0.66)), 0.6);
+            double EImpeller = CalculateEnergyDissipation();
+            return Math.Pow(2.11 * surfaceTension / (waterDensity * Math.Pow(EImpeller, 0.66)), 0.6);
         } else
         {
             return dblParticleDiam / 1000;
@@ -177,8 +184,7 @@ public class RecoveryCalculation {
 
     private double CalculateDensityOfBubbles(double dblParticleDiam, double dblBeta, double dblVolParticle, out double dblNBubble)
     {
-        double bd = BubbleDiameter();
-        double dblVolBubble = 4 / 3 * pi * Math.Pow( bd / 2, 3);
+        double dblVolBubble = 4 / 3 * pi * Math.Pow(dblBubbleDiam / 2, 3);
         dblNBubble = dblAirFraction / dblVolBubble;
         double dblNParticle = (1 - dblAirFraction) * dblSlurryFraction / dblVolParticle;
         double dblZBubbParticle = dblBeta * dblNBubble * dblNParticle;
@@ -186,21 +192,22 @@ public class RecoveryCalculation {
             (1 - Math.Pow(Math.Cos(dblContactAngle * (pi / 180)), 2));
     }
 
-    private void CalculateEnergyDissipation()
+    private double CalculateEnergyDissipation()
     {
         double dblDetach_F = 1; // 2 compartment model (Lu)       
         double dblBulkZone = 1;
         double dblImpellerZone = 1;
         dblTotalDens = dblAirFraction * airDensity + (1 - dblAirFraction) *
         dblSlurryFraction * dblParticleDens + (1 - dblSlurryFraction) * waterDensity;
-        double dblEMean = dblSpPower / dblTotalDens;
+        double SpPower = 1;
+        double dblEMean = SpPower / dblTotalDens;
         double dblEBulk = dblBulkZone * dblEMean;
-        dblEImpeller = dblImpellerZone * dblEMean;
+        return dblImpellerZone * dblEMean;
     }
 
     private double U2Mean(double dblEMean)
     {
-        return 2 * Math.Pow(dblEMean * BubbleDiameter(), 2 / 3);
+        return 2 * Math.Pow(dblEMean * dblBubbleDiam, 2 / 3);
     }
 
     private double U1Mean(double dblEMean, double dblParticleDiam)

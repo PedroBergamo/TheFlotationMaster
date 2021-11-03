@@ -1,52 +1,37 @@
 ﻿using NUnit.Framework;
-using Assets.Scripts.Controllers;
-using UnityEngine;
 
-public class RecoveryTests {
-
-    private double[] RealLifeMockup() {
-        // five points from real data: 50, 59, 47, 43, 35
-        return new double[] {
-            0,0,0,0,0,0,1,1,2,3,
-            5,5,6,7,8,9,10,11,12,13,
-            15,16,17,18,19,20,21,22,23,23,
-            23,24,25,26,27,30,31,32,35,37,
-            40,41,41,42,42,43,44,45,46,47,
-            50,51,52,53,53,54,54,55,56,57,
-            58,59,59,60,60,60,60,60,60,60,
-            57,56,56,55,54,53,52,51,51,50,
-            49,49,48,45,45,43,43,40,40,37,
-            37,35,35,35,30,30,30,20,10,0,0 };
-    }
-
-    private double[] RecoveryExample() {
-        RecoveryCalculation RC = new RecoveryCalculation();
-        Feed Test = new Feed();
-        Test.ContactAngle = 60;
-        Test.Grade = 15;
-        return RC.CalculateParticleRecoveries(Test);
-    }
-
+public class RecoveryTests
+{
+    
     [Test]
-    public void RecoveriesAreTheSame()
+    public void MeanSquaredErrorTest()
     {
-        double[] Expected = RealLifeMockup();
-        double[] Actual = RecoveryExample();
+        double AcceptableMSE = 5;
+        RecoveryExamples R = new RecoveryExamples();
+        double[] Expected = R.RealLifeRecoveries();
+        double[] Actual = R.SimulatedRecoveries();
         int i = 0;
-        foreach (double a in Actual)
+        double Sum = 0;
+        foreach (double Example in Actual)
         {
-            Assert.AreEqual(Expected[i], a, 5);
+            double value = (Example - Expected[i]);
+            value *= value;
             i++;
-        }      
+            Sum += value;
+        }
+        double RealMSE = Sum / Actual.Length;
+            Assert.LessOrEqual(RealMSE, AcceptableMSE);
     }
 
     [Test]
     public void NumberOfRecoveriesHaveSameNumber()
     {
-        int Expected = RealLifeMockup().Length;
-        int Actual = RecoveryExample().Length;
+        RecoveryExamples R = new RecoveryExamples();
+        int Expected = R.RealLifeRecoveries().Length;
+        int Actual = R.SimulatedRecoveries().Length;
         Assert.AreEqual(Expected, Actual);
     }
+
 
     [Test]
     public void SurfaceTensionWater()
