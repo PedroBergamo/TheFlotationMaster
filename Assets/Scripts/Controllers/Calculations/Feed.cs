@@ -1,4 +1,9 @@
 ﻿public class Feed
 {
-    public float ContactAngle, Fraction, Density, Grade;
+    public double ContactAngle, Fraction, Grade;
+
+    /// <summary>
+    /// Density in g/m^3
+    /// </summary>
+    public double Density;
 }

@@ -14,7 +14,7 @@ public class DataPlotter : MonoBehaviour
     void Start()
     {
         RecoveryExamples Recoveries = new RecoveryExamples();
-        double[] SimulatedData = Recoveries.SimulatedRecoveries();
+        double[] SimulatedData = Recoveries.CalculationExample().CalculateParticleRecoveries();
         double[] RealData = Recoveries.RealLifeRecoveries();
         RectTransform rt = PointHolder.transform.GetComponent<RectTransform>();
         width = rt.sizeDelta.x * rt.localScale.x;
@@ -29,7 +29,6 @@ public class DataPlotter : MonoBehaviour
         double yMax = FindMaxValue(Data);
         for (var i = 0; i < Data.Length; i++)
         {
-            Debug.Log(Data[i]);
             double y = ((Data[i] / yMax) * height) + NonNullNumber;
             double x = i * (width / Data.Length);
             GameObject dataPoint = Instantiate(

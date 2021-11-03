@@ -1,8 +1,26 @@
 ﻿/// <summary>
-/// Examples obtained at Resources/Kyle2011.pdf
+/// Example obtained at Resources/Kyle2011.pdf - figure17
 /// </summary>
 /// <returns></returns>
 public class RecoveryExamples{
+
+    public RecoveryCalculation CalculationExample() {
+        Feed Test = new Feed
+        {
+            ContactAngle = 60,
+            Grade = 15,
+            Density = 4100
+        };
+        RecoveryCalculation RC = new RecoveryCalculation()
+        {
+            feed = Test,
+            Power = 2500,
+            NumberOfCells = 4,
+            RetentionTime = 3,
+            ZetaPotential = -15
+        };
+        return RC;
+    }
 
 public double[] RealLifeRecoveries() {
         return new double[] {
@@ -16,15 +34,5 @@ public double[] RealLifeRecoveries() {
             57,56,56,55,54,53,52,51,51,50,
             49,49,48,45,45,43,43,40,40,37,
             37,35,35,35,30,30,30,20,10,0,0 };
-    }
-
-    public double[] SimulatedRecoveries() {
-        RecoveryCalculation RC = new RecoveryCalculation();
-        RC.AirFlowRate = 2;
-        RC.FrothHeight = 10;
-        Feed Test = new Feed();
-        Test.ContactAngle = 60;
-        Test.Grade = 15;
-        return RC.CalculateParticleRecoveries(Test);
     }
 }

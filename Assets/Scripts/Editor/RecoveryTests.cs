@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Assets.Scripts.Controllers;
 
 public class RecoveryTests
 {
@@ -6,10 +7,10 @@ public class RecoveryTests
     [Test]
     public void MeanSquaredErrorTest()
     {
-        double AcceptableMSE = 5;
+        double AcceptableMSE = 2;
         RecoveryExamples R = new RecoveryExamples();
         double[] Expected = R.RealLifeRecoveries();
-        double[] Actual = R.SimulatedRecoveries();
+        double[] Actual = R.CalculationExample().CalculateParticleRecoveries();
         int i = 0;
         double Sum = 0;
         foreach (double Example in Actual)
@@ -24,14 +25,12 @@ public class RecoveryTests
     }
 
     [Test]
-    public void NumberOfRecoveriesHaveSameNumber()
+    public void SingleRecoveryCalculationTest()
     {
-        RecoveryExamples R = new RecoveryExamples();
-        int Expected = R.RealLifeRecoveries().Length;
-        int Actual = R.SimulatedRecoveries().Length;
+        double Actual = new RecoveryExamples().CalculationExample().CalculateRecoveryForParticleDiameter(0.000071);
+        double Expected = 60;
         Assert.AreEqual(Expected, Actual);
     }
-
 
     [Test]
     public void SurfaceTensionWater()
@@ -42,6 +41,13 @@ public class RecoveryTests
         double Actual = SF.CalculateSurfaceTension();
         double Expected = 43;
         Assert.AreEqual(Expected, Actual,1);
+    }
+
+    [Test]
+    public void EnergyBarrierIsNonNull()
+    {
+        double Energy = new RecoveryExamples().CalculationExample().EnergyBarrier();
+        Assert.GreaterOrEqual(Energy, 0);
     }
 
     [Test]
