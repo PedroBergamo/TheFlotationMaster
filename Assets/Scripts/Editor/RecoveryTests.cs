@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Assets.Scripts.Controllers;
 
 public class RecoveryTests
 {
@@ -7,9 +6,9 @@ public class RecoveryTests
     [Test]
     public void MeanSquaredErrorTest()
     {
-        double AcceptableMSE = 2;
+        double AcceptableMSE = 10;
         RecoveryExamples R = new RecoveryExamples();
-        double[] Expected = R.RealLifeRecoveries();
+        double[] Expected = R.ExpectedRecoveries();
         double[] Actual = R.CalculationExample().CalculateParticleRecoveries();
         int i = 0;
         double Sum = 0;
@@ -21,7 +20,9 @@ public class RecoveryTests
             Sum += value;
         }
         double RealMSE = Sum / Actual.Length;
-            Assert.LessOrEqual(RealMSE, AcceptableMSE);
+
+        Assert.AreEqual(Actual.Length, Expected.Length);
+        Assert.LessOrEqual(RealMSE, AcceptableMSE);
     }
 
     [Test]

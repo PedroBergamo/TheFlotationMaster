@@ -16,7 +16,7 @@ public class RecoveryCalculation {
     /// <summary>
     /// Retention Time in minutes
     /// </summary>
-    public double RetentionTime = 2;
+    public double RetentionTime = 0.5;
     /// <summary>
     /// Power in W/m3
     /// </summary>
@@ -33,10 +33,11 @@ public class RecoveryCalculation {
     private const double gravity = 9.813f; //m/s2
     private double dblParticleDiam = 0.00007, dblImpellerDiam;
     private double dblTotalDens;
+    public int ParticleRange = 130;
 
     //ask for proper Cell dimensions
-    public double dblCellDiam = 1, dblCellHeight = 2;
-    private double dblAirFraction = 30, dblSlurryFraction, dblNBubble; //ask for correct values
+    public double dblCellDiam = 0.5, dblCellHeight = 3;
+    private double dblAirFraction = 0.28, dblSlurryFraction=0.3, dblNBubble; //ask for correct values
     private double dblRateConst;
     private double dblDragBeta; // drag coefficient (Goren & O'Niell)
     private double dblH_c_Factor = 5d; // adjustable fitting parameter for dragbeta
@@ -61,13 +62,14 @@ public class RecoveryCalculation {
     public double dblKinVisc = 1; // kinematic
     private double dblBubbleDiam;
     private double dblPAtt, dblPDet, dblPCol, dblFrothRecoveryFactor;
-    public double[] arrRecovery = new double[101], arrPDiam = new double[101],
-        arrRateK = new double[101], arrPa = new double[101], arrPc = new double[101],
-        arrPd = new double[101], arrFR = new double[101];
+    public double[] arrRecovery, arrPDiam,
+        arrRateK, arrPa, arrPc,
+        arrPd , arrFR;
     public Feed feed;
 
     public double[] CalculateParticleRecoveries()
     {
+        SetSizeOfArrays();
         CalculateSurfaceTension();
         double dblMassBP;
         double dblVolCell = pi * Math.Pow((dblCellDiam / 2), 2) * dblCellHeight;
@@ -75,8 +77,7 @@ public class RecoveryCalculation {
 
         double dblVolImpZone = 0.1d; // set impeller
         dblParticleDiam = 0.000001; // (1 micron)*/
-        var loopTo = 100;
-        for (int i = 0; i <= loopTo; i++)
+        for (int i = 0; i < ParticleRange; i++)
         {
             arrPDiam[i] = dblParticleDiam * 1000000; // 10^6 for microns
             arrRateK[i] = dblRateConst * dblFrothRecoveryFactor;
@@ -89,8 +90,19 @@ public class RecoveryCalculation {
 
             // increment particle diam  
             dblParticleDiam *= 1.2d;
-            }
+        }
         return arrRecovery;
+    }
+
+    private void SetSizeOfArrays()
+    {
+        arrRecovery = new double[ParticleRange];
+        arrPDiam = new double[ParticleRange];
+        arrRateK = new double[ParticleRange];
+        arrPa = new double[ParticleRange];
+        arrPc = new double[ParticleRange];
+        arrPd = new double[ParticleRange];
+        arrFR = new double[ParticleRange];
     }
 
     public double CalculateRecoveryForParticleDiameter(double ParticleDiam)
@@ -135,11 +147,7 @@ public class RecoveryCalculation {
     }
 
     public double EnergyBarrier() {
-
-
         double dblBubbleZ = 1, dblDielectric = 1, dblPermitivity = 1; ///Test values
-
-
         double dblA132_s, dblK132_s, dblK131, a, b_k;
         double dblA11 = 3d * Math.Pow(10d, -19); // Hamaker
         double dblA22 = 0d; //
@@ -177,9 +185,7 @@ public class RecoveryCalculation {
         Ch = -(dblParticleDiam * dblBubbleDiam / 4d * dblK132_s) / (6d * (dblParticleDiam / 2d + dblBubbleDiam / 2d));
         int x = 0;
         double dblVT, dblVT1;
-
         double dblVE, dblVD, dblVH; // total free energy of
-
         double dblVE1, dblVD1, dblVH1; // second state of above variables
        // do
         {

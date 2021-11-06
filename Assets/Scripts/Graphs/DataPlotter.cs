@@ -15,7 +15,7 @@ public class DataPlotter : MonoBehaviour
     {
         RecoveryExamples Recoveries = new RecoveryExamples();
         double[] SimulatedData = Recoveries.CalculationExample().CalculateParticleRecoveries();
-        double[] RealData = Recoveries.RealLifeRecoveries();
+        double[] RealData = Recoveries.ExpectedRecoveries();
         RectTransform rt = PointHolder.transform.GetComponent<RectTransform>();
         width = rt.sizeDelta.x * rt.localScale.x;
         height = rt.sizeDelta.y * rt.localScale.y;
