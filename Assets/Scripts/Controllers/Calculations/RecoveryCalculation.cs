@@ -25,6 +25,15 @@ public class RecoveryCalculation {
     /// Zeta Potential in mV
     /// </summary>
     public double ZetaPotential = -15;
+    /// <summary>
+    /// Standard height value of cell OK-05-R. More info: Resources/Flotation-Cell-Design.pdf
+    /// </summary>
+    public double CellHeight = 0.84;
+    /// <summary>
+    /// Assumed for OK-05-R, since that is the cell with power ~= 2.5 kw
+    /// </summary>
+    public double CellDiameter = 1;
+
     private const double pi = 3.141592d;
     private const double waterDensity = 1000d; // kg/m3
     private const double airDensity = 1.2d; // kg/m3
@@ -34,10 +43,11 @@ public class RecoveryCalculation {
     private double dblParticleDiam = 0.00007, dblImpellerDiam;
     private double dblTotalDens;
     public int ParticleRange = 130;
-
-    //ask for proper Cell dimensions
-    public double dblCellDiam = 0.5, dblCellHeight = 3;
-    private double dblAirFraction = 0.28, dblSlurryFraction=0.3, dblNBubble; //ask for correct values
+    /// <summary>
+    /// Air fraction assumed based on figure 25 of Resources/Malm2019.pdf
+    /// </summary>
+    private double AirFraction = 0.1;
+    private double dblSlurryFraction= 0.3, dblNBubble; //ask for correct values
     private double dblRateConst;
     private double dblDragBeta; // drag coefficient (Goren & O'Niell)
     private double dblH_c_Factor = 5d; // adjustable fitting parameter for dragbeta
@@ -51,7 +61,6 @@ public class RecoveryCalculation {
     double dblCoverage = 0.5d; // max particle coverage attached in froth
     double dblPFTransfer, dblP_i, dblPr;
     double dblEiw, dblEka;
-    // !! see global declarations for more froth parameters !!
     private double dblGrowthFactor; // ratio of bubble size in froth
     private double dblR_Water_max; // max. water rec. in froth (approximation)
     private int ri = 1; // counter for recovery plot marker color
@@ -72,7 +81,7 @@ public class RecoveryCalculation {
         SetSizeOfArrays();
         CalculateSurfaceTension();
         double dblMassBP;
-        double dblVolCell = pi * Math.Pow((dblCellDiam / 2), 2) * dblCellHeight;
+        double dblVolCell = pi * Math.Pow((CellDiameter / 2), 2) * CellHeight;
         dblKinVisc = waterViscosity / waterDensity;
 
         double dblVolImpZone = 0.1d; // set impeller
@@ -288,8 +297,8 @@ public class RecoveryCalculation {
     private double CalculateDensityOfBubbles(double dblParticleDiam, double dblBeta, double dblVolParticle, out double dblNBubble)
     {
         double dblVolBubble = 4 / 3 * pi * Math.Pow(dblBubbleDiam / 2, 3);
-        dblNBubble = dblAirFraction / dblVolBubble;
-        double dblNParticle = (1 - dblAirFraction) * dblSlurryFraction / dblVolParticle;
+        dblNBubble = AirFraction / dblVolBubble;
+        double dblNParticle = (1 - AirFraction) * dblSlurryFraction / dblVolParticle;
         double dblZBubbParticle = dblBeta * dblNBubble * dblNParticle;
         return CalculateSurfaceTension() * pi * Math.Pow(dblParticleDiam / 2, 2) *
             (1 - Math.Pow(Math.Cos(feed.ContactAngle * (pi / 180)), 2));
@@ -300,7 +309,7 @@ public class RecoveryCalculation {
         double dblDetach_F = 1; // 2 compartment model (Lu)       
         double dblBulkZone = 1;
         double dblImpellerZone = 1;
-        dblTotalDens = dblAirFraction * airDensity + (1 - dblAirFraction) *
+        dblTotalDens = AirFraction * airDensity + (1 - AirFraction) *
         dblSlurryFraction * feed.Density + (1 - dblSlurryFraction) * waterDensity;
         double dblEMean = Power / dblTotalDens;
         double dblEBulk = dblBulkZone * dblEMean;

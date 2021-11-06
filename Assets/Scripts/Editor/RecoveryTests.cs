@@ -6,7 +6,7 @@ public class RecoveryTests
     [Test]
     public void MeanSquaredErrorTest()
     {
-        double AcceptableMSE = 10;
+        double AcceptableMSE = 100;
         RecoveryExamples R = new RecoveryExamples();
         double[] Expected = R.ExpectedRecoveries();
         double[] Actual = R.CalculationExample().CalculateParticleRecoveries();
