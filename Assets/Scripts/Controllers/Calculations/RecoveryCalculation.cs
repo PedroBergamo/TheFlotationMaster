@@ -100,6 +100,9 @@ public class RecoveryCalculation {
             // increment particle diam  
             dblParticleDiam *= 1.2d;
         }
+
+        // This might need to return also the arrPDiam[] as if I understand this correctly the particle sizes don't go from 1-130 microns but up to 1.2^130*1 micron which is quite big.. :)
+        // I couldn't get the plotter to work so didn't check if that would make a better picture..
         return arrRecovery;
     }
 
@@ -284,6 +287,7 @@ public class RecoveryCalculation {
     }
 
     private double BubbleDiameter() {
+        // Does this return a sensible value? It's something like 18cm which seems big? Perhaps check that the functions are returning values on the right scale (and the correct units) to pinpoint if there is an issue somewhere.
         if (BubbleSizeEnabled == false)
         {
             double EImpeller = CalculateEnergyDissipation();
