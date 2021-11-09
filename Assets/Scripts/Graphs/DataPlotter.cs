@@ -29,7 +29,7 @@ public class DataPlotter : MonoBehaviour
         double yMax = FindMaxValue(Data);
         for (var i = 0; i < Data.Length; i++)
         {
-            double y = ((Data[i] / yMax) * height) + NonNullNumber;
+            double y = ((Data[i]/ yMax ) * height) + NonNullNumber;
             double x = i * (width / Data.Length);
             GameObject dataPoint = Instantiate(
                     Point,

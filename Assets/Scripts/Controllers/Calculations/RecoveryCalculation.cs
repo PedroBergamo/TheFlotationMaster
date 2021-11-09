@@ -40,7 +40,7 @@ public class RecoveryCalculation {
     private const double waterViscosity = 0.001d; // Ns/m2
     private const double c = 2.988d * (10e8); // m/s... speed of light 11
     private const double gravity = 9.813f; //m/s2
-    private double dblParticleDiam = 0.00007, dblImpellerDiam;
+    private double dblParticleDiam, dblImpellerDiam;
     private double dblTotalDens;
     public int ParticleRange = 130;
     /// <summary>
@@ -85,22 +85,28 @@ public class RecoveryCalculation {
         dblKinVisc = waterViscosity / waterDensity;
 
         double dblVolImpZone = 0.1d; // set impeller
-        dblParticleDiam = 0.000001; // (1 micron)*/
+        dblParticleDiam = 0.000001; // (1 micron)
+        double Increment = 0.000001;
         for (int i = 0; i < ParticleRange; i++)
         {
-            arrPDiam[i] = dblParticleDiam * 1000000; // 10^6 for microns
-            arrRateK[i] = dblRateConst * dblFrothRecoveryFactor;
             arrRecovery[i] = CalculateRecoveryForParticleDiameter(dblParticleDiam);
-            // return percentage
-            arrPa[i] = dblPAtt * 100;
-            arrPc[i] = dblPCol * 100;
-            arrPd[i] = (1 - dblPDet) * 100;
-            arrFR[i] = dblFrothRecoveryFactor * 100;
+            SetUpArrays(i);
 
             // increment particle diam  
-            dblParticleDiam *= 1.2d;
+            dblParticleDiam += Increment;
         }
         return arrRecovery;
+    }
+
+    private void SetUpArrays(int i)
+    {
+        arrPDiam[i] = dblParticleDiam * 1000000; // 10^6 for microns
+        arrRateK[i] = dblRateConst * dblFrothRecoveryFactor;
+        // return percentage
+        arrPa[i] = dblPAtt * 100;
+        arrPc[i] = dblPCol * 100;
+        arrPd[i] = (1 - dblPDet) * 100;
+        arrFR[i] = dblFrothRecoveryFactor * 100;
     }
 
     private void SetSizeOfArrays()

@@ -32,4 +32,8 @@ public class RecoveryExamples{
         }
         return Recoveries;
     }
+
+    public double[] ParticleDiameters() {
+        return CalculationExample().arrPDiam;
+    }
 }

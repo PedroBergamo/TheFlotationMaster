@@ -20,7 +20,6 @@ public class RecoveryTests
             Sum += value;
         }
         double RealMSE = Sum / Actual.Length;
-
         Assert.AreEqual(Actual.Length, Expected.Length);
         Assert.LessOrEqual(RealMSE, AcceptableMSE);
     }
