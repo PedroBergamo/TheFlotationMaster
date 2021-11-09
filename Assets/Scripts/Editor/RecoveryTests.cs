@@ -8,9 +8,11 @@ public class RecoveryTests
     public void MeanSquaredErrorTest()
     {
         double AcceptableMSE = 100;
-        RecoveryExamples R = new RecoveryExamples();
-        double[] Expected = R.ExpectedRecoveries();
-        double[] Actual = R.CalculationExample().CalculateParticleRecoveries();
+        RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
+        Recoveries.CalculateParticleRecoveries();
+        double[] SimulatedData = Recoveries.arrRecovery;
+        double[] Expected = new RecoveryExamples().ExpectedRecoveries();
+        double[] Actual = Recoveries.CalculationExample().arrRecovery;
         int i = 0;
         double Sum = 0;
         foreach (double Example in Actual)
@@ -28,7 +30,7 @@ public class RecoveryTests
     [Test]
     public void SingleRecoveryCalculationTest()
     {
-        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
+        RecoveryCalculation R = new RecoveryExamples();
         R.SetUpCalculation();
         double Actual = R.CalculateRecoveryForParticleDiameter(0.000071);
         double Expected = 60;
@@ -48,9 +50,12 @@ public class RecoveryTests
     [Test]
     public void BubbleDiameterHasReasonableSize()
     {
-        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
+        RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
+        Recoveries.CalculateParticleRecoveries();
+        double[] SimulatedData = Recoveries.arrRecovery;
+        R.BubbleDiameterGiven = false;
         double Actual = R.BubbleDiameterInMeters();
-        Assert.LessOrEqual(Actual, 0.0051);
+        Assert.Greater(Actual, 5000000000000001);
     }
 
     [Test]

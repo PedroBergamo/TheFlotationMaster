@@ -13,16 +13,15 @@ public class DataPlotter : MonoBehaviour
 
     void Start()
     {
-        RecoveryExamples Recoveries = new RecoveryExamples();
-        double[] SimulatedData = Recoveries.CalculationExample().CalculateParticleRecoveries();
-        double[] RealData = Recoveries.ExpectedRecoveries();
+        RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
+        Recoveries.CalculateParticleRecoveries();
+        double[] SimulatedData = Recoveries.arrRecovery;
+        double[] RealData = new RecoveryExamples().ExpectedRecoveries();
+        double[] Diam = Recoveries.arrPDiam;
         RectTransform rt = PointHolder.transform.GetComponent<RectTransform>();
         width = rt.sizeDelta.x * rt.localScale.x;
         height = rt.sizeDelta.y * rt.localScale.y;
         PlotGraph(RealData, PointPrefab1);
-        foreach (double i in SimulatedData) {
-            Debug.Log(i);
-        }
         PlotGraph(SimulatedData, PointPrefab2);
     }
 

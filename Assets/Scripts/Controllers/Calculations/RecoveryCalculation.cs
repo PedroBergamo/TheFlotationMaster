@@ -93,7 +93,7 @@ public class RecoveryCalculation {
         SetSizeOfArrays();
         SurfaceTension = CalculateSurfaceTension();
     }
-    public double[] CalculateParticleRecoveries()
+    public void CalculateParticleRecoveries()
     {
         SetUpCalculation();
         double dblVolImpZone = 0.1d; // set impeller
@@ -105,20 +105,17 @@ public class RecoveryCalculation {
         double Increment = 0.000001;
         for (int i = 0; i < ParticleRange; i++)
         {
-            double recovery = CalculateRecoveryForParticleDiameter(dblParticleDiam);
-            arrRecovery[i] = recovery;
-            SetUpArrays(i);
+            
+            PopulateArrays(i);
             // increment particle diam  
-            dblParticleDiam += Increment;
+            dblParticleDiam *= 1.2d;
+            //dblParticleDiam += Increment;
         }
-        foreach (double s in arrRecovery) {
-            Debug.Log(s);
-        }
-        return arrRecovery;
     }
 
-    private void SetUpArrays(int i)
+    private void PopulateArrays(int i)
     {
+        arrRecovery[i] = CalculateRecoveryForParticleDiameter(dblParticleDiam);
         arrPDiam[i] = dblParticleDiam * 1000000; // 10^6 for microns
         arrRateK[i] = dblRateConst * dblFrothRecoveryFactor;
         // return percentage
@@ -291,7 +288,6 @@ public class RecoveryCalculation {
         return Rmax;
     }
 
-
     public double FrothRecoveryFactor(double dblParticleDiam)
     {
         // ===== Froth Recovery =====
@@ -327,7 +323,8 @@ public class RecoveryCalculation {
         if (BubbleDiameterGiven == false)
         {
             double EImpeller = CalculateEnergyDissipation();
-            return Math.Pow(2.11 * SurfaceTension / (waterDensity * Math.Pow(EImpeller, 0.66)), 0.6);
+            double result = Math.Pow(2.11 * SurfaceTension / (waterDensity * Math.Pow(EImpeller, 0.66)), 0.6); ;
+            return result;
         } else
         {
             return BubbleDiameter / 1000;
@@ -346,9 +343,9 @@ public class RecoveryCalculation {
 
     private double CalculateEnergyDissipation()
     {
-        double dblDetach_F = 1; // 2 compartment model (Lu)       
-        double dblBulkZone = 1;
-        double dblImpellerZone = 1;
+        double dblDetach_F = 1d; // adjustable parameter for fitting     
+        double dblBulkZone = 0.5;
+        double dblImpellerZone = 15;
         dblTotalDens = AirFraction * airDensity + (1 - AirFraction) *
         dblSlurryFraction * feed.Density + (1 - dblSlurryFraction) * waterDensity;
         double dblEMean = Power / dblTotalDens;
