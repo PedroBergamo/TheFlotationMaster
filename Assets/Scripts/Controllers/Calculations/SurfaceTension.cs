@@ -11,6 +11,10 @@ public class SurfaceTension
     public Reagent ChosenReagent;
     public double FrotherConcentrate; //mg/m3
 
+    /// <summary>
+    /// Returns surface tension in mN/m
+    /// </summary>
+    /// <returns></returns>
     public double CalculateSurfaceTension()
     {
         double FrotherConc = FrotherConcentrate / ChosenReagent.Conversor;

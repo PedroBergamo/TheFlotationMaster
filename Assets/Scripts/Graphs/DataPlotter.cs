@@ -20,7 +20,9 @@ public class DataPlotter : MonoBehaviour
         width = rt.sizeDelta.x * rt.localScale.x;
         height = rt.sizeDelta.y * rt.localScale.y;
         PlotGraph(RealData, PointPrefab1);
-
+        foreach (double i in SimulatedData) {
+            Debug.Log(i);
+        }
         PlotGraph(SimulatedData, PointPrefab2);
     }
 
@@ -29,7 +31,8 @@ public class DataPlotter : MonoBehaviour
         double yMax = FindMaxValue(Data);
         for (var i = 0; i < Data.Length; i++)
         {
-            double y = ((Data[i]/ yMax ) * height) + NonNullNumber;
+            double recovery = Data[i];
+            double y = ((recovery/ yMax ) * height) + NonNullNumber;
             double x = i * (width / Data.Length);
             GameObject dataPoint = Instantiate(
                     Point,
@@ -44,11 +47,11 @@ public class DataPlotter : MonoBehaviour
     private double FindMaxValue(double[] data)
     {
         double maxValue = 0;
-        for (var i = 0; i < data.Length; i++)
+        foreach (double number in data)
         {
-            if (maxValue < data[i])
-                maxValue = data[i];
+            if (number > maxValue)
+                maxValue = number;
         }
-        return maxValue + NonNullNumber;
+        return maxValue;
     }
 }

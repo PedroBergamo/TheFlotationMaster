@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using UnityEngine;
 
 public class RecoveryTests
 {
@@ -27,9 +28,29 @@ public class RecoveryTests
     [Test]
     public void SingleRecoveryCalculationTest()
     {
-        double Actual = new RecoveryExamples().CalculationExample().CalculateRecoveryForParticleDiameter(0.000071);
+        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
+        R.SetUpCalculation();
+        double Actual = R.CalculateRecoveryForParticleDiameter(0.000071);
         double Expected = 60;
         Assert.AreEqual(Expected, Actual);
+    }
+
+    [Test]
+    public void BubbleSizeConvesionToMicrometers()
+    {
+        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
+        R.BubbleDiameterGiven = true;
+        R.BubbleDiameter = 1;
+        double Actual = R.BubbleDiameterInMeters();
+        Assert.LessOrEqual(Actual, 0.0051);
+    }
+
+    [Test]
+    public void BubbleDiameterHasReasonableSize()
+    {
+        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
+        double Actual = R.BubbleDiameterInMeters();
+        Assert.LessOrEqual(Actual, 0.0051);
     }
 
     [Test]
