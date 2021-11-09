@@ -28,11 +28,11 @@ public class RecoveryCalculation {
     /// <summary>
     /// Standard height value of cell OK-05-R. More info: Resources/Flotation-Cell-Design.pdf
     /// </summary>
-    public double CellHeight = 0.84;
+    public double CellHeight = 2;
     /// <summary>
     /// Assumed for OK-05-R, since that is the cell with power ~= 2.5 kw
     /// </summary>
-    public double CellDiameter = 1;
+    public double CellDiameter = 2;
 
     private const double pi = 3.141592d;
     private const double waterDensity = 1000d; // k g/m3
@@ -108,8 +108,7 @@ public class RecoveryCalculation {
             
             PopulateArrays(i);
             // increment particle diam  
-            dblParticleDiam *= 1.2d;
-            //dblParticleDiam += Increment;
+            dblParticleDiam += Increment;
         }
     }
 

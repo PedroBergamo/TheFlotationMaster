@@ -12,7 +12,7 @@ public class RecoveryTests
         Recoveries.CalculateParticleRecoveries();
         double[] SimulatedData = Recoveries.arrRecovery;
         double[] Expected = new RecoveryExamples().ExpectedRecoveries();
-        double[] Actual = Recoveries.CalculationExample().arrRecovery;
+        double[] Actual = Recoveries.arrRecovery;
         int i = 0;
         double Sum = 0;
         foreach (double Example in Actual)
@@ -30,11 +30,11 @@ public class RecoveryTests
     [Test]
     public void SingleRecoveryCalculationTest()
     {
-        RecoveryCalculation R = new RecoveryExamples();
+        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
         R.SetUpCalculation();
         double Actual = R.CalculateRecoveryForParticleDiameter(0.000071);
         double Expected = 60;
-        Assert.AreEqual(Expected, Actual);
+        Assert.AreEqual(Expected, Actual,10);
     }
 
     [Test]
@@ -53,9 +53,33 @@ public class RecoveryTests
         RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
         Recoveries.CalculateParticleRecoveries();
         double[] SimulatedData = Recoveries.arrRecovery;
-        R.BubbleDiameterGiven = false;
-        double Actual = R.BubbleDiameterInMeters();
-        Assert.Greater(Actual, 5000000000000001);
+        Recoveries.BubbleDiameterGiven = false;
+        double Actual = Recoveries.BubbleDiameterInMeters();
+        Assert.Greater(Actual, 0.005);
+    }
+
+    [Test]
+    public void AirFlowRateAffectsRecovery()
+    {
+        RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
+        Recoveries.CalculateParticleRecoveries();
+        double[] data1 = Recoveries.arrRecovery;
+        Recoveries.AirFlowRate = 4;
+        Recoveries.CalculateParticleRecoveries();
+        double[] data2 = Recoveries.arrRecovery;
+        Assert.AreNotEqual(data1,data2);
+    }
+
+    [Test]
+    public void FrothHeightAffectsRecovery()
+    {
+        RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
+        Recoveries.CalculateParticleRecoveries();
+        double[] data1 = Recoveries.arrRecovery;
+        Recoveries.FrothHeight = 20;
+        Recoveries.CalculateParticleRecoveries();
+        double[] data2 = Recoveries.arrRecovery;
+        Assert.AreNotEqual(data1, data2);
     }
 
     [Test]
