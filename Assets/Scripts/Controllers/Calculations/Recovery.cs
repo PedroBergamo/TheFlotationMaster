@@ -372,7 +372,9 @@ b_k = 0.2172
     while (x == 0)
     {
         // equation 14 using H0(Do & Yoon)
-        dblVE = Ce * (2d * dblParticleZ * dblBubbleZ / (Pow(dblParticleZ, 2d) + Pow(dblBubbleZ, 2d)) * Log((1d + Exp(-dblKappa * dblH0)) / (1d - Exp(-dblKappa * dblH0))) + Log(1d - Exp(-2 * dblKappa * dblH0)));
+        dblVE = Ce * (2d * dblParticleZ * dblBubbleZ / (Pow(dblParticleZ, 2d) +
+        Pow(dblBubbleZ, 2d)) * Log((1d + Exp(-dblKappa * dblH0)) /
+        (1d - Exp(-dblKappa * dblH0))) + Log(1d - Exp(-2 * dblKappa * dblH0)));
 
 
         dblVD = Cd / dblH0 * (1d - (1d + 2d * b * l) / (1d + b * c / dblH0)); // equation 15 using H0(Do & Yoon)
@@ -381,7 +383,9 @@ b_k = 0.2172
         dblH1 = dblH0 + 1d * Pow(10d, -11);
 
         // equation 14 using H1(Do & Yoon)
-        dblVE1 = Ce * (2d * dblParticleZ * dblBubbleZ / (Pow(dblParticleZ, 2d) + Pow(dblBubbleZ, 2d)) * Math.Log((1d + Math.Exp(-dblKappa * dblH1)) / (1d - Math.Exp(-dblKappa * dblH1))) + Math.Log(1d - Math.Exp((double)-2 * dblKappa * dblH1)));
+        dblVE1 = Ce * (2d * dblParticleZ * dblBubbleZ / (Pow(dblParticleZ, 2d) + Pow(dblBubbleZ, 2d)) *
+    Math.Log((1d + Math.Exp(-dblKappa * dblH1)) / (1d - Math.Exp(-dblKappa * dblH1))) +
+Math.Log(1d - Math.Exp((double)-2 * dblKappa * dblH1)));
 
 
         dblVD1 = Cd / dblH1 * (1 - (1d + 2d * b * l) / (1 + b * c / dblH1)); // equation 15 using H1(Do & Yoon)

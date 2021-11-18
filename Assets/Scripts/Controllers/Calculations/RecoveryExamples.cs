@@ -18,7 +18,7 @@ public class RecoveryExamples{
             Power = 2500,
             NumberOfCells = 4,
             RetentionTime = 3,
-            ZetaPotential = -0.015
+            ZetaPotential = -0.15
         };
         RC.SetUpCalculation();
         return RC;

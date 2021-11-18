@@ -24,7 +24,7 @@ public class RecoveryCalculation {
     /// <summary>
     /// Zeta Potential in V
     /// </summary>
-    public double ZetaPotential = -0.015;
+    public double ZetaPotential = -0.15;
     /// <summary>
     /// Standard height value of cell OK-05-R. More info: Resources/Flotation-Cell-Design.pdf
     /// </summary>
@@ -35,7 +35,7 @@ public class RecoveryCalculation {
     public double CellDiameter = 2;
 
     private const double pi = 3.141592d;
-    private const double waterDensity = 1000d; // k g/m3
+    private const double waterDensity = 1000d; // kg/m3
     private const double airDensity = 1.2d; // kg/m3
     private const double waterViscosity = 0.001d; // Ns/m2
     private const double c = 2.988d * (10e8); // m/s... speed of light 11
@@ -61,6 +61,7 @@ public class RecoveryCalculation {
     private bool ContactDistribChecked, BubbleSizeEnabled;
     private double dblU1Bulk, dblU2Bulk, dblEBulk;
     public int NumberOfCells = 4;
+    double dblDetach_F = 1d; // adjustable parameter for fitting
 
     // ===== Froth Parameters =====
     double dblB = 3.3d; // fitting parameter
@@ -75,7 +76,10 @@ public class RecoveryCalculation {
     private double dblOvrRecovery;
     private bool blnCheck; // are all inputs valid?
     public double[] arrSizeGrade = new double[38];
-    public double dblKinVisc = 1; // kinematic
+    public double dblKinVisc; // kinematic
+    public double dblBulkZone = 0.5;
+    public double dblEMean;
+    private double EImpeller;
     /// <summary>
     /// bubble diameter given in mm
     /// </summary>
@@ -89,9 +93,11 @@ public class RecoveryCalculation {
     private double SurfaceTension;
 
     public void SetUpCalculation(){
+        SurfaceTension = CalculateSurfaceTension();
+        EImpeller = CalculateEnergyDissipation();
         BubbleDiameter = BubbleDiameterInMeters();
         SetSizeOfArrays();
-        SurfaceTension = CalculateSurfaceTension();
+        dblKinVisc = waterViscosity / waterDensity;
     }
     public void CalculateParticleRecoveries()
     {
@@ -99,7 +105,6 @@ public class RecoveryCalculation {
         double dblVolImpZone = 0.1d; // set impeller
         double dblVolCell = pi * Math.Pow((CellDiameter / 2), 2) * CellHeight;
         double dblMassBP;
-        dblKinVisc = waterViscosity / waterDensity;
 
         dblParticleDiam = 0.000001; // (1 micron)
         double Increment = 0.000001;
@@ -137,7 +142,6 @@ public class RecoveryCalculation {
 
     public double CalculateRecoveryForParticleDiameter(double ParticleDiam)
     {
-
         dblParticleDiam = ParticleDiam;
         dblFrothRecoveryFactor = FrothRecoveryFactor(dblParticleDiam);
         double rate = RateConstant();
@@ -153,9 +157,16 @@ public class RecoveryCalculation {
         double dblVolParticle = 4 / 3 * pi * Math.Pow(dblParticleDiam / 2, 3);
         double dblMassParticle = feed.Density * dblVolParticle;
 
+
         // ===== Kinetic Energy of Attachment =====
-        double dblKineticEAttach = 0.5d * dblMassParticle;
-        double dblKineticEDetach = 0.5d * dblMassParticle;
+        dblU1Bulk = 0.4 * Math.Pow(dblEBulk, 4 / 9) *
+            Math.Pow(dblParticleDiam, 7 / 9) * Math.Pow(dblKinVisc, (double)-1 / 3) * (feed.Density / 1);
+
+        double dblKineticEAttach = 0.5d * dblMassParticle * dblU1Bulk /
+            Math.Pow(dblDragBeta, 2);
+
+        double dblKineticEDetach = 0.5d * dblMassParticle * Math.Pow((dblDetach_F * dblParticleDiam +
+            BubbleDiameter) * Math.Sqrt(EImpeller /dblKinVisc),2);
         double dblBeta = Beta(dblParticleDiam);
         double dblWorkAdhesion = CalculateDensityOfBubbles(dblParticleDiam, dblBeta, dblVolParticle, out dblNBubble);
 
@@ -163,11 +174,16 @@ public class RecoveryCalculation {
         double energyBarrier = EnergyBarrier() * -1;
         dblPAtt = Math.Exp(energyBarrier / dblKineticEAttach);
         double dblRe = Math.Sqrt(dblU2Bulk) * BubbleDiameter / dblKinVisc; // bubble Reynold's number
-        dblPCol = Math.Pow(Math.Tan(Math.Sqrt(3d / 2d * (1 + 3d / 16d * dblRe / (1 + 0.2d * Math.Pow(dblRe, 0.56d)))) * (dblParticleDiam / BubbleDiameter)), 2);
+        dblPCol = Math.Pow(Math.Tan(Math.Sqrt(3d / 2d * (1 + 3d / 16d * dblRe / (1 + 0.2d * Math.Pow(dblRe, 0.56d)))) *
+            (dblParticleDiam / BubbleDiameter)), 2);
         dblPCol = CheckIfBiggerthanOne(dblPCol);
+        dblEBulk = dblBulkZone * dblEMean;
         dblEiw = gravity / (4 * pi) * Math.Pow(Math.Pow(waterViscosity, 3) / dblEBulk, 0.25d);
-        double dblMassBubble = 1;
-        dblEka = Math.Pow(dblMassBubble * dblU2Bulk - 2 * Math.Pow(BubbleDiameter / dblParticleDiam, 2) * dblMassParticle * dblU1Bulk, 2) / (100 * (dblMassBubble + 2 * Math.Pow(BubbleDiameter / dblParticleDiam, 2) * dblMassParticle));
+        double dblVolBubble = Math.Pow((4 / 3) * pi * (BubbleDiameter / 2), 3); //vol 1 bubb.
+        double dblMassBubble = airDensity * dblVolBubble;
+        dblEka = Math.Pow(dblMassBubble * dblU2Bulk - 2 * Math.Pow(BubbleDiameter /
+            dblParticleDiam, 2) * dblMassParticle * dblU1Bulk, 2) / (100 * (dblMassBubble + 2 *
+            Math.Pow(BubbleDiameter / dblParticleDiam, 2) * dblMassParticle));
         dblP_i = 13 * Math.Sqrt(9 * Math.Pow(waterViscosity, 2) / (BubbleDiameter * SurfaceTension * dblTotalDens));
         dblPr = Math.Exp(-dblEiw / dblEka);
         dblPFTransfer = dblP_i * (1 - dblPr);
@@ -193,16 +209,14 @@ public class RecoveryCalculation {
         double b = 3d * Math.Pow(10d, -17); // correct for retardation effects (most mat'ls)
         double l = 3.3d * Math.Pow(10d, 15d); // correction for retardation effects (water, !!change for other media)
         double dblH0 = 1d * Math.Pow(10d, -11); // separation between bubb & part
-
-        double dblH = 0d, dblH1 = 0;
         double Ce, Cd, Ch; // coefficients of eq 14,15,16 - for efficiency of calculation
-
-        if (feed.ContactAngle < 86.89d)
+        double contactAngle = feed.CheckContactAngle(dblParticleDiam);
+        if (contactAngle  < 86.89d)
         {
             a = 2.732 * Math.Pow(10, -21);
             b_k = 0.04136d;
         }
-        else if (86.889 <= feed.ContactAngle && feed.ContactAngle < 92.28)
+        else if (86.889 <= contactAngle && contactAngle < 92.28)
         {
             a = 4.888d * Math.Pow(10d, -44);
             b_k = 0.6441d;
@@ -211,7 +225,7 @@ public class RecoveryCalculation {
             a = 6.327d * Math.Pow(10d, (double)-27);
             b_k = 0.2172;
         }
-        dblK131 = a * Math.Exp(b_k * feed.ContactAngle);
+        dblK131 = a * Math.Exp(b_k * contactAngle);
         dblK132_s = Math.Sqrt(dblK131 * dblK232);
         dblA132_s = (Math.Sqrt(dblA11) - Math.Sqrt(dblA33)) * (Math.Sqrt(dblA22) - Math.Sqrt(dblA33));
         Ce = pi * (dblPermitivity * dblDielectric * (dblParticleDiam * BubbleDiameter / 4d)
@@ -219,38 +233,70 @@ public class RecoveryCalculation {
 
         Cd = -(dblA132_s * (dblParticleDiam * BubbleDiameter / 4d)) / (6d * (dblParticleDiam / 2d + BubbleDiameter / 2d));
         Ch = -(dblParticleDiam * BubbleDiameter / 4d * dblK132_s) / (6d * (dblParticleDiam / 2d + BubbleDiameter / 2d));
-        int x = 0;
-        double dblVT, dblVT1;
+        double dblVT = 0, dblVT1 ;
         double dblVE, dblVD, dblVH; // total free energy of
         double dblVE1, dblVD1, dblVH1; // second state of above variables
-       // do
+        double dblH1,dblH;
+        double EnergyBarrier;// do
         {
-            dblH0 = dblH1 + 1d * Math.Pow(10d, -9);
+             // equation 14 using H0(Do & Yoon)
+             dblVE = Ce * (2d * ZetaPotential * dblBubbleZ / (Math.Pow(ZetaPotential, 2d) + Math.Pow(dblBubbleZ, 2d))
+                 * Math.Log((1d + Math.Exp(-dblKappa * dblH0)) / (1d - Math.Exp(-dblKappa * dblH0))) + Math.Log(1d -
+                 Math.Exp(-2 * dblKappa * dblH0)));
+
+             dblVD = Cd / dblH0 * (1d - (1d + 2d * b * l) / (1d + b * c / dblH0)); // equation 15 using H0(Do & Yoon)
+             dblVH = Ch / dblH0; // equation 16 using H0(Do & Yoon)
+             dblVT = dblVE + dblVD + dblVH; // extended DLVO theory
+
+             dblH1 = dblH0 + 1d * Math.Pow(10d, -11);
+             // equation 14 using H1(Do & Yoon)
+             dblVE1 = Ce * (2d * ZetaPotential * dblBubbleZ /
+                 (Math.Pow(ZetaPotential, 2d) + Math.Pow(dblBubbleZ, 2d)) *
+                 Math.Log((1d + Math.Exp(-dblKappa * dblH1)) / (1d
+                 - Math.Exp(-dblKappa * dblH1))) + Math.Log(1d - Math.Exp((double)-2 * dblKappa * dblH1)));
+
+             dblVD1 = Cd / dblH1 * (1 - (1d + 2d * b * l) / (1 + b * c / dblH1)); // equation 15 using H1(Do & Yoon)
+             dblVH1 = Ch / dblH1; // equation 16 using H1(Do & Yoon();
+             dblVT1 = dblVE1 + dblVD1 + dblVH1; // extended DLVO theory 2nd state 302       
+         }
+       //  while (dblVT < dblVT1);
+       /*
+        
+        int x = 0;
+        while (x == 0)
+        {
             // equation 14 using H0(Do & Yoon)
-            dblVE = Ce * (2d * ZetaPotential * dblBubbleZ / (Math.Pow(ZetaPotential, 2d) + Math.Pow(dblBubbleZ, 2d))
-                * Math.Log((1d + Math.Exp(-dblKappa * dblH0)) / (1d - Math.Exp(-dblKappa * dblH0))) + Math.Log(1d -
-                Math.Exp(-2 * dblKappa * dblH0)));
+            dblVE = Ce * (2d * ZetaPotential * dblBubbleZ / (Math.Pow(ZetaPotential, 2d) +
+                Math.Pow(dblBubbleZ, 2d)) * Math.Log((1d + Math.Exp(-dblKappa * dblH0)) /
+                (1d - Math.Exp(-dblKappa * dblH0))) + Math.Log(1d - Math.Exp(-2 * dblKappa * dblH0)));
 
             dblVD = Cd / dblH0 * (1d - (1d + 2d * b * l) / (1d + b * c / dblH0)); // equation 15 using H0(Do & Yoon)
             dblVH = Ch / dblH0; // equation 16 using H0(Do & Yoon)
             dblVT = dblVE + dblVD + dblVH; // extended DLVO theory
 
             dblH1 = dblH0 + 1d * Math.Pow(10d, -11);
-
             // equation 14 using H1(Do & Yoon)
-            dblVE1 = Ce * (2d * ZetaPotential * dblBubbleZ /
-                (Math.Pow(ZetaPotential, 2d) + Math.Pow(dblBubbleZ, 2d)) *
-                Math.Log((1d + Math.Exp(-dblKappa * dblH1)) / (1d
-                - Math.Exp(-dblKappa * dblH1))) + Math.Log(1d - Math.Exp((double)-2 * dblKappa * dblH1)));
+            dblVE1 = Ce * (2d * ZetaPotential * dblBubbleZ / (Math.Pow(ZetaPotential, 2d) +
+                Math.Pow(dblBubbleZ, 2d)) * Math.Log((1d + Math.Exp(-dblKappa * dblH1)) /
+                (1d - Math.Exp(-dblKappa * dblH1))) + Math.Log(1d - Math.Exp((double)-2 * dblKappa * dblH1)));
+
 
             dblVD1 = Cd / dblH1 * (1 - (1d + 2d * b * l) / (1 + b * c / dblH1)); // equation 15 using H1(Do & Yoon)
             dblVH1 = Ch / dblH1; // equation 16 using H1(Do & Yoon();
-            dblVT1 = dblVE1 + dblVD1 + dblVH1; // extended DLVO theory 2nd state 302       
-        }
-      //  while (dblVT < dblVT1);
+            dblVT1 = dblVE1 + dblVD1 + dblVH1; // extended DLVO theory 2nd state 302
+            if (dblVT > dblVT1)
+            {
+               x = 1;
+            }
+            else
+            {
+                dblH0 = dblH1 + 1d * Math.Pow(10d, -9);
+            } // increments H0 to find correct value 310 End If
+        }*/
         dblH = dblH0;
         dblDragBeta = 0.37d * Math.Pow(dblParticleDiam / 2d / dblH / dblH_c_Factor, 0.83d); // h_c_factor is adjustable
-        double EnergyBarrier = dblVT;
+
+        EnergyBarrier = dblVT;
         if (EnergyBarrier < 0)
         {
             return 0;
@@ -264,7 +310,7 @@ public class RecoveryCalculation {
     {
         SurfaceTension SF = new SurfaceTension();
         SF.FrotherConcentrate = 192; //following example in didactic/Kyle2011.pdf
-        SF.ChosenReagent = SF.Pentanol;
+        SF.ChosenReagent = SF.MIBC;
         return SF.CalculateSurfaceTension();
     }
 
@@ -308,8 +354,6 @@ public class RecoveryCalculation {
 
     double Beta(double dblParticleDiam)
     {
-        double dblEBulk = 1;
-        double dblU1Bulk = 0.4 * Math.Pow(dblEBulk, 4 / 9) * Math.Pow(dblParticleDiam, 7 / 9) * Math.Pow(dblKinVisc, (double)-1 / 3) * (feed.Density / 1);
         double dblU2Bulk = 2 * Math.Pow(dblEBulk * BubbleDiameter, 2 / 3);
         double dblCollisionDiam = dblParticleDiam + BubbleDiameter;
         return Math.Pow(2, 3 / 2) * Math.Pow(pi, 0.5) * Math.Pow(dblCollisionDiam, 2) * Math.Sqrt(dblU1Bulk + dblU2Bulk);
@@ -321,8 +365,7 @@ public class RecoveryCalculation {
     public double BubbleDiameterInMeters() {
         if (BubbleDiameterGiven == false)
         {
-            double EImpeller = CalculateEnergyDissipation();
-            double result = Math.Pow(2.11 * SurfaceTension / (waterDensity * Math.Pow(EImpeller, 0.66)), 0.6); ;
+            double result = Math.Pow(2.11 * SurfaceTension / (waterDensity * Math.Pow(EImpeller, 0.66)), 0.6);
             return result;
         } else
         {
@@ -337,17 +380,16 @@ public class RecoveryCalculation {
         double dblNParticle = (1 - AirFraction) * dblSlurryFraction / dblVolParticle;
         double dblZBubbParticle = dblBeta * dblNBubble * dblNParticle;
         return SurfaceTension * pi * Math.Pow(dblParticleDiam / 2, 2) *
-            (1 - Math.Pow(Math.Cos(feed.ContactAngle * (pi / 180)), 2));
+            (1 - Math.Pow(Math.Cos(feed.CheckContactAngle(dblParticleDiam) * (pi / 180)), 2));
     }
 
     private double CalculateEnergyDissipation()
     {
         double dblDetach_F = 1d; // adjustable parameter for fitting     
-        double dblBulkZone = 0.5;
         double dblImpellerZone = 15;
         dblTotalDens = AirFraction * airDensity + (1 - AirFraction) *
         dblSlurryFraction * feed.Density + (1 - dblSlurryFraction) * waterDensity;
-        double dblEMean = Power / dblTotalDens;
+        dblEMean = Power / dblTotalDens;
         double dblEBulk = dblBulkZone * dblEMean;
         return dblImpellerZone * dblEMean;
     }

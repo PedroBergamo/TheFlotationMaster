@@ -12,18 +12,17 @@ public class RecoveryTests
         Recoveries.CalculateParticleRecoveries();
         double[] SimulatedData = Recoveries.arrRecovery;
         double[] Expected = new RecoveryExamples().ExpectedRecoveries();
-        double[] Actual = Recoveries.arrRecovery;
         int i = 0;
         double Sum = 0;
-        foreach (double Example in Actual)
+        foreach (double Example in SimulatedData)
         {
             double value = (Example - Expected[i]);
             value *= value;
             i++;
             Sum += value;
         }
-        double RealMSE = Sum / Actual.Length;
-        Assert.AreEqual(Actual.Length, Expected.Length);
+        double RealMSE = Sum / SimulatedData.Length;
+        Assert.AreEqual(SimulatedData.Length, Expected.Length);
         Assert.LessOrEqual(RealMSE, AcceptableMSE);
     }
 
@@ -34,7 +33,17 @@ public class RecoveryTests
         R.SetUpCalculation();
         double Actual = R.CalculateRecoveryForParticleDiameter(0.000071);
         double Expected = 60;
-        Assert.AreEqual(Expected, Actual,10);
+        Assert.AreEqual(Expected, Actual,20);
+    }
+
+    [Test]
+    public void SingleRecoveryCalculationForBigParticleTest()
+    {
+        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
+        R.SetUpCalculation();
+        double Actual = R.CalculateRecoveryForParticleDiameter(0.000101);
+        double Expected = 20;
+        Assert.AreEqual(Expected, Actual, 20);
     }
 
     [Test]
@@ -55,7 +64,7 @@ public class RecoveryTests
         double[] SimulatedData = Recoveries.arrRecovery;
         Recoveries.BubbleDiameterGiven = false;
         double Actual = Recoveries.BubbleDiameterInMeters();
-        Assert.Greater(Actual, 0.005);
+        Assert.LessOrEqual(Actual, 0.005);
     }
 
     [Test]
