@@ -27,20 +27,27 @@ public class RecoveryTests
     }
 
     [Test]
-    public void SingleRecoveryCalculationTest()
+    public void SingleRecoveryCalculationMediumSizeParticleTest()
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();
-        R.SetUpCalculation();
         double Actual = R.CalculateRecoveryForParticleDiameter(0.000071);
         double Expected = 60;
         Assert.AreEqual(Expected, Actual,20);
     }
 
     [Test]
-    public void SingleRecoveryCalculationForBigParticleTest()
+    public void SingleRecoveryCalculationSmallSizeParticleTest()
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();
-        R.SetUpCalculation();
+        double Actual = R.CalculateRecoveryForParticleDiameter(0.000011);
+        double Expected = 10;
+        Assert.AreEqual(Expected, Actual, 20);
+    }
+
+    [Test]
+    public void SingleRecoveryCalculationForBigSizeParticleTest()
+    {
+        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
         double Actual = R.CalculateRecoveryForParticleDiameter(0.000101);
         double Expected = 20;
         Assert.AreEqual(Expected, Actual, 20);
@@ -61,7 +68,6 @@ public class RecoveryTests
     {
         RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
         Recoveries.CalculateParticleRecoveries();
-        double[] SimulatedData = Recoveries.arrRecovery;
         Recoveries.BubbleDiameterGiven = false;
         double Actual = Recoveries.BubbleDiameterInMeters();
         Assert.LessOrEqual(Actual, 0.005);
@@ -83,12 +89,13 @@ public class RecoveryTests
     public void FrothHeightAffectsRecovery()
     {
         RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
-        Recoveries.CalculateParticleRecoveries();
-        double[] data1 = Recoveries.arrRecovery;
         Recoveries.FrothHeight = 20;
-        Recoveries.CalculateParticleRecoveries();
-        double[] data2 = Recoveries.arrRecovery;
-        Assert.AreNotEqual(data1, data2);
+        double Froth1 = Recoveries.CalculateRecoveryForParticleDiameter(0.000101);
+        Assert.AreEqual(90, Froth1, 10);
+        Recoveries.FrothHeight = 20;
+        double Froth2 = Recoveries.CalculateRecoveryForParticleDiameter(0.000101);
+        Assert.AreEqual(50, Froth2, 10);
+
     }
 
     [Test]

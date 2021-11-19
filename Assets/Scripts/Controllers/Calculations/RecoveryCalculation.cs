@@ -332,6 +332,7 @@ public class RecoveryCalculation {
         double dblCollisionDiam = dblParticleDiam + BubbleDiameter;
         return Math.Pow(2, 3 / 2) * Math.Pow(pi, 0.5) * Math.Pow(dblCollisionDiam, 2) * Math.Sqrt(dblU1Bulk + dblU2Bulk);
     }
+
     /// <summary>
     /// returns the bubble diameter in meters
     /// </summary>
@@ -339,7 +340,7 @@ public class RecoveryCalculation {
     public double BubbleDiameterInMeters() {
         if (BubbleDiameterGiven == false)
         {
-            double adjustingParameter = 80;
+            double adjustingParameter = 70;
             double result = Math.Pow(2.11 * SurfaceTension / (waterDensity * Math.Pow(EImpeller, 0.66)), 0.6);
             return result / adjustingParameter;
         } else
