@@ -3,30 +3,7 @@ using UnityEngine;
 
 public class RecoveryTests
 {
-    
-    [Test]
-    public void MeanSquaredErrorTest()
-    {
-        double AcceptableMSE = 100;
-        RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
-        Recoveries.CalculateParticleRecoveries();
-        double[] SimulatedData = Recoveries.arrRecovery;
-        double[] Expected = new RecoveryExamples().ExpectedRecoveries();
-        int i = 0;
-        double Sum = 0;
-        foreach (double Example in SimulatedData)
-        {
-            double value = (Example - Expected[i]);
-            value *= value;
-            i++;
-            Sum += value;
-        }
-        double RealMSE = Sum / SimulatedData.Length;
-        Assert.AreEqual(SimulatedData.Length, Expected.Length);
-        Assert.LessOrEqual(RealMSE, AcceptableMSE);
-    }
-
-    [Test]
+  [Test]
     public void SingleRecoveryCalculationMediumSizeParticleTest()
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();
@@ -48,8 +25,8 @@ public class RecoveryTests
     public void SingleRecoveryCalculationForBigSizeParticleTest()
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();
-        double Actual = R.CalculateRecoveryForParticleDiameter(0.000101);
-        double Expected = 20;
+        double Actual = R.CalculateRecoveryForParticleDiameter(0.000100);
+        double Expected = 80;
         Assert.AreEqual(Expected, Actual, 20);
     }
 
@@ -73,29 +50,29 @@ public class RecoveryTests
         Assert.LessOrEqual(Actual, 0.005);
     }
 
-    [Test]
-    public void AirFlowRateAffectsRecovery()
-    {
-        RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
-        Recoveries.CalculateParticleRecoveries();
-        double[] data1 = Recoveries.arrRecovery;
-        Recoveries.AirFlowRate = 4;
-        Recoveries.CalculateParticleRecoveries();
-        double[] data2 = Recoveries.arrRecovery;
-        Assert.AreNotEqual(data1,data2);
-    }
 
     [Test]
     public void FrothHeightAffectsRecovery()
     {
         RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
-        Recoveries.FrothHeight = 20;
-        double Froth1 = Recoveries.CalculateRecoveryForParticleDiameter(0.000101);
+        Recoveries.FrothHeight = 0.1;
+        double Froth1 = Recoveries.CalculateRecoveryForParticleDiameter(0.000100);
         Assert.AreEqual(90, Froth1, 10);
-        Recoveries.FrothHeight = 20;
+        Recoveries.FrothHeight = 0.2;
         double Froth2 = Recoveries.CalculateRecoveryForParticleDiameter(0.000101);
         Assert.AreEqual(50, Froth2, 10);
+    }
 
+    [Test]
+    public void AirFlowAffectsRecovery()
+    {
+        RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
+        Recoveries.AirFlowRate = 2;
+        double Air1 = Recoveries.CalculateRecoveryForParticleDiameter(0.000100);
+        Assert.AreEqual(90, Air1, 5);
+        Recoveries.AirFlowRate = 4;
+        double Air2 = Recoveries.CalculateRecoveryForParticleDiameter(0.000101);
+        Assert.AreEqual(100, Air2, 5);
     }
 
     [Test]

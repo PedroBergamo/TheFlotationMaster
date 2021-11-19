@@ -196,8 +196,7 @@ public class RecoveryCalculation {
     /// </summary>
     /// <returns></returns>
     public double EnergyBarrier()
-    {
-        
+    {        
         double EnergyBarrier;        
             double dblH = 1d * Math.Pow(10d, -11); // separation between bubb & part
             double VT1 = VT(dblH);
@@ -210,17 +209,15 @@ public class RecoveryCalculation {
             // increments H0 to find correct value
         }
         dblDragBeta = 0.37d * Math.Pow(dblParticleDiam / 2d / dblH / dblH_c_Factor, 0.83d); // h_c_factor is adjustable
-
         EnergyBarrier = VT1;
         if (EnergyBarrier < 0)
         {
-            return 0;
+            return 0.0000000005;
         }
         else
         {
             return EnergyBarrier;
         }
-
        
     }
 
@@ -340,7 +337,7 @@ public class RecoveryCalculation {
     public double BubbleDiameterInMeters() {
         if (BubbleDiameterGiven == false)
         {
-            double adjustingParameter = 70;
+            double adjustingParameter = 65;
             double result = Math.Pow(2.11 * SurfaceTension / (waterDensity * Math.Pow(EImpeller, 0.66)), 0.6);
             return result / adjustingParameter;
         } else
