@@ -13,7 +13,7 @@ public class FeedFlowrate : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            TMPRO.text = FlotationCalculation.Controller.FeedFlowRate.ToString();
+            TMPRO.text = FlotationCalculation.FeedFlowRate.ToString();
         }
     }
 }

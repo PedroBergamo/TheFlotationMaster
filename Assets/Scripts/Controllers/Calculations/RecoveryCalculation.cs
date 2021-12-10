@@ -34,6 +34,8 @@ public class RecoveryCalculation {
     /// </summary>
     public double CellDiameter = 2;
 
+    public double frotherConcentrate = 192;
+
     private const double pi = 3.141592d;
     private const double waterDensity = 1000d; // kg/m3
     private const double airDensity = 1.2d; // kg/m3
@@ -57,7 +59,7 @@ public class RecoveryCalculation {
     private double dblSlurryFraction = 0.2, dblNBubble;
     private double dblRateConst;
     private double dblDragBeta; // drag coefficient (Goren & O'Niell)
-    private double dblH_c_Factor = 3d; // adjustable fitting parameter for dragbeta
+    private double dblH_c_Factor = 3.1d; // adjustable fitting parameter for dragbeta
     private bool ContactDistribChecked, BubbleSizeEnabled;
     private double dblU1Bulk, dblU2Bulk, dblEBulk;
     public int NumberOfCells = 4;
@@ -189,7 +191,7 @@ public class RecoveryCalculation {
 
         dblPDet = Math.Exp(-(dblWorkAdhesion + dblKineticEAttach) / dblKineticEDetach);
         double result = dblBeta * dblNBubble * dblPAtt * dblPCol * (1 - dblPDet) * 60; // x60 to make 1/min;
-        return result;
+            return result;
     }
     /// <summary>
     /// values obtained from Resources/Kyle2011.pdf figure 4

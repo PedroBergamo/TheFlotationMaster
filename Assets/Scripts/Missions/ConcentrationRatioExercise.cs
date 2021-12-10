@@ -12,13 +12,13 @@ public class ConcentrationRatioExercise : MonoBehaviour
     private void Update()
     {
         if (TimeManager.SecondPassed) {
-            if (Math.Round(FlotationCalculation.Controller.ConcentrateMassFlowInTPH()) == 20)
-            {
+        //    if (Math.Round(FlotationCalculation.Controller.ConcentrateMassFlowInTPH()) == 20)
+          //  {
                 SecondsPassedWithCorrectRatio++;
-            }
-            else {
-                SecondsPassedWithCorrectRatio = 0;
-            }
+            //}
+            //else {
+             //   SecondsPassedWithCorrectRatio = 0;
+            //}
         }
         if (SecondsPassedWithCorrectRatio >= 5)
         {

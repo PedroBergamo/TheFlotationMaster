@@ -14,21 +14,8 @@ public class ConcCuLabel : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float CuGrade = FlotationCalculation.Controller.ConcentrateCuGrade();
+            float CuGrade = FlotationCalculation.ConcentrateCuGrade();
             ProcessLabel.text = CuGrade.ToString();
-            ThereIsPenalty = FlotationCalculation.Controller.ConcentrateCuGrade() < 28;
-        }
-    }
-
-    private void CheckForPenalty()
-    {
-        if (ThereIsPenalty)
-        {
-            ProcessLabel.color = Color.red;
-        }
-        else
-        {
-            ProcessLabel.color = Color.white;
         }
     }
 }

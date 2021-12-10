@@ -11,7 +11,7 @@ public class FeedChangesSounds : MonoBehaviour {
     }
 
     void Update () {
-        CurrentGrade = FlotationCalculation.Controller.FeedAsGrade;
+        CurrentGrade = FlotationCalculation.FeedAsGrade;
         if (CurrentGrade != PreviousGrade) {
             Bounce.PlayDelayed(0.1f);
             PreviousGrade = CurrentGrade;

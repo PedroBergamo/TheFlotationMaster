@@ -13,7 +13,7 @@ public class TailingsAsLabel : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float AsGrade = (float)System.Math.Round(FlotationCalculation.Controller.TailingsAsGrade(), 1);
+            float AsGrade = (float)System.Math.Round(FlotationCalculation.TailingsAsGrade, 1);
             ProcessLabel.text = AsGrade.ToString();
         }
     }

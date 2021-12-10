@@ -54,7 +54,7 @@ namespace Assets.Scripts.Controllers
             float Intercept = 7.48f;
             float AirWeight = 0.53f;
             float ThicknessWeight = -0.11f;
-            float[] Weights = { Intercept, AirWeight, ThicknessWeight };
+            float[] Weights = { Intercept, AirWeight, ThicknessWeight};
             return Weights;
         }
 

@@ -30,7 +30,7 @@ public class ProfitAddition : MonoBehaviour
     {
         if (secondsPast < secondsToAddition)
        {
-            addedProfit += FlotationCalculation.Controller.ProfitPerSecond();
+       //     addedProfit += FlotationCalculation.Controller.ProfitPerSecond();
             secondsPast++;
         }
         else

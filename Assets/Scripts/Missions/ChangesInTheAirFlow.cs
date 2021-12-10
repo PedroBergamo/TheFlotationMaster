@@ -8,8 +8,8 @@ public class ChangesInTheAirFlow : MonoBehaviour
 
     private bool[] Conditions() {
         bool[] conditions = new bool[10];
-        conditions[3] = (Mathf.Round(FlotationCalculation.Controller.FrothThickness) <= 29);
-        conditions[5] = (Mathf.Round(FlotationCalculation.Controller.AirFlow) >= 20);
+       // conditions[3] = (Mathf.Round(FlotationCalculation.Controller.FrothHeight) <= 29);
+        //conditions[5] = (Mathf.Round(FlotationCalculation.Controller.AirFlowRate) >= 20);
         return conditions;
     }
 
@@ -17,7 +17,7 @@ public class ChangesInTheAirFlow : MonoBehaviour
         switch (Instructions.InstructionsIndex) {
             case 2:
                 float NewCopperGrade = 5;
-                FlotationCalculation.Controller.FeedCuGrade = (NewCopperGrade * (1 - (Mathf.Exp(- 1 * Time.realtimeSinceStartup))));
+                FlotationCalculation.Simulation.feed.Grade = (NewCopperGrade * (1 - (Mathf.Exp(- 1 * Time.realtimeSinceStartup))));
                 break;
             default:
                 break;

@@ -12,6 +12,7 @@ public class FrothThickness : MonoBehaviour {
     void Update()
     {
         var main = Froth.main;
-        main.startLifetime = (FlotationCalculation.Controller.FrothThickness * MultiplyingFactor) + AddingFactor;
+        float FH = (float)FlotationCalculation.Simulation.FrothHeight;
+        main.startLifetime = ( FH * MultiplyingFactor) + AddingFactor ;
     }
 }

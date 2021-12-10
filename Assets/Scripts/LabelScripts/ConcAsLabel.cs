@@ -14,9 +14,9 @@ public class ConcAsLabel : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float AsGrade = FlotationCalculation.Controller.ConcentrateAsGrade();
+            float AsGrade = FlotationCalculation.ConcentrateAsGrade;
             TMPRO.text = AsGrade.ToString();
-            ThereIsPenalty = FlotationCalculation.Controller.ConcentrateAsGrade() > 1;
+            ThereIsPenalty = FlotationCalculation.ConcentrateAsGrade > 1;
             CheckForPenalty();
         }
     }

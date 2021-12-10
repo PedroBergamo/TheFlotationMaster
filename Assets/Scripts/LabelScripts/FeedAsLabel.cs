@@ -33,6 +33,6 @@ public class FeedAsLabel : MonoBehaviour {
         if (ColorTest) {
             return float.Parse(TMPRO.text);
         }
-        return FlotationCalculation.Controller.FeedAsGrade;
+        return FlotationCalculation.FeedAsGrade;
     }
 }

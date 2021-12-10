@@ -13,7 +13,7 @@ public class TailingsCuLabel : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float CuGrade = (float)System.Math.Round(FlotationCalculation.Controller.TailingsCuGrade(), 1);
+            float CuGrade = (float)System.Math.Round(FlotationCalculation.TailingsCuGrade, 1);
             ProcessLabel.text = CuGrade.ToString();
         }
     }

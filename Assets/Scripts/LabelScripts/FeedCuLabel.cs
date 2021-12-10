@@ -17,7 +17,7 @@ public class FeedCuLabel : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float value = FlotationCalculation.Controller.FeedCuGrade;
+            float value = (float)FlotationCalculation.Simulation.feed.Grade;
             TMPRO.text = value.ToString();
         }
     }

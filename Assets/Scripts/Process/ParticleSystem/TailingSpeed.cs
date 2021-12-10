@@ -6,7 +6,7 @@ public class TailingSpeed : MonoBehaviour {
     void Update()
     {
         var main = GetComponent<ParticleSystem>().main;
-        float TailingSimulationSpeed = 100 - ((FlotationCalculation.Controller.ConcentrateMassFlowInTPH() - DeltaPercentageFactor) * DeltaPercentageFactor);
-        main.simulationSpeed = TailingSimulationSpeed;
+       // float TailingSimulationSpeed = 100 - ((FlotationCalculation.Controller.ConcentrateMassFlowInTPH() - DeltaPercentageFactor) * DeltaPercentageFactor);
+        //main.simulationSpeed = TailingSimulationSpeed;
     }
 }

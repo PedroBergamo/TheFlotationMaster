@@ -6,7 +6,7 @@ public class ConcentrateSpeed : MonoBehaviour {
     void Update()
     {
         var main = GetComponent<ParticleSystem>().main;
-        float SpeedFactor = (FlotationCalculation.Controller.ConcentrateMassFlowInTPH() - DeltaPercentageFactor) * DeltaPercentageFactor;
-        main.simulationSpeed = SpeedFactor;
+       // float SpeedFactor = (FlotationCalculation.Controller.ConcentrateMassFlowInTPH() - DeltaPercentageFactor) * DeltaPercentageFactor;
+        //main.simulationSpeed = SpeedFactor;
     }
 }

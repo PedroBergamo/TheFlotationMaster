@@ -12,7 +12,7 @@ public class TailingFlowrate : MonoBehaviour {
     void Update () {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float Tailing = FlotationCalculation.Controller.TailingsFlowRate();
+            float Tailing = FlotationCalculation.TailingsFlowRate;
             TMPRO.text = Tailing.ToString();
         }
 	}

@@ -5,6 +5,6 @@ public class AirControl : MonoBehaviour {
 
 	void Update ()
     {
-        FlotationCalculation.Controller.AirFlow = AirFlowPID.ProcessValue;
+        FlotationCalculation.Simulation.AirFlowRate = AirFlowPID.ProcessValue;
     }
 }

@@ -12,7 +12,7 @@ public class ConcentrateFlowrate : MonoBehaviour {
     void Update () {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float ConcFlowRate = (float)System.Math.Round(FlotationCalculation.Controller.ConcentrateMassFlowInTPH(), 1);
+            float ConcFlowRate = (float)System.Math.Round((float)FlotationCalculation.ConcentrateMassFlow(), 1);
             ProcessLabel.text = ConcFlowRate.ToString();
         }
     }
