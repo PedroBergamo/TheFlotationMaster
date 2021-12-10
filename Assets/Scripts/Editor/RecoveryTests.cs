@@ -6,8 +6,10 @@ public class RecoveryTests
   [Test]
     public void SingleRecoveryCalculationMediumSizeParticleTest()
     {
-        RecoveryCalculation R = new RecoveryExamples().CalculationExample();
-        double Actual = R.CalculateRecoveryForParticleDiameter(0.000071);
+        RecoveryCalculation R = new RecoveryExamples().CalculationExample();        
+        double Actual = R.arrRecovery[81];
+
+//        double Actual = R.CalculateRecoveryForParticleDiameter(0.000071);
         double Expected = 60;
         Assert.AreEqual(Expected, Actual,20);
     }
@@ -16,7 +18,8 @@ public class RecoveryTests
     public void SingleRecoveryCalculationSmallSizeParticleTest()
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();
-        double Actual = R.CalculateRecoveryForParticleDiameter(0.000011);
+        double Actual = R.arrRecovery[10];
+        //double Actual = R.CalculateRecoveryForParticleDiameter(0.00001);
         double Expected = 10;
         Assert.AreEqual(Expected, Actual, 20);
     }
@@ -25,8 +28,9 @@ public class RecoveryTests
     public void SingleRecoveryCalculationForBigSizeParticleTest()
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();
-        double Actual = R.CalculateRecoveryForParticleDiameter(0.000100);
-        double Expected = 80;
+        double Actual = R.arrRecovery[100];
+        //double Actual = R.CalculateRecoveryForParticleDiameter(0.000100);
+        double Expected = 16;
         Assert.AreEqual(Expected, Actual, 20);
     }
 
@@ -56,10 +60,11 @@ public class RecoveryTests
     {
         RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
         Recoveries.FrothHeight = 0.1;
-        double Froth1 = Recoveries.CalculateRecoveryForParticleDiameter(0.000100);
+        double Froth1 = Recoveries.arrRecovery[70];
         Assert.AreEqual(90, Froth1, 10);
         Recoveries.FrothHeight = 0.2;
-        double Froth2 = Recoveries.CalculateRecoveryForParticleDiameter(0.000101);
+        Recoveries.CalculateParticleRecoveries();
+        double Froth2 = Recoveries.arrRecovery[70]; ;
         Assert.AreEqual(50, Froth2, 10);
     }
 
@@ -68,11 +73,12 @@ public class RecoveryTests
     {
         RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
         Recoveries.AirFlowRate = 2;
-        double Air1 = Recoveries.CalculateRecoveryForParticleDiameter(0.000100);
-        Assert.AreEqual(90, Air1, 5);
+        double Air1 = Recoveries.arrRecovery[70];
+        Assert.AreEqual(86, Air1, 3);
         Recoveries.AirFlowRate = 4;
-        double Air2 = Recoveries.CalculateRecoveryForParticleDiameter(0.000101);
-        Assert.AreEqual(100, Air2, 5);
+        Recoveries.CalculateParticleRecoveries();
+        double Air2 = Recoveries.arrRecovery[70]; ;
+        Assert.AreEqual(95, Air2, 3);
     }
 
     [Test]

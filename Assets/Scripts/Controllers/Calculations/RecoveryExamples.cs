@@ -21,6 +21,7 @@ public class RecoveryExamples{
             ZetaPotential = -0.15
         };
         RC.SetUpCalculation();
+        RC.CalculateParticleRecoveries();
         return RC;
     }
 

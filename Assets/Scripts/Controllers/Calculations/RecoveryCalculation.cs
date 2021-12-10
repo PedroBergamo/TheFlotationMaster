@@ -57,7 +57,7 @@ public class RecoveryCalculation {
     private double dblSlurryFraction = 0.2, dblNBubble;
     private double dblRateConst;
     private double dblDragBeta; // drag coefficient (Goren & O'Niell)
-    private double dblH_c_Factor = 5d; // adjustable fitting parameter for dragbeta
+    private double dblH_c_Factor = 3d; // adjustable fitting parameter for dragbeta
     private bool ContactDistribChecked, BubbleSizeEnabled;
     private double dblU1Bulk, dblU2Bulk, dblEBulk;
     public int NumberOfCells = 4;
