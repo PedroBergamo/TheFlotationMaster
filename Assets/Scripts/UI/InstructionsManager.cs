@@ -20,12 +20,6 @@ public class InstructionsManager : MonoBehaviour {
     public Canvas TaskMenu;
     public Canvas TaskCanvas;
 
-    private void Start()
-    {
-        GiveMissionName(MissionName);
-        StartExercise();
-    }
-
     private void StartExercise()
     {
         CreatedButtons = new List<GameObject>();
@@ -97,6 +91,7 @@ public class InstructionsManager : MonoBehaviour {
         InstructionsIndex = 0;
         MissionName = missionName;
         SetOfInstructions = GetInstructions();
+        StartExercise();
     }
 
     private List<Instruction> GetInstructions()
