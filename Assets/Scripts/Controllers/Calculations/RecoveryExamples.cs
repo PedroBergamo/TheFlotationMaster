@@ -6,7 +6,7 @@
 public class RecoveryExamples{
 
     public RecoveryCalculation CalculationExample() {
-        Feed Test = new Feed
+        Stream Feed = new Stream
         {
             ContactAngle = 25,
             Grade = 15,
@@ -14,7 +14,7 @@ public class RecoveryExamples{
         };
         RecoveryCalculation RC = new RecoveryCalculation()
         {
-            feed = Test,
+            feed = Feed,
             Power = 2500,
             NumberOfCells = 4,
             RetentionTime = 3,

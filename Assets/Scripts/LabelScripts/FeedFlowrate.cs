@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using System;
 using TMPro;
 
 public class FeedFlowrate : MonoBehaviour {
     private TextMeshProUGUI TMPRO;
+    public Stream stream;
 
     private void Start()
     {
@@ -13,7 +15,7 @@ public class FeedFlowrate : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            TMPRO.text = FlotationCalculation.FeedFlowRate.ToString();
+            TMPRO.text = Math.Round(stream.MassFlowRate).ToString();
         }
     }
 }

@@ -91,7 +91,7 @@ public class RecoveryCalculation {
     public double[] arrRecovery, arrPDiam,
         arrRateK, arrPa, arrPc,
         arrPd, arrFR;
-    public Feed feed;
+    public Stream feed;
     private double SurfaceTension;
 
     public void SetUpCalculation(){
@@ -193,6 +193,7 @@ public class RecoveryCalculation {
         double result = dblBeta * dblNBubble * dblPAtt * dblPCol * (1 - dblPDet) * 60; // x60 to make 1/min;
             return result;
     }
+
     /// <summary>
     /// values obtained from Resources/Kyle2011.pdf figure 4
     /// </summary>
@@ -225,14 +226,13 @@ public class RecoveryCalculation {
 
     private double K131()
     {
-        double contactAngle = feed.CheckContactAngle(dblParticleDiam);
         double a, b_k;
-        if (contactAngle < 86.89d)
+        if (feed.ContactAngle < 86.89d)
         {
             a = 2.732 * Math.Pow(10, -21);
             b_k = 0.04136d;
         }
-        else if (86.889 <= contactAngle && contactAngle < 92.28)
+        else if (86.889 <= feed.ContactAngle && feed.ContactAngle < 92.28)
         {
             a = 4.888d * Math.Pow(10d, -44);
             b_k = 0.6441d;
@@ -242,7 +242,7 @@ public class RecoveryCalculation {
             a = 6.327d * Math.Pow(10d, (double)-27);
             b_k = 0.2172;
         }
-        return a * Math.Exp(b_k * contactAngle);
+        return a * Math.Exp(b_k * feed.ContactAngle);
     }
 
     private double VT(double dblH0)
@@ -355,7 +355,7 @@ public class RecoveryCalculation {
         double dblNParticle = (1 - AirFraction) * dblSlurryFraction / dblVolParticle;
         double dblZBubbParticle = dblBeta * dblNBubble * dblNParticle;
         return SurfaceTension * pi * Math.Pow(dblParticleDiam / 2, 2) *
-            (1 - Math.Pow(Math.Cos(feed.CheckContactAngle(dblParticleDiam) * (pi / 180)), 2));
+            (1 - Math.Pow(Math.Cos(feed.ContactAngle * (pi / 180)), 2));
     }
 
     private double CalculateEnergyDissipation()
