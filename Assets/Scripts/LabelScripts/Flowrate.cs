@@ -2,7 +2,7 @@
 using System;
 using TMPro;
 
-public class FeedFlowrate : MonoBehaviour {
+public class Flowrate : MonoBehaviour {
     private TextMeshProUGUI TMPRO;
     public Stream stream;
 

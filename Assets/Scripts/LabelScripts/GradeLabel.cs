@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class ConcCuLabel : MonoBehaviour {
+public class GradeLabel : MonoBehaviour {
     public static bool ThereIsPenalty;
+    public Stream stream;
     TextMeshProUGUI ProcessLabel;
 
     private void Start()
@@ -14,8 +15,7 @@ public class ConcCuLabel : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float CuGrade = FlotationCalculation.ConcentrateCuGrade();
-            ProcessLabel.text = CuGrade.ToString();
+            ProcessLabel.text = System.Math.Round(stream.Grade,2).ToString();
         }
     }
 }

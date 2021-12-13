@@ -6,7 +6,7 @@ public class FlotationCalculation : MonoBehaviour
 {
     public static RecoveryCalculation Simulation;
     public static FlotationParameters flotationParameters;
-    public float SecondsForNextSampling = 3;
+    public static float SecondsForNextSampling = 3;
     public float SecondsSinceLastSampling = 0;
     public static bool NextSamplingIsReady = false;
 

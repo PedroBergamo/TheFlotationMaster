@@ -11,7 +11,7 @@ public class penaltyAlarm : MonoBehaviour {
 
     void Update()
     {
-        if (ConcCuLabel.ThereIsPenalty || ConcAsLabel.ThereIsPenalty)
+        if (GradeLabel.ThereIsPenalty || GradeLabel.ThereIsPenalty)
         {
             PlayAlert();
         }

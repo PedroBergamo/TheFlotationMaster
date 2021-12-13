@@ -35,7 +35,7 @@ public class Stream: MonoBehaviour
             return n + (-n * (PercentageVariation / 100));
         }
         else
-            return n + (-n * (PercentageVariation / 100));
+            return n + (n * (PercentageVariation / 100));
     }
 
 }

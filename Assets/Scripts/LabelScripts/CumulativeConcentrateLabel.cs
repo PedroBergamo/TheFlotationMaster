@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CumulativeConcentrateLabel : MonoBehaviour
 {
-    public float limitGrade;
+    public float LimitGrade;
     public float CumulativeConcentrate;
     public Stream FinalStream;
+    public TextMeshProUGUI CumulativeText;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        
+        CumulativeText = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (FlotationCalculation.NextSamplingIsReady) {
+            if (FinalStream.Grade >= LimitGrade) {
+                CumulativeConcentrate += (float)(FinalStream.MassFlowRate / 3600) * FlotationCalculation.SecondsForNextSampling;
+            }
+        }
+        CumulativeText.text = System.Math.Round(CumulativeConcentrate, 3).ToString();
     }
 }
