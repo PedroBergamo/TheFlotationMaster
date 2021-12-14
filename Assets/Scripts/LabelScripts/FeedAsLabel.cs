@@ -5,6 +5,7 @@ public class FeedAsLabel : MonoBehaviour {
     public float MaximumValue = 0.5f;
     public float MinimumValue = 1.5f;
     public float GradientFactor;
+    public Stream stream;
 
     TextMeshProUGUI TMPRO;
     public bool ColorTest;
@@ -18,7 +19,7 @@ public class FeedAsLabel : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            TMPRO.text = AsGrade().ToString();
+            TMPRO.text = stream.Grade.ToString();
         }
     }
 
@@ -33,6 +34,6 @@ public class FeedAsLabel : MonoBehaviour {
         if (ColorTest) {
             return float.Parse(TMPRO.text);
         }
-        return FlotationCalculation.FeedAsGrade;
+        return (float)stream.Grade;
     }
 }

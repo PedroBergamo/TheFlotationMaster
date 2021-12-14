@@ -16,7 +16,7 @@ public class ConcCuRecovery : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            Variable = Mathf.Round((float)FlotationCalculation.ConcentrateCuRecovery());
+            Variable = Mathf.Round((float)FlotationCalculation.ConcentrateRecovery());
             ProcessLabel.text = Variable.ToString();
         }
     }

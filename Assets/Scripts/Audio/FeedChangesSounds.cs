@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
 public class FeedChangesSounds : MonoBehaviour {
-    float PreviousGrade = 15;
-    float CurrentGrade;
+    double PreviousGrade = 15;
+    double CurrentGrade;
     private AudioSource Bounce;
+    public Stream stream;
 
     private void Start()
     {
@@ -11,7 +12,7 @@ public class FeedChangesSounds : MonoBehaviour {
     }
 
     void Update () {
-        CurrentGrade = FlotationCalculation.FeedAsGrade;
+        CurrentGrade = stream.Grade;
         if (CurrentGrade != PreviousGrade) {
             Bounce.PlayDelayed(0.1f);
             PreviousGrade = CurrentGrade;

@@ -9,13 +9,15 @@ public class Stream: MonoBehaviour
     /// Mass flow rate in tons per hour
     /// </summary>
     public double MassFlowRate = 10;
-    public double ContactAngle;
+    public double ContactAngle = 25;
     public double Grade = 1;
+
+   public float Kinetics = 1;
 
     /// <summary>
     /// Density in g/m^3
     /// </summary>
-    public double Density;
+    public double Density = 4100;
     public double PercentageVariation = 3;
 
 
@@ -38,4 +40,8 @@ public class Stream: MonoBehaviour
             return n + (n * (PercentageVariation / 100));
     }
 
+    private double VolumetricFlowRate()
+    {
+        return MassFlowRate + (MassFlowRate * (1 - SolidsPercentage));
+    }
 }
