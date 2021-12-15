@@ -23,12 +23,12 @@ public class Stream: MonoBehaviour
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            MassFlowRate = NoisyValue(MassFlowRate);
-            Grade = NoisyValue(Grade);
+            MassFlowRate = NoisyValue(MassFlowRate, 2);
+            Grade = NoisyValue(Grade, (MassFlowRate/10));
         }
     }
 
-    private double NoisyValue(double n)
+    private double NoisyValue(double n, double PercentageVariation)
     {
         if (Random.value > 0.5)
         {
