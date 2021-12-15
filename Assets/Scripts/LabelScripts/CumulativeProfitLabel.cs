@@ -10,7 +10,7 @@ public class CumulativeProfitLabel : MonoBehaviour {
     }
 
     void Update () {
-            TMPRO.text = "€" + ProfitAddition.cumulativeProfit;
+            TMPRO.text = "C" + ProfitAddition.cumulativeProfit;
         }
     }
 

@@ -11,15 +11,13 @@ public class Stream: MonoBehaviour
     public double MassFlowRate = 10;
     public double ContactAngle = 25;
     public double Grade = 1;
-
-   public float Kinetics = 1;
+    public float Kinetics = 1;
 
     /// <summary>
     /// Density in g/m^3
     /// </summary>
     public double Density = 4100;
     public double PercentageVariation = 3;
-
 
     private void Update()
     {
