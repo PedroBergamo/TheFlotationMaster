@@ -1,5 +1,37 @@
 {
-  "Instructions": [
-  
-  ]
+    "Instructions": [
+        {
+            "text": "Metal Recovery is the real deal. Now you will learn one of the most important performance calculations related to flotation",
+            "options": [ "Next" ]
+        },
+        {
+            "text": "One way of calculating it is by dividing the enrichment ratio (Concentrate grade / Feed grade) by the concentration ratio.",
+            "options": [ "Next" ]
+        },
+        {
+            "text": "In a flotation process that the Feed Cu % is 1 while the Concentrate Cu % is 2, and the concentration ratio is 2, what would be the Metal Recovery?\n\n Recovery =\nConcentrate Metal Grade * 100 / (Feed Metal Grade * Concentration Ratio)",
+            "options": [
+                "1%",
+                "100%",
+                "2%",
+                "200%"
+            ],
+            "correctOptionIndex": 2
+        },
+        {
+            "text": "Check the Cu grade in the Feed and Concentrate streams and calculate the enrichment ratio. Knowing that the concentration ratio of this process is around 2, calculate the recovery of this process. Is it close to the value shown in the recovery graph",
+            "options": [
+                "Yes",
+                "No"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": " It has to be, because that is how the recovery of this simulation is calculated ;). Even though there are other ways of calculation recovery, I am going to leave you with this simplistic approach, just because it doesn't require calculator or other parameters like tailings' values.",
+            "options": [
+                "Sure"
+            ],
+            "correctOptionIndex": 1
+        }
+    ]
 }

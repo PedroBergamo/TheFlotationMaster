@@ -78,7 +78,7 @@ public class FlotationCalculation : MonoBehaviour
     /// <returns></returns>
     public float ConcentrateMassFlow()
     {
-        float SolidsFlow =  (float)Simulation.feed.MassFlowRate / ConcentrationRatio;
+        float SolidsFlow =  (0.7f * (float)Simulation.feed.MassFlowRate / ConcentrationRatio) + (0.3f * (float)Simulation.feed.MassFlowRate * (float)ConcentrateRecovery()/100);
         float Result =  SolidsFlow + (SolidsFlow * (UnityEngine.Random.value / NoiseSizePercentage));
         return Result;
     }

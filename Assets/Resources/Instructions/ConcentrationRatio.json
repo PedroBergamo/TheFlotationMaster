@@ -1,7 +1,7 @@
 {
   "Instructions": [
     {
-      "text": "Take a look at the process view. The stream entering the tank is called FEED. It has a certain grade of valuable metal, in our case copper.",
+      "text": "Go to the view where you can see the mine. The stream entering the tank is called FEED. It has a certain grade of valuable metal, in our case copper.",
       "options": [ "Next" ]
     },
     {
@@ -17,35 +17,25 @@
       "options": [ "Next" ]
     },
     {
-      "text": "Let's put this knowledge into practice. Adjust the air flow rate in order to answer the questions and complete the next tasks.",
-      "options": [ "Start" ]
-    },
-    {
-      "text": "What is the concentration ratio of this flotation cell with the maximum air flow rate?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+      "text": "Let's put this knowledge into practice. What is the concentration ratio of this flotation cell with recovery above 80%?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
       "options": [
-        "5",
-        "30",
-        "2",
-        "25"
+        "about 5",
+        "about 30",
+        "about 2",
+        "about 25"
       ],
       "correctOptionIndex": 3
     },
     {
-      "text": "Good job!",
-      "options": ["Next"]
-    },
-    {
-      "text": "With the froth at '-30', what Air flow rate would you use if you knew that the optimal concentration ratio for this cell was 5?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+      "text": "Good job! Now press the circle in the mine icon and change the Feed flow rate to something like 15. Did the concentration ratio changed? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
       "options": [
-        "8",
-        "100",
-        "25",
-        "20"
+        "It remained the same",
+        "It changed"
       ],
       "correctOptionIndex": 1
     },
     {
-      "text": "Congratulations! Now you know how to calculate Concentration Ratio.",
+      "text": "Exactly! Cells are usually designed to work with a specific Concentration Ratio. In next lessons we will learn about other performance calculations",
       "options": ["Finish task"]
     }
   ]

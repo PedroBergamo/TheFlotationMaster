@@ -1,32 +1,32 @@
 {
-  "Instructions": [
-    {
-      "text": "Metal loss is the opposite of the % Metal Recovery and represents the material lost to the tailings. It can be calculated simply by subtracting the % Metal Recovery from 100%.",
-      "options": [ "Next" ]
-    },
-    {
-          "text": "In a flotation process that presents a 70% Cu recovery, what is the metal loss? \n\n Metal Loss =\n 100 - Metal Recovery %",
-          "options": [
+    "Instructions": [
+        {
+            "text": "Metal loss is the opposite of the % Metal Recovery and represents the material lost to the tailings. It can be calculated simply by subtracting the % Metal Recovery from 100%.",
+            "options": [ "Next" ]
+        },
+        {
+            "text": "In a flotation process that presents a 70% Cu recovery, what is the metal loss? \n\n Metal Loss =\n 100 - Metal Recovery %",
+            "options": [
                 "30%",
                 "3%",
                 "170",
                 "300"
-              ],
-              "correctOptionIndex": 1
+            ],
+            "correctOptionIndex": 1
         },
         {
-                "text": "In a reverse flotation (used e.g. in iron beneficiation), the precious metal is collected in the tailings. In this circumstance, with a recovery of 40% in the tailings, what is the metal loss in the Concentrate stream?",
-                "options": [
-                  "600%",
-                  "40%",
-                  "60%",
-                  "140%"
-                ],
-                "correctOptionIndex": 3
-              },
-    {
-      "text": "Correct! See in next lesson",
-      "options": ["Finish"]
-    }
-  ]
+            "text": "In a reverse flotation (used e.g. in iron beneficiation), the precious metal is collected in the tailings. In this circumstance, with a recovery of 40% in the tailings, what is the metal loss in the Concentrate stream?",
+            "options": [
+                "600%",
+                "40%",
+                "60%",
+                "140%"
+            ],
+            "correctOptionIndex": 3
+        },
+        {
+            "text": "If you completed the other jobs, I guess we are done. Good luck with your mine and remember to have fun.",
+            "options": [ "Finnish" ]
+        }
+    ]
 }

@@ -1,7 +1,7 @@
 {
   "Instructions": [
     {
-      "text": "Enrichment Ratio is nothing but a quick dive into the quality of your concentrate. It gives you a ratio between the amount of precious metal going in and the amount of precious metal going out.",
+      "text": "Enrichment Ratio is a quick dive into the quality of your concentrate. It gives you a ratio between the amount of precious metal going in and the amount of precious metal going out.",
       "options": [ "Next" ]
     },
     {
@@ -19,12 +19,12 @@
           "correctOptionIndex": 2
     },
     {
-      "text": "Go to the process view by pressing back and check the Cu grade in the Feed and Concentrate streams. Now set the Air Flow Rate to '4' and the Froth Thickness to '-5'. What happened to the Enrichment Ratio?",
-      "options": [
-        "It increased",
-        "It decreased"
-      ],
-      "correctOptionIndex": 1
+        "text": "Check the Cu grade in the Feed and Concentrate streams and calculate the enrichment ratio. With the Froth Thickness set to '-10' set the Air Flow Rate from '2' to '4'. What happened to the Enrichment Ratio?",
+        "options": [
+            "It increased",
+            "It decreased"
+        ],
+        "correctOptionIndex": 1
     },
     {
           "text": "Correct. It means that the Cu grade, or quality of your concentrate, increased. That can't be a bad thing, right? But take a second look at the Concentrate stream. What happened to the flow rate, in other words, the amount being produced?",
@@ -35,7 +35,7 @@
           "correctOptionIndex": 2
         },
         {
-            "text": "I'm sure you would rather have ten bills of five dollars than two bills of 10 dollars. Enrichment Ratio, although a quick dive into the system grades, does not take quantity into consideration, unlike metal recovery.",
+            "text": "Enrichment Ratio, although a quick dive into the system grades, does not take quantity into consideration, unlike metal recovery.",
             "options": [ "Next" ]
           },
           {
