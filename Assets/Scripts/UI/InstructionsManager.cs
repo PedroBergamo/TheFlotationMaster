@@ -19,6 +19,7 @@ public class InstructionsManager : MonoBehaviour {
     public AudioSource LevelClearedAudio;
     public Canvas TaskMenu;
     public Canvas TaskCanvas;
+    public GameObject JobsButton;
 
     private void StartExercise()
     {
@@ -47,7 +48,6 @@ public class InstructionsManager : MonoBehaviour {
     }
 
     public void CheckIfRightAnswer() {
-        DestroyDynamicGameObjects(CreatedButtons);
         if (GivenAnswer == SetOfInstructions[InstructionsIndex].CorrectOption)
         {
             AchievementAudio.Play();
@@ -71,6 +71,7 @@ public class InstructionsManager : MonoBehaviour {
         {
             LevelClearedMenu.SetActive(true);
             LevelClearedAudio.Play();
+            JobsButton.SetActive(true);
             TaskMenu.enabled = true;
             TaskCanvas.enabled = false;
         }
@@ -88,6 +89,7 @@ public class InstructionsManager : MonoBehaviour {
        }
 
     public void GiveMissionName(string missionName) {
+        JobsButton.SetActive(false);
         InstructionsIndex = 0;
         MissionName = missionName;
         SetOfInstructions = GetInstructions();
@@ -109,6 +111,7 @@ public class InstructionsManager : MonoBehaviour {
 
     private void GenerateButtons()
     {
+        DestroyDynamicGameObjects(CreatedButtons);
         if (SetOfInstructions[InstructionsIndex].Options[0] != "") {
             InstructionsButton.SetActive(true);
             CreateButtons();

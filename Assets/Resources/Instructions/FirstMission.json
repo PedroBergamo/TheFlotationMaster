@@ -1,39 +1,44 @@
 {
   "Instructions": [
     {
-      "text": "Welcome to the flotation section.",
-      "options": [
-        "Start"
-      ],
-      "correctOptionIndex": 1
-    }, {
-      "text": "Let's learn about the components of the process view. Go to the process window by pressing 'Back' on the top of this screen then check what are the components available.",
-      "options": [
-        "Concentrate, Tailings",
-        "Cell Parameters (Air, Froth), Feed",
-        "Feed, Cell Parameters (Air, Froth), Concentrate, Tailings",
-      ],
-      "correctOptionIndex": 3
+        "text": "Welcome to the fantastic world of flotation. Ready to start making some money with mining?",
+        "options": [
+            "Of course!"
+        ],
+        "correctOptionIndex": 1
     },
     {
-      "text": "Excellent. Check out the Tailings's graphs. What is the actual Cu Grade on that stream?",
+        "text": "Great! Before doing that let's quickly go through the UI of the game. Can you see the button labeled 'Job' in the right top corner. Close this dialog box by pressing the 'X' button on the top, then open it again by clicking that button",
+        "options": [ "Did it" ],
+
+        "correctOptionIndex": 1
+    },
+    {  
+        "text": "Good job! Now click on the circle in the middle of the screen to go to the flotation cell window. Then check what are the components available.",
+        "options": [
+            "Concentrate, Mine, 2% Cu grade",
+            "Cell Parameters (Air, Froth), Flow Rate, Cu Grade, Cu Recovery"
+        ],
+        "correctOptionIndex": 2
+    },    {
+      "text": "Excellent. Check out the Cu grade's graph. What is the actual Cu Grade on that stream?",
       "options": [
-        "Around 1 %",
-        "Around 3 %",
-        "Around 30 %"
+        "Around 2 %",
+        "Around 5 tons/h",
+        "Around 90 %"
       ],
       "correctOptionIndex": 1
     },
      {
-      "text": "I guess the Cu recovery of this process could be increased. Check the process menu and increase the air flow. What happened to the Concentrate Cu recovery?",
+      "text": "You are ready for the first challenge: What happens to the Concentrate Cu recovery if you change the air flow rate from 2 to 5 cm/s?",
       "options": [
-        "It decreased",
-        "It increased"
+        "The recovery decreased",
+        "The recovery increased"
       ],
       "correctOptionIndex": 2
     },
      {
-      "text": "You are now officially introduced to the Flotation views. Time for the real work!",
+      "text": "You are now officially introduced to the Flotation views. See you later!",
       "options": ["Finish task"],
       "correctOptionIndex": 1
       },
