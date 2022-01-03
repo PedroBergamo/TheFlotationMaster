@@ -20,6 +20,7 @@ public class FlotationCalculation : MonoBehaviour
     public static int particleDiameterInMicrons = 70;
     public Stream Feed;
     public Stream ConcentrateStream;
+    private float ConcentrationRatio = 2;
 
     void Awake()
     {
@@ -58,7 +59,6 @@ public class FlotationCalculation : MonoBehaviour
     private void UpdateStreams() {
         ConcentrateStream.MassFlowRate = ConcentrateMassFlow();
         ConcentrateStream.Grade = ConcentrateGrade();
-
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class FlotationCalculation : MonoBehaviour
     private float[] SolidsFlowWeights()
     {
         float Intercept = 0.004f;
-        float RecoveryWeight = 0.008f;
+        float RecoveryWeight = 0.01f;
         float[] Weights = { Intercept, RecoveryWeight };
         return Weights;
     }
@@ -78,10 +78,8 @@ public class FlotationCalculation : MonoBehaviour
     /// <returns></returns>
     public float ConcentrateMassFlow()
     {
-        float SolidsFlow = SolidsFlowWeights()[0]
-            + (SolidsFlowWeights()[1] * (float)ConcentrateRecovery());
-        float Result = SolidsFlow / (float)Simulation.feed.SolidsPercentage;
-        Result += Result + (Result * (UnityEngine.Random.value / NoiseSizePercentage));
+        float SolidsFlow =  (float)Simulation.feed.MassFlowRate / ConcentrationRatio;
+        float Result =  SolidsFlow + (SolidsFlow * (UnityEngine.Random.value / NoiseSizePercentage));
         return Result;
     }
 
@@ -89,16 +87,11 @@ public class FlotationCalculation : MonoBehaviour
         return Simulation.arrRecovery[particleDiameterInMicrons];
     }
 
-    public float ConcentrationRatio()
-    {
-        float Result = (float)Simulation.feed.MassFlowRate / ConcentrateMassFlow();
-        return Result;
-    }
+
      
     public float ConcentrateGrade()
     {
-        //float AirFlowCorrection = (float)Simulation.AirFlowRate / ;
-        float InfGrade = (float)(Simulation.feed.Grade * ConcentrationRatio() * ConcentrateRecovery() / 100);
+        float InfGrade = (float)(Simulation.feed.Grade * ConcentrationRatio * ConcentrateRecovery() / 100);
         double ConcGrade = InfGrade * (1 - Math.Exp(-Simulation.feed.Kinetics * Time.realtimeSinceStartup));
         double NoisyConcGrade = ConcGrade + (ConcGrade *
             (UnityEngine.Random.value / NoiseSizePercentage));
