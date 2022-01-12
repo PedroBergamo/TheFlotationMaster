@@ -22,7 +22,21 @@ public class GetCopperPrice : MonoBehaviour
     {
         TMPRO = GetComponent<TextMeshProUGUI>();
         StartCoroutine(GetRequest("https://markets.businessinsider.com/commodities/copper-price"));
+    }
+
+    private void Update()
+    {
+        if(FlotationCalculation.NextSamplingIsReady){
+            if (UnityEngine.Random.value > 0.5f)
+            {
+                CopperPrice += UnityEngine.Random.value * (CopperPrice * 0.01f);
+            }
+            else {
+                CopperPrice -= UnityEngine.Random.value * (CopperPrice * 0.01f);
+            };
+        }
         TwoPercentCopperPrice = Math.Round(CopperPrice * 0.02, 1);
+
         TMPRO.text = "Ore price: " + TwoPercentCopperPrice.ToString() + "C per ton";
     }
 
