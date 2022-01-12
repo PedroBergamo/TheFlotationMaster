@@ -16,6 +16,7 @@ public class GetCopperPrice : MonoBehaviour
     public double TwoPercentCopperPrice = 193;
     public CumulativeConcentrateLabel FinalStreamTons;
     public TextMeshProUGUI Credits;
+    public AudioSource MoneyAudio;
 
 
     void Start()
@@ -95,8 +96,15 @@ public class GetCopperPrice : MonoBehaviour
 
     public void SellOre() {
         float CurrentCredits = float.Parse(Credits.text);
-        Credits.text = (CurrentCredits + (FinalStreamTons.CumulativeConcentrate * TwoPercentCopperPrice)).ToString();
+        Credits.text = (Math.Round(CurrentCredits + (FinalStreamTons.CumulativeConcentrate * TwoPercentCopperPrice))).ToString();
+        PlayAudio();
         FinalStreamTons.CumulativeConcentrate = 0;
+
     }
 
+    private void PlayAudio() {
+        if (FinalStreamTons.CumulativeConcentrate > 0) {
+            MoneyAudio.Play();
+        }
+    }
 }
