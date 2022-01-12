@@ -74,6 +74,7 @@ public class InstructionsManager : MonoBehaviour {
             JobsButton.SetActive(true);
             TaskMenu.enabled = true;
             TaskCanvas.enabled = false;
+            DestroyDynamicGameObjects(CreatedButtons);
         }
     }
 

@@ -29,7 +29,7 @@
     {
       "text": "Good job! Now press the circle in the mine icon and change the Feed flow rate to something like 15. Did the concentration ratio changed? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
       "options": [
-        "It remained the same",
+        "It didn't change",
         "It changed"
       ],
       "correctOptionIndex": 1

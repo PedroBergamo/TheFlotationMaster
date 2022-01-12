@@ -38,7 +38,7 @@ public class GetCopperPrice : MonoBehaviour
         }
         TwoPercentCopperPrice = Math.Round(CopperPrice * 0.02, 1);
 
-        TMPRO.text = "Ore price: " + TwoPercentCopperPrice.ToString() + "C per ton";
+        TMPRO.text = "Price per ton: " + TwoPercentCopperPrice.ToString();
     }
 
     IEnumerator GetRequest(string uri)
