@@ -1,54 +1,75 @@
 {
-  "Instructions": [
-    {
-      "text": "Enrichment Ratio is a quick dive into the quality of your concentrate. It gives you a ratio between the amount of precious metal going in and the amount of precious metal going out.",
-      "options": [ "Next" ]
-    },
-    {
-      "text": "It can be calculated by dividing a metal grade on the Concentrate stream by the grade of the same metal in the Feed stream.",
-      "options": [ "Next" ]
-    },
-    {
-      "text": "In a flotation process that the precious metal is nickel, and the Feed Ni % is 2 while the Concentrate Ni % is 6, what would be the Enrichment Ratio?\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
-      "options": [
-            "6",
-            "3",
-            "0.3",
-            "12"
-          ],
-          "correctOptionIndex": 2
-    },
-    {
-        "text": "Check the Cu grade in the Feed and Concentrate streams and calculate the enrichment ratio. With the Froth Thickness set to '-10' set the Air Flow Rate from '2' to '4'. What happened to the Enrichment Ratio?",
-        "options": [
-            "It increased",
-            "It decreased"
-        ],
-        "correctOptionIndex": 1
-    },
-    {
-          "text": "Correct. It means that the Cu grade, or quality of your concentrate, increased. That can't be a bad thing, right? But take a second look at the Concentrate stream. What happened to the flow rate, in other words, the amount being produced?",
-          "options": [
-            "It increased",
-            "It decreased"
-          ],
-          "correctOptionIndex": 2
+    "Instructions": [
+        {
+            "text": "While Concentration Ratio deals with quantity, Enrichment Ratio is a quick dive into the quality of your Concentrate. It gives you a ratio between the amount of precious metal going in and the amount of precious metal going out.",
+            "options": [ "Next" ]
         },
         {
-            "text": "Enrichment Ratio, although a quick dive into the system grades, does not take quantity into consideration, unlike metal recovery.",
+            "text": "It can be calculated by dividing a metal grade on the Concentrate stream by the grade of the same metal in the Feed stream.",
             "options": [ "Next" ]
-          },
-          {
-                "text": "Check out the Cu recovery graph in the Concentrate stream, for example. What happened to it?",
-                "options": [
-                  "It increased",
-                  "It decreased"
-                ],
-                "correctOptionIndex": 2
-              },
-    {
-      "text": "Correct! Perhaps we should set the air and froth to their initial values (15 and -30). Well done!",
-      "options": ["Finish"]
-    }
-  ]
+        },
+        {
+            "text": "Before we start, take a look at the Feed stream and tell me what is Cu grade entering the Flotation bank",
+            "options": [
+                "Around 20 t/h",
+                "Around 100%",
+                "Around 1%",
+                "Around 10 t/h"
+            ],
+            "correctOptionIndex": 3
+        },
+        {
+            "text": "True, and what is the Cu grade getting out of the system (Concentrate Stream)?",
+            "options": [
+                "Around 6%",
+                "Around 2%"
+            ],
+            "correctOptionIndex": 2
+        },
+        {
+            "text": "The magical act of turning 1% Cu into 2% Cu is called Concentration process, also known as Beneficiation. Flotation is a very common form of Concentration, which can bring the metal grade from less than 1% until 30% or more.",
+            "options": [
+                "Cool"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "In order to enrich the metal content from 30% Cu to 100% Cu other processes like filtration and smelting are envolved but we won't dwelve into them.",
+            "options": [
+                "Sure"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "So the job of bringing the metal content from 0% to 100% is called Enrichment and we can see how good we are at enriching metals by calculating the Enrichment Ratio using the formula:\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
+            "options": [
+                "Got it"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "Let's try! In a flotation process that the precious metal is nickel, and the Feed Ni % is 2 while the Concentrate Ni % is 6, what would be the Enrichment Ratio?\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
+            "options": [
+                "6",
+                "3",
+                "0.3",
+                "12"
+            ],
+            "correctOptionIndex": 2
+        },
+        {
+            "text": "Now check the Cu grade in the Feed and Concentrate streams. What is the Enrichment Ratio of this cell?n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal %",
+            "options": [
+                "Around 2",
+                "Around 3",
+                "Around 1",
+                "Around 6"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "Correct. Enrichment Ratio, although a quick dive into the system grades, does not take quantity into consideration, unlike metal recovery. We are going to learn how to correlate quantity and quality in next lessons.",
+            "options": [ "Finnish lesson" ]
+        }
+    ]
 }
