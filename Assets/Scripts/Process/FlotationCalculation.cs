@@ -4,7 +4,7 @@ using Assets.Scripts.Controllers;
 
 public class FlotationCalculation : MonoBehaviour
 {
-    public static RecoveryCalculation Simulation;
+    public RecoveryCalculation Simulation;
     public static FlotationParameters flotationParameters;
     public static float SecondsForNextSampling = 3;
     public float SecondsSinceLastSampling = 0;
@@ -83,7 +83,7 @@ public class FlotationCalculation : MonoBehaviour
         return Result;
     }
 
-    public static double ConcentrateRecovery() {
+    public double ConcentrateRecovery() {
         return Simulation.arrRecovery[particleDiameterInMicrons];
     }
 

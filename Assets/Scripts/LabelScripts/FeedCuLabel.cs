@@ -6,6 +6,8 @@ public class FeedCuLabel : MonoBehaviour {
     float MinimumValue = 9;    
     public float gradientFactor;
 
+    public FlotationCalculation simulation;
+
     TextMeshProUGUI TMPRO;
 
     private void Start()
@@ -17,7 +19,7 @@ public class FeedCuLabel : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            float value = (float)FlotationCalculation.Simulation.feed.Grade;
+            float value = (float)simulation.Simulation.feed.Grade;
             TMPRO.text = value.ToString();
         }
     }

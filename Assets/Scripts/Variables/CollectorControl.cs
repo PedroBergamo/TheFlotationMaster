@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class CollectorControl : MonoBehaviour {
     public PID CollectorPID;
-    
+
+    public FlotationCalculation simulation;
+
     void Update ()
     {
-        FlotationCalculation.Simulation.frotherConcentrate = CollectorPID.ProcessValue;
+        simulation.Simulation.frotherConcentrate = CollectorPID.ProcessValue;
     }
 }

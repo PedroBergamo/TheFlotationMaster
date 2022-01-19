@@ -5,6 +5,7 @@ public class ChangesInTheAirFlow : MonoBehaviour
     public InstructionsManager Instructions;
     public AudioSource TaskClearedAudio;
     private int SecondsPassedWithCorrectRatio;
+    public FlotationCalculation simulation;
 
     private bool[] Conditions() {
         bool[] conditions = new bool[10];
@@ -17,7 +18,7 @@ public class ChangesInTheAirFlow : MonoBehaviour
         switch (Instructions.InstructionsIndex) {
             case 2:
                 float NewCopperGrade = 5;
-                FlotationCalculation.Simulation.feed.Grade = (NewCopperGrade * (1 - (Mathf.Exp(- 1 * Time.realtimeSinceStartup))));
+                simulation.Simulation.feed.Grade = (NewCopperGrade * (1 - (Mathf.Exp(- 1 * Time.realtimeSinceStartup))));
                 break;
             default:
                 break;

@@ -6,6 +6,7 @@ public class ConcCuRecovery : MonoBehaviour {
     public float LowerPenalty = 0;
     public float HigherPenalty = 1000000000;
     private float Variable;
+    public FlotationCalculation simulation;
 
     private void Start()
     {
@@ -16,20 +17,8 @@ public class ConcCuRecovery : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            Variable = Mathf.Round((float)FlotationCalculation.ConcentrateRecovery());
+            Variable = Mathf.Round((float)simulation.ConcentrateRecovery());
             ProcessLabel.text = Variable.ToString();
-        }
-    }
-
-    private void CheckForPenalty()
-    {
-        if (Variable < LowerPenalty || Variable > HigherPenalty)
-        {
-            ProcessLabel.color = Color.red;
-        }
-        else
-        {
-            ProcessLabel.color = Color.white;
         }
     }
 }

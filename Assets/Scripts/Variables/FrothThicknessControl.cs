@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
 public class FrothThicknessControl : MonoBehaviour {
-    public PID FrothPID;   
+    public PID FrothPID;
+    public FlotationCalculation simulation;
 
     void Update()
     {
-        FlotationCalculation.Simulation.FrothHeight = FrothPID.ProcessValue / 100;
+        simulation.Simulation.FrothHeight = FrothPID.ProcessValue / 100;
     }
 }

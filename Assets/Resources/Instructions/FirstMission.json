@@ -1,39 +1,46 @@
 {
-  "Instructions": [
-    {
-        "text": "Welcome to the fantastic world of flotation. Ready to start making some money with mining?",
-        "options": [
-            "Of course!"
-        ],
-        "correctOptionIndex": 1
-    },
-    {
-        "text": "Great! Before doing that let's quickly go through the UI of the game. Can you see the button labeled 'Lesson' besides this. Close this dialog box by pressing the 'X' button on the top, then open it again by clicking that button",
-        "options": [ "Did it" ],
+    "Instructions": [
+        {
+            "text": "Welcome to the fantastic world of flotation. Ready to start making some money with mining?",
+            "options": [
+                "Of course!"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "Great! Before doing that let's quickly go through the UI of the game. Can you see the button labeled 'Lesson' on the center of the screen? Close this dialog box by pressing the 'X' button on the top, then open it again by clicking that button",
+            "options": [ "Did it" ],
 
-        "correctOptionIndex": 1
-    },
-    {  
-        "text": "Good job! Now click on the circle in the middle of the screen to go to the flotation cell window. Then check out the Cu grade's graph. What is the actual Cu Grade on that stream?",
-      "options": [
-        "Around 2 %",
-        "Around 5 tons/h",
-        "Around 90 %"
-      ],
-      "correctOptionIndex": 1
-    },
-     {
-      "text": "You are ready for the first challenge: What happens to the Concentrate Cu recovery if you change the air flow rate from 2 to 5 cm/s?",
-      "options": [
-        "It decreased",
-        "It increased"
-      ],
-      "correctOptionIndex": 2
-    },
-     {
-      "text": "You are now officially introduced to the Flotation views. See you later!",
-      "options": ["Finish task"],
-      "correctOptionIndex": 1
-      },
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "Good job! Can you see some graphs in the bottom of the screen? They are the values from the concentrate stream, which goes from the flotation to the bin. Check out the Cu grade's graph. What is the actual Cu Grade on that stream?",
+            "options": [
+                "Around 2 %",
+                "Around 5 tons/h",
+                "Around 90 %"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "Alright! We need to try getting that 2% which is the specification of our product. Anything below that will not count.",
+            "options": [
+                "Got it"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "Now click on the circle in the middle of the screen to open the flotation cell controller. What happens to the Concentrate Cu recovery if you change the air flow rate from 2 to 5 cm/s?",
+            "options": [
+                "It decreased",
+                "It increased"
+            ],
+            "correctOptionIndex": 2
+        },
+        {
+            "text": "You are now officially introduced to the Flotation views. See you later!",
+            "options": [ "Finish task" ],
+            "correctOptionIndex": 1
+        }
     ]
 }

@@ -4,6 +4,7 @@ public class FlowSoundVolume : MonoBehaviour {
     public float FlowRateContributor;
     public float VolumeFactor;
     AudioSource audioSource;
+    public FlotationCalculation simulation;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class FlowSoundVolume : MonoBehaviour {
 
     private void AdjustFlowRateVolume()
     {
-        float Flowrate = ((float)FlotationCalculation.Simulation.feed.MassFlowRate - FlowRateContributor) / FlowRateContributor;
+        float Flowrate = ((float)simulation.Simulation.feed.MassFlowRate - FlowRateContributor) / FlowRateContributor;
         audioSource.volume = Flowrate + VolumeFactor;
     }
 }

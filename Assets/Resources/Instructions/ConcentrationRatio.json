@@ -1,42 +1,46 @@
 {
-  "Instructions": [
-    {
-      "text": "Go to the view where you can see the mine. The stream entering the tank is called FEED. It has a certain grade of valuable metal, in our case copper.",
-      "options": [ "Next" ]
-    },
-    {
-      "text": "As a flotation operator you want to make sure you are producing the right amount of concentrate according to your feed flow rate.",
-      "options": [ "Next" ]
-    },
-    {
-      "text": "You can check that by finding the CONCENTRATION RATIO. It represents the amount of tons you need to feed the cell in order to produce one ton of concentrate.",
-      "options": [ "Next" ]
-    },
-    {
-      "text": "For example, if your concentrate flow rate is 2 t/h with a feed flow rate of 10 t/h, your concentration ratio is 5. The cell is producing one ton of concentrate with 5 tons of feed.",
-      "options": [ "Next" ]
-    },
-    {
-      "text": "Let's put this knowledge into practice. What is the concentration ratio of this flotation cell with recovery above 80%?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
-      "options": [
-        "about 5",
-        "about 30",
-        "about 2",
-        "about 25"
-      ],
-      "correctOptionIndex": 3
-    },
-    {
-      "text": "Good job! Now press the circle in the mine icon and change the Feed flow rate to something like 15. Did the concentration ratio changed? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
-      "options": [
-        "It didn't change",
-        "It changed"
-      ],
-      "correctOptionIndex": 1
-    },
-    {
-      "text": "Exactly! Cells are usually designed to work with a specific Concentration Ratio. In next lessons we will learn about other performance calculations",
-      "options": ["Finish task"]
-    }
-  ]
+    "Instructions": [
+        {
+            "text": "Press the round button about the MINE stream box to go to the Feed view. The stream entering the tank is called FEED. It has a certain grade of valuable metal, in our case copper.",
+            "options": [ "Next" ]
+        },
+        {
+            "text": "Look at the graph. What is the copper grade of this mine?",
+            "options": [ "around 1%", "10%", "10 t/h" ]
+        },
+        {
+            "text": "As a flotation operator you want to make sure you are producing the right amount of concentrate according to your feed flow rate.",
+            "options": [ "Next" ]
+        },
+        {
+            "text": "You can check that by finding the CONCENTRATION RATIO. It represents the amount of tons you need to feed the cell in order to produce one ton of concentrate.",
+            "options": [ "Next" ]
+        },
+        {
+            "text": "For example, if your concentrate flow rate is 2 t/h with a feed flow rate of 10 t/h, your concentration ratio is 5. The cell is producing one ton of concentrate with 5 tons of feed.",
+            "options": [ "Next" ]
+        },
+        {
+            "text": "Let's put this knowledge into practice. What is the concentration ratio of this flotation cell with recovery above 80%?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+            "options": [
+                "about 5",
+                "about 30",
+                "about 2",
+                "about 25"
+            ],
+            "correctOptionIndex": 3
+        },
+        {
+            "text": "Good job! Now press the circle in the mine icon and change the Feed flow rate to something like 15. Did the concentration ratio changed? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+            "options": [
+                "It didn't change",
+                "It changed"
+            ],
+            "correctOptionIndex": 1
+        },
+        {
+            "text": "Exactly! Cells are usually designed to work with a specific Concentration Ratio. In next lessons we will learn about other performance calculations",
+            "options": [ "Finish task" ]
+        }
+    ]
 }
