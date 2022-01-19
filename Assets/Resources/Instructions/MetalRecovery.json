@@ -19,7 +19,7 @@
             "correctOptionIndex": 2
         },
         {
-            "text": "Check the Cu grade in the Feed and Concentrate streams and calculate the enrichment ratio. Knowing that the concentration ratio of this process is around 2, calculate the recovery of this process. Is it close to the value shown in the recovery graph",
+            "text": "Check the Cu grade in the Feed and Concentrate streams and calculate the enrichment ratio. Assuming that the concentration ratio of this process is around 2, calculate the recovery of this process. Open the Concentrate Graphs. Is your value close to the value shown in the recovery graph?",
             "options": [
                 "Yes",
                 "No"
@@ -27,9 +27,9 @@
             "correctOptionIndex": 1
         },
         {
-            "text": " It has to be, because that is how the recovery of this simulation is calculated ;). Even though there are other ways of calculation recovery, I am going to leave you with this simplistic approach, just because it doesn't require calculator or other parameters like tailings' values.",
+            "text": " It has to be, because that is how the recovery of this simulation is calculated. Even though there are more precise ways of calculating metal recovery, I am going to leave you with this approach, just because it doesn't require calculator or other parameters like tailings' values.",
             "options": [
-                "Sure"
+                "Makes sense"
             ],
             "correctOptionIndex": 1
         }

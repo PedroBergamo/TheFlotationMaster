@@ -1,7 +1,7 @@
 {
     "Instructions": [
         {
-            "text": "Metal loss is the opposite of the % Metal Recovery and represents the material lost to the tailings. It can be calculated simply by subtracting the % Metal Recovery from 100%.",
+            "text": "Metal loss is the opposite of the Metal Recovery that you just learned and represents the material lost to the tailings. It can be calculated simply by subtracting the % Metal Recovery from 100%.",
             "options": [ "Next" ]
         },
         {
@@ -15,7 +15,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "In a reverse flotation (used e.g. in iron beneficiation), the precious metal is collected in the tailings. In this circumstance, with a recovery of 40% in the tailings, what is the metal loss in the Concentrate stream?",
+            "text": "In a reverse flotation (used e.g. in iron beneficiation), the precious metal is collected in the Tailings and not in the Concentrate stream. In this circumstance, with a recovery of 40% in the tailings, what is the metal loss in the Concentrate stream?",
             "options": [
                 "600%",
                 "40%",
@@ -25,7 +25,7 @@
             "correctOptionIndex": 3
         },
         {
-            "text": "If you completed the other jobs, I guess we are done. Good luck with your mine and remember to have fun.",
+            "text": "That's all I wanted to teach you about Flotation Performance Calculations. I guess you can figure stuff by yourself now. Good luck with your mine. Hope you make a lot of money with it!",
             "options": [ "Finnish" ]
         }
     ]
