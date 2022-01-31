@@ -1,15 +1,15 @@
 {
     "Instructions": [
         {
-            "text": "While Concentration Ratio deals with quantity, Enrichment Ratio is a quick dive into the quality of your Concentrate. It gives you a ratio between the amount of precious metal going in and the amount of precious metal going out.",
+            "text": "While Concentration Ratio deals with quantity, Enrichment Ratio is a quick dive into the quality of your Concentrate. It gives you a ratio between the amount of precious metal going in and the amount of precious metal going out of the system.",
             "options": [ "Next" ]
         },
         {
-            "text": "It can be calculated by dividing a metal grade on the Concentrate stream by the grade of the same metal in the Feed stream.",
+            "text": "Enrichment Ratio can be calculated by dividing a metal grade on the Concentrate stream by the grade of the same metal in the Feed stream.",
             "options": [ "Next" ]
         },
         {
-            "text": "Before we start, take a look at the Feed stream and tell me what is Cu grade entering the Flotation bank",
+            "text": "Before we start, take a look at the Feed stream and tell me what is the Cu grade entering the flotation stage",
             "options": [
                 "Around 20 t/h",
                 "Around 100%",
@@ -19,22 +19,22 @@
             "correctOptionIndex": 3
         },
         {
-            "text": "True, and what is the Cu grade getting out of the system (Concentrate Stream)?",
+            "text": "True. Now set the air flow of the flotation stage to 1 and the froth to -12. what is the Cu grade going out of the system (Concentrate Stream)?",
             "options": [
-                "Around 6%",
-                "Around 2%"
+                "Around 1%",
+                "Around 5%"
             ],
             "correctOptionIndex": 2
         },
         {
-            "text": "The magical act of turning 1% Cu into 2% Cu is called Concentration process, also known as Beneficiation. Flotation is a very common form of Concentration, which can bring the metal grade from less than 1% until 30% or more.",
+            "text": "The magical act of turning 1% Cu into 5% Cu is called Concentration process, also known as Beneficiation. Flotation is a very common form of Concentration, which can bring the metal grade from less than 1% up to about 30%",
             "options": [
                 "Cool"
             ],
             "correctOptionIndex": 1
         },
         {
-            "text": "In order to enrich the metal content from 30% Cu to 100% Cu other processes like filtration and smelting are envolved but we won't dwelve into them.",
+            "text": "In order to enrich the metal content from 30% Cu to 100% Cu other processes like filtration and smelting are involved but let’s not go there for now.",
             "options": [
                 "Sure"
             ],
@@ -48,7 +48,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Let's try! In a flotation process that the precious metal is nickel, and the Feed Ni % is 2 while the Concentrate Ni % is 6, what would be the Enrichment Ratio?\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
+            "text": "Let's try! In a flotation process where the precious metal is nickel, and the Feed Ni % is 2 while the Concentrate Ni % is 6, what would be the Enrichment Ratio?\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
             "options": [
                 "6",
                 "3",
@@ -58,18 +58,20 @@
             "correctOptionIndex": 2
         },
         {
-            "text": "Now check the Cu grade in the Feed and Concentrate streams. What is the Enrichment Ratio of this cell?n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal %",
+            "text": "Now check the Cu grade in the Feed and Concentrate streams with the air at 2 and the froth at -12. What is the Enrichment Ratio of this cell?n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal %",
             "options": [
+                "Around 5",
                 "Around 2",
-                "Around 3",
                 "Around 1",
                 "Around 6"
             ],
             "correctOptionIndex": 1
         },
         {
-            "text": "Correct. Enrichment Ratio, although a quick dive into the system grades, does not take quantity into consideration, unlike metal recovery. We are going to learn how to correlate quantity and quality in next lessons.",
+            "text": "Correct. Although Enrichment Ratio gives us a quick look into the relationship of the metal grades in the system, it does not take quantity into consideration, unlike metal recovery. We are going to learn how to correlate quantity and quality in the next lessons.",
             "options": [ "Finnish lesson" ]
         }
     ]
 }
+
+
