@@ -1,7 +1,7 @@
 {
     "Instructions": [
         {
-            "text": "Press the round button beside the MINE stream box to open the Feed view. The stream going from the mine to the flotation circuit is called FEED. It has a certain grade of valuable metal, in our case copper.",
+            "text": "Press the round button beside the FEED stream box to open the Feed view. The stream going from the mine to the flotation circuit is called FEED. It has a certain grade of valuable metal, in our case copper.",
             "options": [ "Next" ]
         },
         {
@@ -9,22 +9,22 @@
             "options": [ "around 1%", "10%", "10 t/h" ]
         },
         {
-            "text": "True and considering you didn't touch this screen, what is the flow rate of the Feed Stream?",
+            "text": "True and considering it is your first time in this screen, what is the flow rate of the Feed Stream?",
             "options": [ "around 1%", "10%", "10 t/h" ],
             "correctOptionIndex": 3
         },
         {
-            "text": "That's correct. Even if you have changed it, you could have guessed because flow rate is given by tons per hour.",
+            "text": "That s correct. Even if you have changed it, you could have guessed because flow rate is given by tons per hour.",
             "options": [ "I am a genius" ],
             "correctOptionIndex": 1
         },
         {
-            "text": "Of course you are. Then tell me: after setting the Feed flow rate to 10 t/h, what is the flow rate of Concentrate Stream (the one which goes from the flotation bank to the bin)?",
-            "options": [ "2%", "60 t/h", "6 t/h" ],
+            "text": "Of course. Then tell me: with a Feed flow rate of 10 t/h, air at 2 cm/s and froth at -10 mm, what is the flow rate of Concentrate Stream (the one which goes from the flotation bank to the bin)?",
+            "options": [ "2%", "60 t/h", "2 t/h" ],
             "correctOptionIndex": 3
         },
         {
-            "text": "That's right. This means that from the 10 tons entering your flotation cell, 6 tons go to the Concentrate (which is the good stuff, that we can sell), while the other 4 tons go to the Tailings stream, which we didn't show just to simplify the process.",
+            "text": "That s right. This means that from the 10 tons entering your flotation cell, 2 tons go to the Concentrate (which is the good stuff, that we can process and sell), while the other 8 tons go to the Tailings stream, which we didn't show just to simplify the process.",
             "options": [ "Sounds fair" ]
         },
         {
@@ -32,7 +32,7 @@
             "options": [ "Next" ]
         },
         {
-            "text": "After all, producing 6 tons of Concentrate out of 6 tons of Feed is very profitable, while producing 6 tons out of 600 hundred tons of Feed will make you bankrupt",
+            "text": "After all, producing 6 tons of Concentrate out of 6 tons of Feed is very profitable, while producing 6 tons out of 600 hundred tons of Feed will make you bankrupt.",
             "options": [ "I agree" ]
         },
         {
@@ -40,21 +40,21 @@
             "options": [ "Cool" ]
         },
         {
-            "text": "For example, if your concentrate flow rate is 2 t/h with a feed flow rate of 10 t/h, your concentration ratio is 5. The cell is producing one ton of concentrate with 5 tons of feed.",
+            "text": "For example, if your concentrate flow rate is 1 t/h with a feed flow rate of 10 t/h, your concentration ratio is 10. The cell is producing one ton of concentrate with 10 tons of feed.",
             "options": [ "Next" ]
         },
         {
             "text": "Let's put this knowledge into practice. Check the Concentrate graphs to make sure your Cu recovery is above 80%. Now tell me, what is the Concentrate Ratio of this process?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
             "options": [
-                "about 5",
+                "about 12",
                 "about 30",
-                "about 2",
+                "about 5",
                 "about 25"
             ],
             "correctOptionIndex": 3
         },
         {
-            "text": "Yeah, kind of 2. More like 1,66666666667 to be more precise. Now press the circle in the mine icon and change the Feed flow rate to something like 20. Did the concentration ratio change? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+            "text": "That’s correct. Now press the circle in the mine icon and change the Feed flow rate to around 20. Did the concentration ratio change? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
             "options": [
                 "Not really",
                 "Definitely changed"
@@ -62,7 +62,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Exactly! Cells are usually designed to work with an optimal Concentration Ratio. In next lessons we will learn about other performance calculations",
+            "text": "Exactly! Cells are usually designed to work with an optimal Concentration Ratio. In the next lessons, we will learn about other performance calculations",
             "options": [ "Finish task" ]
         }
     ]

@@ -30,7 +30,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Now click on the circle of the flotation cell to open the controller. What happens to the variable “Cu recovery” if you change the air flow rate from 1 to 2 cm/s?",
+            "text": "Now click on the circle of the flotation cell to open the controller. What happens to the variable CU RECOVERY if you change the air flow rate from 1 to 2 cm/s?",
             "options": [
                 "It decreased",
                 "It increased"
@@ -38,7 +38,7 @@
             "correctOptionIndex": 2
         },
         {
-            "text": " What happens to the variable “Cu grade” if you change the froth from -10 to -15?",
+            "text": " What happens to the variable CU GRADE if you change the froth from -10 to -15?",
             "options": [
                 "It decreased",
                 "It increased"
