@@ -15,7 +15,7 @@ public class Flowrate : MonoBehaviour {
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            TMPRO.text = Math.Round(stream.MassFlowRate).ToString();
+            TMPRO.text = Math.Round(stream.MassFlowRate,1).ToString();
         }
     }
 }

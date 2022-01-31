@@ -20,6 +20,7 @@ public class FlotationCalculation : MonoBehaviour
     public static int particleDiameterInMicrons = 70;
     public Stream Feed;
     public Stream ConcentrateStream;
+    private float TailingsCuGrade = 0.4f;
     private float ConcentrationRatio = 2;
 
     void Awake()
@@ -78,8 +79,10 @@ public class FlotationCalculation : MonoBehaviour
     /// <returns></returns>
     public float ConcentrateMassFlow()
     {
-        float SolidsFlow =  (0.7f * (float)Simulation.feed.MassFlowRate / ConcentrationRatio) + (0.3f * (float)Simulation.feed.MassFlowRate * (float)ConcentrateRecovery()/100);
-        float Result =  SolidsFlow + (SolidsFlow * (UnityEngine.Random.value / NoiseSizePercentage));
+        float FakeConcGrade = 5;
+        float AirFlowComponent = (float)Simulation.AirFlowRate / 5; //added to increase the impact of air changes, for didactic purposes
+        float ConcentrateFlow =  (float)Simulation.feed.MassFlowRate * (float)Simulation.feed.Grade * (float)ConcentrateRecovery() / (100 * FakeConcGrade) + AirFlowComponent ;
+        float Result = ConcentrateFlow + (ConcentrateFlow * (UnityEngine.Random.value / NoiseSizePercentage));
         return Result;
     }
 
@@ -91,7 +94,8 @@ public class FlotationCalculation : MonoBehaviour
      
     public float ConcentrateGrade()
     {
-        float InfGrade = (float)(Simulation.feed.Grade * ConcentrationRatio * ConcentrateRecovery() / 100);
+        float InfGrade = (TailingsCuGrade + ((((float)Simulation.feed.Grade - TailingsCuGrade) * (float)Simulation.feed.MassFlowRate) / ConcentrateMassFlow()));
+        //float InfGrade = (float)ConcentrateRecovery() * (float)(Simulation.feed.Grade) * (5 * TailingsCuGrade)/ (float)(Simulation.feed.Grade * TailingsCuGrade * 100);
         double ConcGrade = InfGrade * (1 - Math.Exp(-Simulation.feed.Kinetics * Time.realtimeSinceStartup));
         double NoisyConcGrade = ConcGrade + (ConcGrade *
             (UnityEngine.Random.value / NoiseSizePercentage));

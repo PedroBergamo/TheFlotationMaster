@@ -9,7 +9,7 @@
             "options": [ "Next" ]
         },
         {
-            "text": "In a flotation process that the Feed Cu % is 1 while the Concentrate Cu % is 2, and the concentration ratio is 2, what would be the Metal Recovery?\n\n Recovery =\nConcentrate Metal Grade * 100 / (Feed Metal Grade * Concentration Ratio)",
+            "text": "In a flotation process that the Feed Cu % is 1 while the Concentrate Cu % is 2, and the concentration ratio is 2, what would be the Metal Recovery?\n\n Recovery =\n Concentrate Metal Grade * 100 / ((Feed Metal Grade) * Concentration Ratio )",
             "options": [
                 "1%",
                 "100%",
