@@ -9,14 +9,15 @@ using System;
 // Access a website and use UnityWebRequest.Get to download a page.
 // Also try to download a non-existing page. Display the error.
 
-public class GetCopperPrice : MonoBehaviour
+public class GameEconomy : MonoBehaviour
 {
-    public TextMeshProUGUI TMPRO;
+    private TextMeshProUGUI TMPRO;
     public float CopperPrice = 9664;
-    public double TwoPercentCopperPrice = 193;
+    public float TwoPercentCopperPrice = 193;
     public CumulativeConcentrateLabel FinalStreamTons;
     public TextMeshProUGUI Credits;
     public AudioSource MoneyAudio;
+    public float CurrentCredits;
 
 
     void Start()
@@ -27,18 +28,24 @@ public class GetCopperPrice : MonoBehaviour
 
     private void Update()
     {
-        if(FlotationCalculation.NextSamplingIsReady){
+        UpdateCopperPrice();
+//        TMPRO.text = "Price/ton: " + TwoPercentCopperPrice.ToString();
+    }
+
+    private void UpdateCopperPrice()
+    {
+        if (FlotationCalculation.NextSamplingIsReady)
+        {
             if (UnityEngine.Random.value > 0.5f)
             {
                 CopperPrice += UnityEngine.Random.value * (CopperPrice * 0.01f);
             }
-            else {
+            else
+            {
                 CopperPrice -= UnityEngine.Random.value * (CopperPrice * 0.01f);
             };
         }
-        TwoPercentCopperPrice = Math.Round(CopperPrice * 0.02, 1);
-
-        TMPRO.text = "Price/ton: " + TwoPercentCopperPrice.ToString();
+        TwoPercentCopperPrice = (float)Math.Round(CopperPrice * 0.02, 1);
     }
 
     IEnumerator GetRequest(string uri)
@@ -95,16 +102,20 @@ public class GetCopperPrice : MonoBehaviour
     }
 
     public void SellOre() {
-        float CurrentCredits = float.Parse(Credits.text);
-        Credits.text = (Math.Round(CurrentCredits + (FinalStreamTons.CumulativeConcentrate * TwoPercentCopperPrice))).ToString();
+        CurrentCredits +=  FinalStreamTons.CumulativeConcentrate * TwoPercentCopperPrice;
+        Credits.text = (Math.Round(CurrentCredits)).ToString();
         PlayAudio();
         FinalStreamTons.CumulativeConcentrate = 0;
-
     }
 
     private void PlayAudio() {
         if (FinalStreamTons.CumulativeConcentrate > 0) {
             MoneyAudio.Play();
         }
+    }
+
+    public void addCredits(float Amount) {
+        CurrentCredits += Amount;
+        Credits.text = (Math.Round(CurrentCredits)).ToString();
     }
 }

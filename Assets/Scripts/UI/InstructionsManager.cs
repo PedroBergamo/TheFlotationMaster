@@ -20,6 +20,8 @@ public class InstructionsManager : MonoBehaviour {
     public Canvas TaskMenu;
     public Canvas TaskCanvas;
     public GameObject JobsButton;
+    public GameEconomy Economy;
+    public float LessonReward = 5;
 
     private void StartExercise()
     {
@@ -69,13 +71,23 @@ public class InstructionsManager : MonoBehaviour {
         }
         else
         {
-            LevelClearedMenu.SetActive(true);
-            LevelClearedAudio.Play();
-            JobsButton.SetActive(true);
-            TaskMenu.enabled = true;
-            TaskCanvas.enabled = false;
-            DestroyDynamicGameObjects(CreatedButtons);
+            ClearLevel();
         }
+    }
+
+    private void ClearLevel()
+    {
+        LevelClearedMenu.SetActive(true);
+        LevelClearedAudio.Play();
+        JobsButton.SetActive(true);
+        TaskMenu.enabled = true;
+        TaskCanvas.enabled = false;
+        DestroyDynamicGameObjects(CreatedButtons);
+        Economy.addCredits(LessonReward);
+    }
+
+    public void SetLessonReward(float Amount) {
+        LessonReward = Amount;
     }
 
     private void CallInstruction()
