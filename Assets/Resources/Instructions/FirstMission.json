@@ -38,15 +38,15 @@
             "correctOptionIndex": 2
         },
         {
-            "text": " What happens to the variable CU GRADE if you change the froth from -10 to -15?",
+            "text": " What happens to the variable CU GRADE if you change the froth from -20 to -10?",
             "options": [
                 "It decreased",
                 "It increased"
             ],
-            "correctOptionIndex": 2
+            "correctOptionIndex": 1
         },
         {
-            "text": "Awesome. You are now officially introduced to the Flotation views. See you later!",
+            "text": "Awesome. You are now officially introduced to the flotation views. See you later!",
             "options": [ "Finish task" ],
             "correctOptionIndex": 1
         }

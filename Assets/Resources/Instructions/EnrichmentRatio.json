@@ -19,7 +19,7 @@
             "correctOptionIndex": 3
         },
         {
-            "text": "True. Now set the air flow of the flotation stage to 1 and the froth to -12. What is the Cu grade going out of the system (Concentrate Stream)?",
+            "text": "True. Now set the air flow of the flotation stage to 1 and the froth to -20. What is the Cu grade going out of the system (Concentrate Stream)?",
             "options": [
                 "Around 1%",
                 "Around 5%"
@@ -58,7 +58,7 @@
             "correctOptionIndex": 2
         },
         {
-            "text": "Now check the Cu grade in the Feed and Concentrate streams with the air at 1 and the froth at -12. What is the Enrichment Ratio of this cell?n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal %",
+            "text": "Now check the Cu grade in the Feed and Concentrate streams with the air at 1 and the froth at -20. What is the Enrichment Ratio of this cell?n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal %",
             "options": [
                 "Around 5",
                 "Around 2",

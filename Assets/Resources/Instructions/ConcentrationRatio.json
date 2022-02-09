@@ -5,7 +5,7 @@
             "options": [ "Next" ]
         },
         {
-            "text": "Look at the graph. What is the copper grade of this mine?",
+            "text": "Look at the graph. What is the copper grade of this stream?",
             "options": [ "around 1%", "10%", "10 t/h" ]
         },
         {
@@ -19,12 +19,12 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Of course. Then tell me: with a Feed flow rate of 10 t/h, air at 2 cm/s and froth at -10 mm, what is the flow rate of Concentrate Stream (the one which goes from the flotation bank to the bin)?",
+            "text": "Are your sure? Then tell me: with a Feed flow rate of 10 t/h, air at 2 cm/s and froth at -10 mm, what is the flow rate of Concentrate Stream (the one which goes from the flotation bank to the bin)?",
             "options": [ "2%", "60 t/h", "2 t/h" ],
             "correctOptionIndex": 3
         },
         {
-            "text": "That s right. This means that from the 10 tons entering your flotation cell, 2 tons go to the Concentrate (which is the good stuff, that we can process and sell), while the other 8 tons go to the Tailings stream, which we didn't show just to simplify the process.",
+            "text": "True. This means that from the 10 tons entering your flotation cell, 2 tons go to the Concentrate (which is the good stuff, that we can process and sell), while the other 8 tons go to the Tailings stream, which we didn't show just to simplify the process.",
             "options": [ "Sounds fair" ]
         },
         {
@@ -44,7 +44,7 @@
             "options": [ "Next" ]
         },
         {
-            "text": "Let's put this knowledge into practice. Check the Concentrate graphs to make sure your Cu recovery is above 80%. Now tell me, what is the Concentrate Ratio of this process?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+            "text": "Now try this. Check the Concentrate graphs to make sure your Cu recovery is above 80%. Now tell me, what is the Concentrate Ratio of this process?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
             "options": [
                 "about 12",
                 "about 30",
@@ -54,7 +54,7 @@
             "correctOptionIndex": 3
         },
         {
-            "text": "That’s correct. Now press the circle in the mine icon and change the Feed flow rate to around 20. Did the concentration ratio change? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+            "text": "Correct. Now press the circle in the mine icon and change the Feed flow rate to around 20. Did the concentration ratio change? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
             "options": [
                 "Not really",
                 "Definitely changed"

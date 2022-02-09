@@ -34,14 +34,14 @@
             "correctOptionIndex": 1
         },
         {
-            "text": " However, in a real process you would collect less so your Concentration Ratio will be less than 5, that's why you cannot get 100% Recovery and 5 % Cu Conc. grade here. As a flotation operator you have to find a good compromise between the Concentrate grade and Concentration Ratio.",
+            "text": "However, in a real process you would collect less so your Concentration Ratio will be less than 5, that's why you cannot get 100% Recovery and 5 % Cu Conc. grade here. As a flotation operator you have to find a good compromise between the Concentrate grade and Concentration Ratio.",
             "options": [
                 "Of course!"
             ],
             "correctOptionIndex": 1
         },
         {
-            "text": " Awesome. Even though there are other ways of calculating Metal Recovery, I am going to leave you with this approach, just because it doesn't require a calculator or other parameters like tailings' values.",
+            "text": "Awesome. Even though there are other ways of calculating Metal Recovery, I am going to leave you with this approach, just because it doesn't require a calculator or other parameters like tailings' values.",
             "options": [
                 "Makes sense"
             ],

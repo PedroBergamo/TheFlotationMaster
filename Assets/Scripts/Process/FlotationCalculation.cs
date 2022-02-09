@@ -79,7 +79,7 @@ public class FlotationCalculation : MonoBehaviour
     /// <returns></returns>
     public float ConcentrateMassFlow()
     {
-        float FakeConcGrade = 5;
+        float FakeConcGrade = 6;
         float AirFlowComponent = (float)Simulation.AirFlowRate / 5; //added to increase the impact of air changes, for didactic purposes
         float ConcentrateFlow =  (float)Simulation.feed.MassFlowRate * (float)Simulation.feed.Grade * (float)ConcentrateRecovery() / (100 * FakeConcGrade) + AirFlowComponent ;
         float Result = ConcentrateFlow + (ConcentrateFlow * (UnityEngine.Random.value / NoiseSizePercentage));
