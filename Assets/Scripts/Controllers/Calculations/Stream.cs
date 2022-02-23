@@ -26,8 +26,8 @@ public class Stream: MonoBehaviour
         if (FlotationCalculation.NextSamplingIsReady)
         {
             Times++;
-            MassFlowRate = NoisyValue(MassFlowRate, 2);
-            Grade = (0.8) + (NoisyValue(0.2, 1 ));
+            MassFlowRate = NoisyValue(MassFlowRate, 5);
+            Grade = (NoisyValue(Grade, 5));
         }
     }
 
@@ -35,10 +35,10 @@ public class Stream: MonoBehaviour
     {
         if (Random.value > 0.5)
         {
-            return n + (-n * (Random.value / PercentageVariation));
+            return n + (-n * (PercentageVariation / 100));
         }
         else
-            return n + (n * (Random.value / PercentageVariation));
+            return n + (n * (PercentageVariation / 100));
     }
 
     private double VolumetricFlowRate()
