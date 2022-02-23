@@ -10,6 +10,7 @@ public class InstructionsManager : MonoBehaviour {
     public int InstructionsIndex = 0;
     private Coroutine lastRoutine = null;
     public TextMeshProUGUI TMPRO;
+    public TextMeshProUGUI LessonTitle;
     public GameObject InstructionsButton;
     private List<GameObject> CreatedButtons;
     public static int GivenAnswer = 1;
@@ -19,7 +20,6 @@ public class InstructionsManager : MonoBehaviour {
     public AudioSource LevelClearedAudio;
     public Canvas TaskMenu;
     public Canvas TaskCanvas;
-    public GameObject JobsButton;
     public GameEconomy Economy;
     public float LessonReward = 5;
 
@@ -79,7 +79,6 @@ public class InstructionsManager : MonoBehaviour {
     {
         LevelClearedMenu.SetActive(true);
         LevelClearedAudio.Play();
-        JobsButton.SetActive(true);
         TaskMenu.enabled = true;
         TaskCanvas.enabled = false;
         DestroyDynamicGameObjects(CreatedButtons);
@@ -102,11 +101,14 @@ public class InstructionsManager : MonoBehaviour {
        }
 
     public void GiveMissionName(string missionName) {
-        JobsButton.SetActive(false);
         InstructionsIndex = 0;
         MissionName = missionName;
         SetOfInstructions = GetInstructions();
         StartExercise();
+    }
+
+    public void SetUpLessonTitle(string Title) {
+        LessonTitle.text = Title;
     }
 
     private List<Instruction> GetInstructions()

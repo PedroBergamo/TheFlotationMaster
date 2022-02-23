@@ -19,7 +19,7 @@
             "correctOptionIndex": 2
         },
         {
-            "text": "Using the Concentration Ratio of 5, calculate the Metal recovery for your process. Open the Concentrate Graphs. Does your value match the one displayed?\n\n Recovery =\n Concentrate Metal Grade * 100 / ((Feed Metal Grade) * Concentration Ratio )",
+            "text": "Using the Concentration Ratio of 5, calculate the Metal recovery for your process. Open the Concentrate Graphs. Does your value match the Cu Recovery displayed?\n\n Recovery =\n Concentrate Metal Grade * 100 / ((Feed Metal Grade) * Concentration Ratio )",
             "options": [
                 "Yes",
                 "No"
@@ -34,16 +34,16 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "However, in a real process you would collect less so your Concentration Ratio will be less than 5, that's why you cannot get 100% Recovery and 5 % Cu Conc. grade here. As a flotation operator you have to find a good compromise between the Concentrate grade and Concentration Ratio.",
+            "text": "However, in a real process you would collect less, so your Concentration Ratio will be less than 5, that's why you cannot get 100% Recovery and 5 % Cu Conc. grade here. As a flotation operator you have to find a good compromise between the Concentrate grade and Concentration Ratio.",
             "options": [
                 "Of course!"
             ],
             "correctOptionIndex": 1
         },
         {
-            "text": "Awesome. Even though there are other ways of calculating Metal Recovery, I am going to leave you with this approach, just because it doesn't require a calculator or other parameters like tailings' values.",
+            "text": "Outstanding! Even though there are other ways of calculating Metal Recovery, I am going to leave you with this approach, just because it doesn't require a calculator or other parameters like tailings' values.",
             "options": [
-                "Makes sense"
+                "Finnish lesson"
             ],
             "correctOptionIndex": 1
         }

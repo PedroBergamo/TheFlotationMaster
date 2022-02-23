@@ -1,20 +1,13 @@
 {
     "Instructions": [
         {
-            "text": "Welcome to the fantastic world of flotation. Ready to start making some money with mining?",
-            "options": [
-                "Of course!"
-            ],
-            "correctOptionIndex": 1
-        },
-        {
-            "text": "Great! Before doing that let's quickly go through the user interface (UI) of the game. Can you see the button labeled 'Lesson' on the center of the screen? Close this dialog box by pressing the 'X' button on the top, then open it again by clicking that button",
-            "options": [ "Did it" ],
+            "text": "Welcome to the floation simulator. Should we quickly go through the user interface of the game?",
+            "options": [ "Sure" ],
 
             "correctOptionIndex": 1
         },
         {
-            "text": "Good job! Now press the button in the CONCENTRATE box to open the concentrate graphs. This is the stream that goes from the flotation to the bin. Check out the Cu grade's graph. What is the actual Cu Grade of that stream?",
+            "text": "Super! Checkout the values on the stream called Concentrate. This is the stream that goes from the flotation to the bin. On the right side of the screen you can see the Concentrate's Cu grade graph. What is the current Cu Grade of that stream?",
             "options": [
                 "Around 5 %",
                 "Around 5 tons/h",
@@ -30,7 +23,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Now click on the circle of the flotation cell to open the controller. What happens to the variable CU RECOVERY if you change the air flow rate from 1 to 2 cm/s?",
+            "text": "Now tell me, what happens to the variable CU RECOVERY if you change the air flow rate from 1 to 2 cm/s?",
             "options": [
                 "It decreased",
                 "It increased"
@@ -38,7 +31,7 @@
             "correctOptionIndex": 2
         },
         {
-            "text": " What happens to the variable CU GRADE if you change the froth from -20 to -10?",
+            "text": "And what happens to the variable Cu GRADE if you change the froth from -20 to -10?",
             "options": [
                 "It decreased",
                 "It increased"
@@ -46,8 +39,8 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Awesome. You are now officially introduced to the flotation views. See you later!",
-            "options": [ "Finish task" ],
+            "text": "Good job. Now that you are introduced to the flotation views, your real training begins!",
+            "options": [ "Finish lesson" ],
             "correctOptionIndex": 1
         }
     ]

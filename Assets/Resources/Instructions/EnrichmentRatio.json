@@ -9,7 +9,7 @@
             "options": [ "Next" ]
         },
         {
-            "text": "Before we start, take a look at the Feed stream and tell me what is the Cu grade entering the flotation stage",
+            "text": "Before we start, take a look at the Feed stream and tell me what is the Cu grade entering the flotation stage.",
             "options": [
                 "Around 20 t/h",
                 "Around 100%",
@@ -19,7 +19,7 @@
             "correctOptionIndex": 3
         },
         {
-            "text": "True. Now set the air flow of the flotation stage to 1 and the froth to -20. What is the Cu grade going out of the system (Concentrate Stream)?",
+            "text": "Great job. Now set the air flow of the flotation stage to 1 and the froth to -20. What is the Cu grade going out of the system (Concentrate Stream)?",
             "options": [
                 "Around 1%",
                 "Around 5%"
@@ -27,21 +27,21 @@
             "correctOptionIndex": 2
         },
         {
-            "text": "The magical act of turning 1% Cu into 5% Cu is called Concentration process, also known as Beneficiation. Flotation is a very common form of Concentration, which can bring the metal grade from less than 1% up to about 30%",
+            "text": "The magical act of turning 1% Cu into 5% Cu is called Concentration process, also known as Beneficiation. Flotation is a very common form of Concentration, which can bring the metal grade from less than 1% up to about 30%.",
             "options": [
-                "Cool"
+                "Next"
             ],
             "correctOptionIndex": 1
         },
         {
-            "text": "In order to enrich the metal content from 30% Cu to 100% Cu other processes like filtration and smelting are involved but let s not go there for now.",
+            "text": "In order to enrich the metal content from 30% Cu to 100% Cu, other processes like filtration and smelting are involved but perhaps they deserve their own educational games.",
             "options": [
                 "Sure"
             ],
             "correctOptionIndex": 1
         },
         {
-            "text": "So the job of bringing the metal content from 0% to 100% is called Enrichment and we can see how good we are at enriching metals by calculating the Enrichment Ratio using the formula:\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
+            "text": "Bringing the metal content from 0% to 100% is called Enrichment and we can see how good we are at enriching metals by calculating the Enrichment Ratio using the formula:\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
             "options": [
                 "Got it"
             ],
