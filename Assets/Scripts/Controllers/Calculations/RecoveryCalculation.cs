@@ -33,9 +33,7 @@ public class RecoveryCalculation {
     /// Assumed for OK-05-R, since that is the cell with power ~= 2.5 kw
     /// </summary>
     public double CellDiameter = 2;
-
     public double frotherConcentrate = 192;
-
     private const double pi = 3.141592d;
     private const double waterDensity = 1000d; // kg/m3
     private const double airDensity = 1.2d; // kg/m3
