@@ -9,6 +9,7 @@ public class CumulativeConcentrateLabel : MonoBehaviour
     public float CumulativeConcentrate;
     public Stream FinalStream;
     public TextMeshProUGUI CumulativeText;
+    public Career career;
 
 
     private void Start()
@@ -21,6 +22,7 @@ public class CumulativeConcentrateLabel : MonoBehaviour
         if (FlotationCalculation.NextSamplingIsReady) {
             if (FinalStream.Grade >= LimitGrade) {
                 CumulativeConcentrate += (float)(FinalStream.MassFlowRate / 3600) * FlotationCalculation.SecondsForNextSampling;
+                career.AddXP((float)(FinalStream.MassFlowRate / 3600) * FlotationCalculation.SecondsForNextSampling);
             }
         }
         CumulativeText.text = System.Math.Round(CumulativeConcentrate, 3).ToString();
