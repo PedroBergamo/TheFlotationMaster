@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Stream: MonoBehaviour
 {
@@ -10,10 +11,8 @@ public class Stream: MonoBehaviour
     /// </summary>
     public double MassFlowRate = 10;
     public double ContactAngle = 25;
-    public double Grade = 1;
+    public double Grade;
     public float Kinetics = 1;
-
-    public int Times = 0;
 
     /// <summary>
     /// Density in g/m^3
@@ -25,20 +24,17 @@ public class Stream: MonoBehaviour
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            Times++;
-            MassFlowRate = NoisyValue(MassFlowRate, 5);
-            Grade = (NoisyValue(Grade, 5));
+            MassFlowRate = SampleGaussian(MassFlowRate, MassFlowRate / 50);
+            Grade = SampleGaussian(Grade, Grade / 50);
         }
     }
 
-    private double NoisyValue(double n, double PercentageVariation)
+    public double SampleGaussian(double mean, double stddev)
     {
-        if (Random.value > 0.5)
-        {
-            return n + (-n * (PercentageVariation / 100));
-        }
-        else
-            return n + (n * (PercentageVariation / 100));
+        double x1 = 1 - UnityEngine.Random.value;
+        double x2 = 1 - UnityEngine.Random.value;
+        double y1 = Math.Sqrt(-2.0 * Math.Log(x1)) * Math.Cos(2.0 * Math.PI * x2);
+        return y1 * stddev + mean;
     }
 
     private double VolumetricFlowRate()
