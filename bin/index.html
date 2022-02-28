@@ -3,13 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | The Flotation Master</title>
+    <title>Unity WebGL Player | Flotation</title>
   </head>
   <body style="text-align: center">
-      <div id="unity-container" style="position: absolute; width: 100%; height: 100%">
-     <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} style="width: 100%; height: 100%"></canvas>
-  </div>
-    <script src="Build/bin.loader.js"></script>
+    <div id="unity-container" style="position: absolute; width: 100%; height: 100%">
+  <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} style="width: 100%; height: 100%"></canvas>
+  </div><script src="Build/bin.loader.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/bin.data",
@@ -17,8 +16,8 @@
         codeUrl: "Build/bin.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Bugs And Chemicals Oy",
-        productName: "The Flotation Master",
-        productVersion: "1.1",
+        productName: "Flotation",
+        productVersion: "2.0",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
