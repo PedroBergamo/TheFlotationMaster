@@ -24,8 +24,8 @@ public class Stream: MonoBehaviour
     {
         if (FlotationCalculation.NextSamplingIsReady)
         {
-            MassFlowRate = SampleGaussian(MassFlowRate, MassFlowRate / 50);
-            Grade = SampleGaussian(Grade, Grade / 50);
+            MassFlowRate = SampleGaussian(MassFlowRate, MassFlowRate / 100);
+            Grade = SampleGaussian(Grade, Grade / 100);
         }
     }
 

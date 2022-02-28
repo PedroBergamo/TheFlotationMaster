@@ -23,7 +23,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Now tell me, what happens to the variable CU RECOVERY if you change the air flow rate from 1 to 2 cm/s?",
+            "text": "Now tell me, what happens to the variable Cu RECOVERY if you change the air flow rate from 1 to 2 cm/s?",
             "options": [
                 "It decreased",
                 "It increased"

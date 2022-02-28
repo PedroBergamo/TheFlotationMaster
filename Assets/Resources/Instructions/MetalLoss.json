@@ -15,7 +15,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "In a reverse flotation, valuable minerals go to the Tailings and not in the Concentrate stream, while undesired minerals are floated with the help of some reagents. In this circumstance, with a recovery of 40% in the tailings, what is the metal loss in the Concentrate stream?",
+            "text": "In a reverse flotation, valuable minerals go to the Tailings and not in the Concentrate stream, while undesired minerals are floated. In this circumstance, with a recovery of 40% in the tailings, what is the metal loss in the Concentrate stream?",
             "options": [
                 "600%",
                 "40%",
@@ -25,7 +25,7 @@
             "correctOptionIndex": 3
         },
         {
-            "text": "That's all I had to teach you about Flotation Performance Calculations. I guess you are ready to figure out more stuff by yourself. Good luck!",
+            "text": "That's all I had to teach you about Flotation performance calculations. I guess you are ready to figure out more stuff by yourself. Good luck!",
             "options": [ "Finnish training" ]
         }
     ]

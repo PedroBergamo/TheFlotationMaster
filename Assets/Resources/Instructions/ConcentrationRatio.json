@@ -19,7 +19,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "What is the flow rate of Concentrate Stream (the one which goes from the flotation bank to the bin)? Make sure your Feed flow rate is at 10 t/h, the air is at 2 cm/s and froth is at -10 mm.",
+            "text": "What is the flow rate of Concentrate Stream (the one which goes from the flotation bank to the bin)? Make sure your Feed flow rate is at 10 t/h, the air is at 2 cm/s and froth is at -10 cm.",
             "options": [ "2%", "60 t/h", "2 t/h" ],
             "correctOptionIndex": 3
         },
