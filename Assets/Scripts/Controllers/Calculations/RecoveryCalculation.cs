@@ -2,9 +2,11 @@
 using UnityEngine;
 
 /// <summary>
-/// As described in Resources/Kyle2011.pdf
+/// Flotation model based in first principles
+/// As described in Resources/Kelley(2011).pdf
 /// </summary>
 public class RecoveryCalculation {
+
     /// <summary>
     /// Air flow rate in cm/s
     /// </summary>
@@ -280,7 +282,7 @@ public class RecoveryCalculation {
     private double CalculateSurfaceTension()
     {
         SurfaceTension SF = new SurfaceTension();
-        SF.FrotherConcentrate = 192; //following example in didactic/Kyle2011.pdf
+        SF.FrotherConcentrate = 192; //following example in resources/Kyle2011.pdf
         SF.ChosenReagent = SF.MIBC;
         return SF.CalculateSurfaceTension();
     }

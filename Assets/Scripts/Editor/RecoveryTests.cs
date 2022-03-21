@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class RecoveryTests
 {
+    int MediumParticleDiameter = 90;
+
   [Test]
     public void SingleRecoveryCalculationMediumSizeParticleTest()
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();        
-        double Actual = R.arrRecovery[81];
-
-//        double Actual = R.CalculateRecoveryForParticleDiameter(0.000071);
-        double Expected = 60;
+        double Actual = R.arrRecovery[MediumParticleDiameter];
+        double Expected = 75;
         Assert.AreEqual(Expected, Actual,20);
     }
 
@@ -19,7 +19,6 @@ public class RecoveryTests
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();
         double Actual = R.arrRecovery[10];
-        //double Actual = R.CalculateRecoveryForParticleDiameter(0.00001);
         double Expected = 10;
         Assert.AreEqual(Expected, Actual, 20);
     }
@@ -29,8 +28,7 @@ public class RecoveryTests
     {
         RecoveryCalculation R = new RecoveryExamples().CalculationExample();
         double Actual = R.arrRecovery[100];
-        //double Actual = R.CalculateRecoveryForParticleDiameter(0.000100);
-        double Expected = 16;
+        double Expected = 60;
         Assert.AreEqual(Expected, Actual, 20);
     }
 
@@ -54,18 +52,17 @@ public class RecoveryTests
         Assert.LessOrEqual(Actual, 0.005);
     }
 
-
     [Test]
     public void FrothHeightAffectsRecovery()
     {
         RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
         Recoveries.FrothHeight = 0.1;
-        double Froth1 = Recoveries.arrRecovery[70];
+        double Froth1 = Recoveries.arrRecovery[MediumParticleDiameter];
         Assert.AreEqual(90, Froth1, 10);
         Recoveries.FrothHeight = 0.2;
         Recoveries.CalculateParticleRecoveries();
-        double Froth2 = Recoveries.arrRecovery[70]; ;
-        Assert.AreEqual(50, Froth2, 10);
+        double Froth2 = Recoveries.arrRecovery[MediumParticleDiameter]; ;
+        Assert.AreEqual(40, Froth2, 10);
     }
 
     [Test]
@@ -73,12 +70,12 @@ public class RecoveryTests
     {
         RecoveryCalculation Recoveries = new RecoveryExamples().CalculationExample();
         Recoveries.AirFlowRate = 2;
-        double Air1 = Recoveries.arrRecovery[70];
-        Assert.AreEqual(86, Air1, 3);
+        double Air1 = Recoveries.arrRecovery[MediumParticleDiameter];
+        Assert.AreEqual(90, Air1, 10);
         Recoveries.AirFlowRate = 4;
         Recoveries.CalculateParticleRecoveries();
-        double Air2 = Recoveries.arrRecovery[70]; ;
-        Assert.AreEqual(95, Air2, 3);
+        double Air2 = Recoveries.arrRecovery[MediumParticleDiameter]; ;
+        Assert.AreEqual(95, Air2, 10);
     }
 
     [Test]
@@ -103,7 +100,7 @@ public class RecoveryTests
     public void SurfaceTensionOctanol()
     {
         SurfaceTension SF = new SurfaceTension();
-        SF.FrotherConcentrate = 192; //as seen in example of didactic/Kyle2011.pdf
+        SF.FrotherConcentrate = 192; //as seen in example of references/Kelley2011.pdf
         SF.ChosenReagent = SF.Octanol;
         double Actual = SF.CalculateSurfaceTension();
         double Expected = 40.5;
@@ -114,7 +111,7 @@ public class RecoveryTests
     public void SurfaceTensionsForDifferentReagents()
     {
         SurfaceTension SF = new SurfaceTension();
-        SF.FrotherConcentrate = 192; //as seen in example of didactic/Kyle2011.pdf
+        SF.FrotherConcentrate = 192; //as seen in example of references/Kelley2011.pdf
         SF.ChosenReagent = SF.Octanol;
         double R1 = SF.CalculateSurfaceTension();
         SF.ChosenReagent = SF.MIBC;

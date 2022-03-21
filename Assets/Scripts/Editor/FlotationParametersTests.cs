@@ -4,77 +4,50 @@ using UnityEngine;
 
 public class FlotationParametersTests {
 
-    private FlotationParameters FlotationExample() {
-        FlotationParameters FC = new FlotationParameters
+    /// <summary>
+    /// Trying to emulate the case decribed in References/Yanatos(2014).pdf
+    /// </summary>
+    /// <returns></returns>
+
+    private FlotationCalculation FlotationExample() {
+        Stream feed = new Stream
         {
-            AirFlow = 2,
-            FrothThickness = 10,
-            FeedCuGrade = 15
+            ContactAngle = 60,
+            Grade = 1,
+            Density = 4100,
+            MassFlowRate = 10
         };
+        FlotationCalculation FC = new FlotationCalculation();
+        FC.Feed = feed;
+        FC.ResetSimulation();
+        FC.Simulation.FrothHeight = 0.15;
+        FC.particleDiameterInMicrons = 100;
+        FC.Simulation.CalculateParticleRecoveries();
         return FC;
     }
 
     [Test]
     public void ConcentrateCopperGradeCalculationTest()
     {
-        float Expected = 32.76f;
-        float Actual = FlotationExample().ConcentrateCuGrade();
-        Assert.AreEqual(Expected, Actual, 0.1f);
+        float Expected = 5.38f;
+        float Actual = FlotationExample().ConcentrateGrade();
+        Assert.AreEqual(Expected, Actual, 1f);
     }
 
-    [Test]
-    public void ConcentrateCopperRecoveryCalculationTest()
-    {
-        float Expected = 42.91f;
-        float Actual = FlotationExample().ConcentrateCuRecovery();
-        Assert.AreEqual(Expected, Actual, 0.1f);
-    }
 
     [Test]
-    public void TailingsCopperCalculationTest()
+    public void ConcentrateRecoveryCalculationTest()
     {
-        float Expected = 7.33f;
-        float Actual = FlotationExample().TailingsCuGrade();
-        Assert.AreEqual(Expected, Actual, 0.1f);
-    }
-
-    [Test]
-    public void ConcentrateArsenicGradeCalculationTest()
-    {
-        float Expected = 1.09f;
-        float Actual = FlotationExample().ConcentrateAsGrade();
-        Assert.AreEqual(Expected, Actual, 0.1);
-    }
-
-    [Test]
-    public void TailingArsenicGradeCalculationTest()
-    {
-        float Expected = 1.33f;
-        float Actual = FlotationExample().TailingsAsGrade();
-        Assert.AreEqual(Expected, Actual, 0.1);
+        double Expected = 75;
+        double Actual = FlotationExample().ConcentrateRecovery();
+        Assert.AreEqual(Expected, Actual, 5f);
     }
 
     [Test]
     public void ConcentrateMassFlowCalculationTest()
     {
-        float Expected = 14.37f;
-        float Actual = FlotationExample().ConcentrateMassFlowInTPH();
-        Assert.AreEqual(Expected, Actual, 1);
-    }
-
-    [Test]
-    public void ConcentrateSolidsFlowCalculationTest()
-    {
-        float Expected = 4.31f;
-        float Actual = FlotationExample().ConcentrateSolidsFlow();
-        Assert.AreEqual(Expected, Actual, 0.1);
-    }
-
-    [Test]
-    public void ConcentrationRatioTest()
-    {
-        float Expected = 6.96f;
-        float Actual = FlotationExample().ConcentrationRatio();
-        Assert.AreEqual(Expected, Actual, 0.5f);
+        float Expected = 1.5f;
+        float Actual = FlotationExample().ConcentrateMassFlow();
+        Assert.AreEqual(Expected, Actual, 0.5);
     }
 }

@@ -8,17 +8,17 @@ public class RecoveryExamples{
     public RecoveryCalculation CalculationExample() {
         Stream Feed = new Stream
         {
-            ContactAngle = 25,
+            ContactAngle =60,
             Grade = 15,
             Density = 4100
         };
         RecoveryCalculation RC = new RecoveryCalculation()
         {
             feed = Feed,
-            Power = 2500,
+            Power = 1500,
             NumberOfCells = 4,
             RetentionTime = 3,
-            ZetaPotential = -0.15
+            FrothHeight = 0.15
         };
         RC.SetUpCalculation();
         RC.CalculateParticleRecoveries();
