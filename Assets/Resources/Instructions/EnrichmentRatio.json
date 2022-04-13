@@ -19,7 +19,7 @@
             "correctOptionIndex": 3
         },
         {
-            "text": "Great job. Now set the air flow of the flotation stage to 1 and the froth to -20. What is the Cu grade going out of the system (Concentrate Stream)?",
+            "text": "Great job. Now set the air flow of the flotation stage to 1 and the froth to -20. What is the Cu grade going out through the Concentrate Stream?",
             "options": [
                 "Around 1%",
                 "Around 5%"
@@ -34,7 +34,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "In order to enrich the metal content from 30% Cu to 100% Cu, other processes like filtration and smelting are involved but perhaps they deserve their own educational games.",
+            "text": "In order to enrich the metal content from 30% Cu to 100% Cu (which we use to run this game), other processes like filtration and smelting are involved but perhaps they deserve their own educational games.",
             "options": [
                 "Sure"
             ],
@@ -48,7 +48,7 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Let's try! In a flotation process where the precious metal is nickel, and the Feed Ni % is 2 while the Concentrate Ni % is 6, what would be the Enrichment Ratio?\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
+            "text": "Let's try! In a flotation process where the precious metal is nickel and the Feed Ni % is 2 while the Concentrate Ni % is 6, what would be the Enrichment Ratio?\n\n Enrichment ratio =\nConcentrate Metal % / Feed Metal % ",
             "options": [
                 "6",
                 "3",
@@ -63,12 +63,12 @@
                 "Around 5",
                 "Around 2",
                 "Around 1",
-                "Around 6"
+                "Around 10"
             ],
             "correctOptionIndex": 1
         },
         {
-            "text": "Correct. Although Enrichment Ratio gives us a quick look into the relationship of the metal grades in the system, it does not take quantity into consideration, unlike metal recovery. We are going to learn how to correlate quantity and quality in the next lessons.",
+            "text": "Correct. Although Enrichment Ratio gives us a quick look into the relationship of the metal grades in the system, it does not take quantity into consideration, unlike metal recovery. We are going to learn how to correlate quantity and quality in the next lesson.",
             "options": [ "Finnish lesson" ]
         }
     ]

@@ -29,15 +29,14 @@ public class FlotationCalculationTests {
     [Test]
     public void ConcentrateCopperGradeCalculationTest()
     {
-
         FlotationCalculation FC = FlotationExample();
         FC.Simulation.FrothHeight = 0.2;
         FC.Simulation.AirFlowRate = 1;
-        float Expected = 5.38f;
+        FC.Simulation.CalculateParticleRecoveries();
+        float Expected = 6.38f;
         float Actual = FC.ConcentrateGrade();
         Assert.AreEqual(Expected, Actual, 1f);
     }
-
 
     [Test]
     public void ConcentrateRecoveryCalculationTest()
@@ -59,8 +58,10 @@ public class FlotationCalculationTests {
     [Test]
     public void ConcentrateMassFlowSmallerThanOneTest()
     {
-        FlotationExample().Simulation.FrothHeight = 0.2;
-        FlotationExample().Simulation.AirFlowRate = 1;
+        FlotationCalculation FC = FlotationExample();
+        FC.Simulation.FrothHeight = 0.2;
+        FC.Simulation.AirFlowRate = 1;
+        FC.Simulation.CalculateParticleRecoveries();
         float Expected = 5f;
         float Actual = FlotationExample().ConcentrateGrade();
         Assert.AreEqual(Expected, Actual, 2);
@@ -77,9 +78,10 @@ public class FlotationCalculationTests {
     [Test]
     public void RecoveryDiffParametersTest()
     {
-        FlotationExample().Simulation.FrothHeight = 0.1;
-        FlotationExample().Simulation.AirFlowRate = 0.4;
-
+        FlotationCalculation FC = FlotationExample();
+        FC.Simulation.FrothHeight = 0.2;
+        FC.Simulation.AirFlowRate = 1;
+        FC.Simulation.CalculateParticleRecoveries();
         float Recovery11 = FlotationExample().ConcentrateMassFlow() * FlotationExample().ConcentrateGrade() * 100 / 10;
         float Recovery22 = FlotationExample().ConcentrateRecovery();
         Assert.AreEqual(Recovery11, Recovery22, 5);

@@ -16,13 +16,6 @@
             "correctOptionIndex": 1
         },
         {
-            "text": "Alright! We have to make sure this value is 5% or more, which is the specification of our product. Anything below that will not count.",
-            "options": [
-                "Got it"
-            ],
-            "correctOptionIndex": 1
-        },
-        {
             "text": "Now tell me, what happens to the variable Cu RECOVERY if you change the air flow rate from 1 to 2 cm/s?",
             "options": [
                 "It decreased",

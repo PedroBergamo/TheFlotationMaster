@@ -9,26 +9,26 @@
             "options": [ "around 1%", "10%", "10 t/h" ]
         },
         {
-            "text": "Well done. Considering it is your first time in this screen, what is the flow rate of the Feed Stream?",
+            "text": "Well done. What about the flow rate of the Feed Stream?",
             "options": [ "around 1%", "10%", "10 t/h" ],
             "correctOptionIndex": 3
         },
         {
-            "text": "That's correct. Even if you have changed it, you could have guessed since flow rate is given by tons per hour.",
+            "text": "That's correct. You could have guessed since flow rate is given by tons per hour.",
             "options": [ "True" ],
             "correctOptionIndex": 1
         },
         {
-            "text": "What is the flow rate of Concentrate Stream (the one which goes from the flotation bank to the bin)? Make sure your Feed flow rate is at 10 t/h, the air is at 2 cm/s and froth is at -10 cm.",
+            "text": "What is the flow rate of Concentrate Stream? Make sure your air is at 2 cm/s and froth is at -10 cm.",
             "options": [ "2%", "60 t/h", "2 t/h" ],
             "correctOptionIndex": 3
         },
         {
-            "text": "Correct. It means that from the 10 tons entering your flotation cell, 2 tons go to the Concentrate (which is the material that we can process and sell), while the other 8 tons go to the Tailings stream, which we didn't show for didactic purposes.",
+            "text": "Correct. It means that from the 10 tons entering your flotation cell, 2 tons go to the Concentrate, which is the material that we can process and sell, while the other 8 tons go to the Tailings stream, which we didn't show for didactic purposes.",
             "options": [ "Sounds fair" ]
         },
         {
-            "text": "Now going back to the Concentrate, as a flotation operator you want to make sure you are producing the right amount of Concentrate according to your Feed flow rate.",
+            "text": "As a flotation operator you want to make sure you are producing the right amount of Concentrate according to your Feed flow rate.",
             "options": [ "Next" ]
         },
         {
@@ -40,11 +40,11 @@
             "options": [ "Cool" ]
         },
         {
-            "text": "For example, if your concentrate flow rate is 1 t/h with a feed flow rate of 10 t/h, your concentration ratio is 10. The cell is producing one ton of concentrate with 10 tons of feed.",
-            "options": [ "Next" ]
+            "text": "For example, if your concentrate flow rate is 1 t/h with a feed flow rate of 10 t/h, your concentration ratio is 10. The cell needs 10 tons of feed to produce one ton of concentrate.",
+            "options": [ "Understood" ]
         },
         {
-            "text": "Now try this. Check the Concentrate graphs to make sure your Cu recovery is above 80%. Then find the Concentrate Ratio of this process.\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
+            "text": "Let's practice. Set the air to 1 cm/s and froth to -15 cm. What is the Concentrate Ratio of this process?\n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
             "options": [
                 "about 12",
                 "about 30",
@@ -54,15 +54,7 @@
             "correctOptionIndex": 3
         },
         {
-            "text": "Correct. Now open the FEED graphs and change the Feed flow rate to around 20. Did the concentration ratio change? \n\n Concentration ratio =\nFeed flow rate / Concentrate flow rate",
-            "options": [
-                "Not really",
-                "Definitely changed"
-            ],
-            "correctOptionIndex": 1
-        },
-        {
-            "text": "Exactly! It is not uncommon for cells to be designed to work with an optimal Concentration Ratio. In the next lessons, we will learn about other performance calculations. Good job for now!",
+            "text": "Exactly! In the next lessons, we will learn about other performance calculations. Good job for now!",
             "options": [ "Finish lesson" ]
         }
     ]

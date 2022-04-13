@@ -1,11 +1,11 @@
 {
     "Instructions": [
         {
-            "text": "Metal Recovery is the real deal. Now you will learn one of the most important performance calculations related to flotation",
+            "text": "Metal Recovery is the real deal. Now you will learn one of the most important performance calculations related to flotation.",
             "options": [ "Next" ]
         },
         {
-            "text": "One way of calculating Metal Recovery is by dividing the enrichment ratio (Concentrate grade / Feed grade) by the Concentration Ratio.",
+            "text": "One way of calculating Metal Recovery is by dividing the Enrichment Ratio (Concentrate grade / Feed grade) by the Concentration Ratio.",
             "options": [ "Next" ]
         },
         {
@@ -19,29 +19,31 @@
             "correctOptionIndex": 2
         },
         {
-            "text": "Using the Concentration Ratio of 5, calculate the Metal recovery for your process. Open the Concentrate Graphs. Does your value match the Cu Recovery displayed?\n\n Recovery =\n Concentrate Metal Grade * 100 / ((Feed Metal Grade) * Concentration Ratio )",
+            "text": "Assuming your Concentration Ratio is 5, calculate the recovery of your process (you can round the values). Open the Concentrate Graphs. Does your value match the Cu Recovery displayed?\n Recovery =\n Concentrate Metal Grade * 100 / ((Feed Metal Grade) * Concentration Ratio )",
             "options": [
                 "Yes",
                 "No"
             ],
-            "correctOptionIndex": 1
+            "correctOptionIndex": 2
         },
         {
-            "text": "That was a tough one so let's go through it. Let's assume that your Conc. grade is 4%, Feed grade is 1% and Concentration Ratio is 5. Your recovery would be (4 / 5 ) * 100 = 80%. With a Conc. grade of 5% you would get 100% Recovery.",
+            "text": "True. Let's assume that your Conc. grade is 4%, Feed grade is 1% and Concentration Ratio is 5. Your recovery would be (4 / 5 ) * 100 = 80%. With a Conc. grade of 5% you would get (5 / 5 ) * 100 = 100% recovery.",
             "options": [
-                "Now I get it"
+                "I get it"
             ],
             "correctOptionIndex": 1
         },
         {
-            "text": "However, in a real process you would collect less, so your Concentration Ratio will be less than 5, that's why you cannot get 100% Recovery and 5 % Cu Conc. grade here. As a flotation operator you have to find a good compromise between the Concentrate grade and Concentration Ratio.",
+            "text": "But your Concentration ratio (Feed tons/ Conc. tons) was not really 5. Change the parameters to get a Conc. Ratio of 10, then do the math again. Does it match now?\n Recovery =\n Concentrate Metal Grade * 100 / ((Feed Metal Grade) * Concentration Ratio )",
             "options": [
-                "Of course!"
+                "Yes, kind of",
+                "No"
             ],
             "correctOptionIndex": 1
         },
+        
         {
-            "text": "Outstanding! Even though there are other ways of calculating Metal Recovery, I am going to leave you with this approach, just because it doesn't require a calculator or other parameters like tailings' values.",
+            "text": "It should match because that's how the values of this simulation are generated ;) Even though there are other ways of calculating Metal Recovery, I am going to leave you with this simple approach, just because it doesn't require a calculator or other parameters like tailings' values.",
             "options": [
                 "Finnish lesson"
             ],

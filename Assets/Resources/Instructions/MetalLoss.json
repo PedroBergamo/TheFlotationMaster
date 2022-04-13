@@ -1,7 +1,7 @@
 {
     "Instructions": [
         {
-            "text": "Metal loss is the opposite of the Metal Recovery that you just learned and represents the material lost to the tailings. It can be calculated simply by subtracting the Metal Recovery percentage from 100%.",
+            "text": "Metal loss is the opposite of the Metal Recovery that you just learned and represents the material 'lost' to the tailings. It can be calculated simply by subtracting the Metal Recovery percentage from 100%.",
             "options": [ "Next" ]
         },
         {
